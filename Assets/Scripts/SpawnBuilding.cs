@@ -40,7 +40,7 @@ public class SpawnBuilding : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        Debug.Log("Start");
     }
 
     // Update is called once per frame
@@ -136,7 +136,9 @@ public class SpawnBuilding : MonoBehaviour
     //    Debug.Log("Max X " + maxX.ToString());
         maxX *= buildingXReduction;
         maxX += buildingRightSide;
-        float minX = screenRight + 10.0f;
+        float minX = buildingRightSide + 10.0f; //screenRight + 10.0f;
+
+        Debug.Log("Mix X " + minX.ToString() + "Max X " + maxX.ToString());
 
         if (player.firstBuildingSpawned == false)
         {

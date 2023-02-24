@@ -52,6 +52,12 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Start Position
+        float screenLeft = Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 0f, 0f)).x;
+        Vector2 pos = transform.position;
+        pos.x = screenLeft - (Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 0f, 0f)).x / 8.0f);
+        transform.position = pos;
+
         Physics2D.gravity = new Vector2(0, gravity);
         isPaused = false;
     }
