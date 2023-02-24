@@ -40,7 +40,7 @@ public class SpawnBuilding : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Start");
+
     }
 
     // Update is called once per frame
