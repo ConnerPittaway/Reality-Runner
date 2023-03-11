@@ -9,18 +9,11 @@ public class UISpriteAnimate : MonoBehaviour
     public Image image;
 
     public Sprite[] spriteArray;
-    public float speed = .02f;
-    public float speed2 = .02f;
-
-    private int indexSprite;
-    //Coroutine m_CorotineAnim;
-    //Coroutine m_CorotineFade;
-    bool IsDone;
+    public float animationSpeed = .02f;
+    public float fadeSpeed = .02f;
 
     private void Start()
     {
-        //StartCoroutine(AnimateUISprite());
-        //StartCoroutine(Func_FlashOut());
         Color spriteAlpha = image.color;
         spriteAlpha.a = 255.0f;
         image.color = spriteAlpha;
@@ -28,51 +21,37 @@ public class UISpriteAnimate : MonoBehaviour
 
     public void StartUIAnimation()
     {
-        IsDone = false;
         StartCoroutine(AnimateUISprite());
         StartCoroutine(FlashIn());
     }
 
     public void Func_StopUIAnim()
     {
-        IsDone = true;
         StopAllCoroutines();
-        //StopCoroutine(Func_PlayAnimUI());
-        //StopCoroutine(Func_FlashOut());
     }
     IEnumerator AnimateUISprite()
     {
-        yield return new WaitForSeconds(speed);
-        if (indexSprite >= spriteArray.Length)
+        for(int i = 0; i < spriteArray.Length; i++)
         {
-            indexSprite = 0;
+            yield return new WaitForSeconds(animationSpeed);
+            image.sprite = spriteArray[i];
         }
-        image.sprite = spriteArray[indexSprite];
-        indexSprite += 1;
-        if (IsDone == false)
-        {
-            //m_CorotineAnim = StartCoroutine(Func_PlayAnimUI());
-            StartCoroutine(AnimateUISprite());
-        }
+        StartCoroutine(AnimateUISprite());
     }
 
     IEnumerator Func_FlashOut()
     {
-        //Debug.Log("Hello");
-        // yield return new WaitForSeconds(m_Speed2);
         float counter = 0;
-        //Get current color
         Color spriteColor = image.color;
-       // Debug.Log(counter);
-        while (counter < speed2)
+        while (counter < fadeSpeed)
         {
             counter += Time.deltaTime;
             //Fade from 1 to 0
-            float alpha = Mathf.Lerp(1, 0, counter / speed2);
-            // Debug.Log(alpha);
+            float alpha = Mathf.Lerp(1, 0, counter / fadeSpeed);
 
             //Change alpha only
             image.color = new Color(spriteColor.r, spriteColor.g, spriteColor.b, alpha);
+
             //Wait for a frame
              yield return null;
         }
@@ -82,21 +61,17 @@ public class UISpriteAnimate : MonoBehaviour
 
     IEnumerator FlashIn()
     {
-        //Debug.Log("Hello");
-        // yield return new WaitForSeconds(m_Speed2);
         float counter = 0;
-        //Get current color
         Color spriteColor = image.color;
-        // Debug.Log(counter);
-        while (counter < speed2)
+        while (counter < fadeSpeed)
         {
             counter += Time.deltaTime;
             //Fade from 1 to 0
-            float alpha = Mathf.Lerp(0, 1, counter / speed2);
-            //  Debug.Log(alpha);
+            float alpha = Mathf.Lerp(0, 1, counter / fadeSpeed);
 
             //Change alpha only
             image.color = new Color(spriteColor.r, spriteColor.g, spriteColor.b, alpha);
+
             //Wait for a frame
             yield return null;
         }

@@ -2045,8 +2045,8 @@ MonoBehaviour:
   - {fileID: -4848553832261993613, guid: 4f5b636a27c1f84409dcc379cb628107, type: 3}
   - {fileID: 1943393458402971858, guid: 4f5b636a27c1f84409dcc379cb628107, type: 3}
   - {fileID: 2502851955874185411, guid: 4f5b636a27c1f84409dcc379cb628107, type: 3}
-  speed: 0.1
-  speed2: 1
+  animationSpeed: 0.1
+  fadeSpeed: 1
 --- !u!1 &763924495
 GameObject:
   m_ObjectHideFlags: 0
@@ -3676,8 +3676,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 0}
   spriteArray: []
-  speed: 0.02
-  speed2: 0.02
+  animationSpeed: 0.02
+  fadeSpeed: 0.02
 --- !u!1 &1213840294
 GameObject:
   m_ObjectHideFlags: 0
