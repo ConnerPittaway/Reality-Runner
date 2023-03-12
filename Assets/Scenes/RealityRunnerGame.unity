@@ -6581,6 +6581,9 @@ MonoBehaviour:
   portalTemplate: {fileID: 5984007582593041213, guid: 154ac57564abe68469b1ea8cf1a8852d, type: 3}
   fallingObjectTemplate: {fileID: 1550615653377780375, guid: 77026f783e7bdc7428480a0126d263ad, type: 3}
   flyingObjectTemplate: {fileID: 3743659508687786590, guid: d5f00bb04f9ef364a9ce652db8b43a74, type: 3}
+  flyingObjects:
+  - {fileID: 3743659508687786590, guid: d5f00bb04f9ef364a9ce652db8b43a74, type: 3}
+  - {fileID: 3743659508687786590, guid: c6c277e778cd0d349b460784310c339f, type: 3}
   forceObjectTemplate: {fileID: 7649925053935539630, guid: da2e9d46fe7c06a409e5b984152623ff, type: 3}
   Backgrounds: {fileID: 1797302407}
   currentBackground: 0
