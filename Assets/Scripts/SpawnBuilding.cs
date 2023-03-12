@@ -20,6 +20,7 @@ public class SpawnBuilding : MonoBehaviour
     public Portal portalTemplate;
     public FallingObject fallingObjectTemplate;
     public FlyingObject flyingObjectTemplate;
+    public List<FlyingObject> flyingObjects;
     public forcefieldPickup forceObjectTemplate;
     public backgrounds Backgrounds;
     public int currentBackground;
@@ -226,11 +227,17 @@ public class SpawnBuilding : MonoBehaviour
             box.transform.position = fallingObjectPosition;
         }
 
+        int spawnFlyingObjectType = 1;
         int spawnFlyingObject = Random.Range(0, 5);
         if (spawnFlyingObject == 1)
         {
+            GameObject box = null;
           //  Debug.Log("Flying Object");
-            GameObject box = Instantiate(flyingObjectTemplate.gameObject);
+            if (spawnFlyingObjectType == 1)
+            {
+                box = Instantiate(flyingObjects[1].gameObject);
+            }
+
             //FlyingObject flyingObject = box.GetComponent<FlyingObject>();
             //BoxCollider2D boxCollider = box.GetComponent<BoxCollider2D>();
             float flyPositionX = buildingSetChildVariables.buildingRightSide;
