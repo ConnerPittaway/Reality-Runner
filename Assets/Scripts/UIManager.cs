@@ -11,13 +11,11 @@ public class UIManager : MonoBehaviour
     public TMPro.TextMeshProUGUI distanceEnd;
     public GameObject endScreen;
     public GameObject mainUI;
-    public AudioManager audioManager;
     public bool isPaused;
 
     private void Awake()
     {
         endScreen.SetActive(false);
-        audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
     }
 
     // Start is called before the first frame update
@@ -41,7 +39,7 @@ public class UIManager : MonoBehaviour
 
     public void Restart()
     {
-        audioManager.RestartMusic();
+        AudioManager.Instance.RestartMusic();
         SceneManager.LoadScene("RealityRunnerGame");
     }
 

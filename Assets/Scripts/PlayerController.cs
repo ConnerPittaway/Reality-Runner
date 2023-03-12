@@ -269,47 +269,30 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("StaticObject"))
         {
-            //Vector2 currentPos = transform.position;
             box boxCollide = collision.gameObject.GetComponent<box>();
             velocity.x *= 0.8f;
-            //currentPos.y = boxCollide.gameObject.transform.position.y;
-            //transform.position = currentPos;
-            //Debug.Log("Collision caused box");
             Destroy(boxCollide.gameObject);
         }
 
         if (collision.gameObject.CompareTag("FallingObject"))
         {
-            //Vector2 currentPos = transform.position;
             FallingObject boxCollide = collision.gameObject.GetComponent<FallingObject>();
             velocity.x *= 0.8f;
-            //currentPos.y = boxCollide.gameObject.transform.position.y;
-            //transform.position = currentPos;
-            //Debug.Log("Collision caused box");
             Destroy(boxCollide.gameObject);
         }
 
         if (collision.gameObject.CompareTag("FlyingObject"))
         {
-            //Vector2 currentPos = transform.position;
             FlyingObject boxCollide = collision.gameObject.GetComponent<FlyingObject>();
             velocity.x *= 0.8f;
-            //currentPos.y = boxCollide.gameObject.transform.position.y;
-            //transform.position = currentPos;
-            //Debug.Log("Collision caused box");
             Destroy(boxCollide.gameObject);
         }
 
         if (collision.gameObject.CompareTag("ForceFieldObject"))
         {
-            //Vector2 currentPos = transform.position;
             forcefieldPickup boxCollide = collision.gameObject.GetComponent<forcefieldPickup>();
             hasPowerup = true;
             itemRadial.currentAmount = 100;
-            //velocity.x *= 0.8f;
-            //currentPos.y = boxCollide.gameObject.transform.position.y;
-            //transform.position = currentPos;
-            //Debug.Log("Collision caused box");
             Destroy(boxCollide.gameObject);
         }
 
@@ -317,11 +300,7 @@ public class PlayerController : MonoBehaviour
         {
             numberOfRealities++;
             AudioManager.Instance.PlaySFX("Portal");
-            //Vector2 currentPos = transform.position;
             Portal portalCollide = collision.gameObject.GetComponent<Portal>();
-            //currentPos.y = boxCollide.gameObject.transform.position.y;
-            //transform.position = currentPos;
-            //Debug.Log("Collision caused box");
             Destroy(portalCollide.gameObject);
             if (currentBackground == 0)
             {
