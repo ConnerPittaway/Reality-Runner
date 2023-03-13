@@ -23,6 +23,7 @@ public class GlitchManager : MonoBehaviour
 
     private void EventManager_UIElementOpened()
     {
+        StopAllCoroutines(); //Ensure one play at a time
         StartCoroutine(Glitch(glitch));
     }
 
