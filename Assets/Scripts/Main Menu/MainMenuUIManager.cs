@@ -5,7 +5,7 @@ using UnityEngine;
 public class MainMenuUIManager : MonoBehaviour
 {
     //Screens
-    public GameObject stats, credits, characterStore, itemUpgrades, store;
+    public GameObject stats, devCredits, characterStore, itemUpgrades, store, musicCredits, settings;
 
     //Active Screen
     public GameObject activeScreen;
@@ -20,38 +20,37 @@ public class MainMenuUIManager : MonoBehaviour
 
     public void openStats()
     {
-        stats.SetActive(true);
-        gameObject.SetActive(false);
-        activeScreen = stats;
+        openScreen(stats);
     }
 
-    public void openCredits()
+    public void openDevCredits()
     {
-        credits.SetActive(true);
-        gameObject.SetActive(false);
-        activeScreen = credits;
+        openScreen(devCredits);
+    }
+
+    public void openMusicCredits()
+    {
+        openScreen(musicCredits);
     }
 
     public void openCharacterStore()
     {
-        characterStore.SetActive(true);
-        gameObject.SetActive(false);
-        activeScreen = characterStore;
+        openScreen(characterStore);
     }
 
     public void openItemUpgrades()
     {
         openScreen(itemUpgrades);
-        /*itemUpgrades.SetActive(true);
-        gameObject.SetActive(false);
-        activeScreen = itemUpgrades;*/
     }
 
     public void openStore()
     {
-        store.SetActive(true);
-        gameObject.SetActive(false);
-        activeScreen = store;
+        openScreen(store);
+    }
+
+    public void openSettings()
+    {
+        openScreen(settings);
     }
 
     public void openScreen(GameObject screen)
