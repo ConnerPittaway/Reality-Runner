@@ -29,7 +29,7 @@ public class RadialProgress : MonoBehaviour
         currentAmount = 0.0f;
         portalButton.interactable = false;
         portalImage.enabled = false;
-        UIController.Func_StopUIAnim();
+        UIController.StopUIAnimation();
         startedRoutines = false;
     }
 

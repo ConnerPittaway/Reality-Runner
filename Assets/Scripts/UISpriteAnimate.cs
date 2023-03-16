@@ -25,7 +25,7 @@ public class UISpriteAnimate : MonoBehaviour
         StartCoroutine(FlashIn());
     }
 
-    public void Func_StopUIAnim()
+    public void StopUIAnimation()
     {
         StopAllCoroutines();
     }
@@ -39,7 +39,7 @@ public class UISpriteAnimate : MonoBehaviour
         StartCoroutine(AnimateUISprite());
     }
 
-    IEnumerator Func_FlashOut()
+    IEnumerator FlashOut()
     {
         float counter = 0;
         Color spriteColor = image.color;
@@ -56,7 +56,7 @@ public class UISpriteAnimate : MonoBehaviour
              yield return null;
         }
         StartCoroutine(FlashIn());
-        StopCoroutine(Func_FlashOut());
+        StopCoroutine(FlashOut());
     }
 
     IEnumerator FlashIn()
@@ -75,7 +75,7 @@ public class UISpriteAnimate : MonoBehaviour
             //Wait for a frame
             yield return null;
         }
-        StartCoroutine(Func_FlashOut());
+        StartCoroutine(FlashOut());
         StopCoroutine(FlashIn());
     }
 }

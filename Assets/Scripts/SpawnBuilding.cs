@@ -148,40 +148,32 @@ public class SpawnBuilding : MonoBehaviour
         newBuilding.transform.position = pos;
 
         //Set variables for the new spawned building
-        SpawnBuilding buildingSetChildVariables = newBuilding.GetComponent<SpawnBuilding>();
-        buildingSetChildVariables.buildingHeight = newBuilding.transform.position.y + (newCollider.size.y / 2); //Set the building height of the new child
-        buildingSetChildVariables.buildingRightSide = newBuilding.transform.position.x + (newCollider.size.x / 2);
+        SpawnBuilding newBuildingData = newBuilding.GetComponent<SpawnBuilding>();
+        newBuildingData.buildingHeight = newBuilding.transform.position.y + (newCollider.size.y / 2); //Set the building height of the new child
+        newBuildingData.buildingRightSide = newBuilding.transform.position.x + (newCollider.size.x / 2);
+        
 
-
-        //int spawnPortal = Random.Range(0, 5);
-
+        //To:Do Abstract To Functions
 
         //Check for Portal Spawn
         if (rp.canSpawnPortal)
         {
             float y;
-            //Debug.Log("Portal building right: " + buildingRightSide);
             GameObject portal = Instantiate(portalTemplate.gameObject);
-            if (buildingSetChildVariables.buildingHeight > buildingHeight)
+            if (newBuildingData.buildingHeight > buildingHeight)
             {
-                y = buildingSetChildVariables.buildingHeight + 2.5f;
+                y = newBuildingData.buildingHeight + 2.5f;
             }
             else
             {
                 y = buildingHeight + 5.0f;
             }
-            //float y = buildingHeight + 5.0f;
             float leftSide = newBuilding.transform.position.x - newCollider.size.x / 2;
             float gap = (leftSide - buildingRightSide) / 2;
             float x = leftSide - gap;
-            //Debug.Log("Building right side: " + leftSide);
-            //Debug.Log("Portal gap: " + gap);
             Vector2 portalPosition = new Vector2(x, y);
-            //newSprite.color = Color.blue;
-            //newSprite.sprite = Resources.Load<Sprite>("Sprites/");
             portal.transform.position = portalPosition;
             rp.canSpawnPortal = false;
-            //rp.currentAmount = 0.0f;
         }
 
 
@@ -196,7 +188,7 @@ public class SpawnBuilding : MonoBehaviour
                 //Debug.Log("Box");
                 GameObject box = Instantiate(boxTemplate.gameObject);
                 BoxCollider2D boxCollider = box.GetComponent<BoxCollider2D>();
-                float y = buildingSetChildVariables.buildingHeight + (boxCollider.size.y / 2);
+                float y = newBuildingData.buildingHeight + (boxCollider.size.y / 2);
                 float width = newCollider.size.x / 2 - 1;
                 float leftSide = newBuilding.transform.position.x - width;
                 float rightSide = newBuilding.transform.position.x + width;
@@ -213,7 +205,7 @@ public class SpawnBuilding : MonoBehaviour
             GameObject box = Instantiate(fallingObjectTemplate.gameObject);
             FallingObject fallingObject = box.GetComponent<FallingObject>();
             BoxCollider2D boxCollider = box.GetComponent<BoxCollider2D>();
-            fallingObject.targetValue = buildingSetChildVariables.buildingHeight + (boxCollider.size.y / 2);
+            fallingObject.targetValue = newBuildingData.buildingHeight + (boxCollider.size.y / 2);
             float rightSideChild = newBuilding.transform.position.x + newCollider.size.x / 2;
             float fallPositionX = Random.Range(newBuilding.transform.position.x - (newCollider.size.x / 4), rightSideChild);
             float fallPositionY = screenTop;
@@ -226,16 +218,12 @@ public class SpawnBuilding : MonoBehaviour
         if (spawnFlyingObject == 1)
         {
             GameObject box = null;
-          //  Debug.Log("Flying Object");
             if (spawnFlyingObjectType == 1)
             {
                 box = Instantiate(flyingObjects[1].gameObject);
             }
-
-            //FlyingObject flyingObject = box.GetComponent<FlyingObject>();
-            //BoxCollider2D boxCollider = box.GetComponent<BoxCollider2D>();
-            float flyPositionX = buildingSetChildVariables.buildingRightSide;
-            float flyPositionY = buildingSetChildVariables.buildingHeight;// + 2.5f;
+            float flyPositionX = newBuildingData.buildingRightSide;
+            float flyPositionY = newBuildingData.buildingHeight;// + 2.5f;
             Vector2 fallingObjectPosition = new Vector2(flyPositionX, flyPositionY);
             box.transform.position = fallingObjectPosition;
         }
@@ -254,7 +242,7 @@ public class SpawnBuilding : MonoBehaviour
             //Debug.Log("Force Box");
             GameObject forceField = Instantiate(forceObjectTemplate.gameObject);
             BoxCollider2D boxCollider = forceField.GetComponent<BoxCollider2D>();
-            float y = buildingSetChildVariables.buildingHeight + (boxCollider.size.y / 2) * forceField.transform.localScale.y;
+            float y = newBuildingData.buildingHeight + (boxCollider.size.y / 2) * forceField.transform.localScale.y;
             float x = newBuilding.transform.position.x;
             Vector2 forcePosition = new Vector2(x, y);
             forceField.transform.position = forcePosition;

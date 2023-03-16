@@ -178,7 +178,7 @@ public class PlayerController : MonoBehaviour
             isDead = true;
             velocity.x = 0;
             velocity.y = 0;
-            mainUI.active = false;
+            mainUI.SetActive(false);
             //Destroy(gameObject);
         }
 
@@ -192,19 +192,14 @@ public class PlayerController : MonoBehaviour
                     isJumping = false;
                 }
             }
-            //currentPos.y += velocity.y * Time.fixedDeltaTime;
-            // * Time.fixedDeltaTime);
             if (!isJumping)
             {
-                //velocity.y += (gravity) * Time.fixedDeltaTime;
                 velocity.y += (Physics2D.gravity.y) * Time.fixedDeltaTime;
-                //RB.velocity += Vector2.up * ((gravity*RB.gravityScale) * Time.fixedDeltaTime);
             }
-
             RB.velocity = Vector2.up * (velocity.y);
-
         }
 
+        //Calculate travelled distance
         distance += velocity.x * Time.fixedDeltaTime * distanceDampener;
 
         if (onRoof)
