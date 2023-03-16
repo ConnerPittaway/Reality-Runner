@@ -237,15 +237,11 @@ public class SpawnBuilding : MonoBehaviour
             box.transform.position = fallingObjectPosition;
         }
 
-        int spawnFlyingObjectType = 1;
+        int spawnFlyingObjectType = ((int)player.currentWorld);
         int spawnFlyingObject = Random.Range(0, 5);
         if (spawnFlyingObject == 1)
         {
-            GameObject box = null;
-            if (spawnFlyingObjectType == 1)
-            {
-                box = Instantiate(flyingObjects[1].gameObject);
-            }
+            GameObject box = Instantiate(flyingObjects[spawnFlyingObjectType].gameObject);
             float flyPositionX = newSpawnBuildingData.buildingRightSide;
             float flyPositionY = newSpawnBuildingData.buildingHeight;// + 2.5f;
             Vector2 fallingObjectPosition = new Vector2(flyPositionX, flyPositionY);
