@@ -4,17 +4,30 @@ using UnityEngine;
 
 public class SpawnBuilding : MonoBehaviour
 {
+    //Radial Progress (check if portal can be spawned)
     public RadialProgress rp;
+
+    //Player
     public PlayerController player;
+
+    //Building Positional Data
     public float buildingHeight;
     public float buildingRightSide;
-    public float screenRight;
-    public float screenLeft;
-    public float screenTop;
+
+    //Collider and Rigidbody
     public BoxCollider2D collider;
-    public float buildingXReduction = 0.6f;
-    public float buildingYReduction = 0.6f;
     public Rigidbody2D RB;
+
+    //Screen Variables
+    private float screenRight;
+    private float screenLeft;
+    private float screenTop;
+
+    //Building Calculation Limiters
+    private float buildingXReduction = 0.6f;
+    private float buildingYReduction = 0.6f;
+
+    //Objects
     public box boxTemplate;
     public Portal portalTemplate;
     public FallingObject fallingObjectTemplate;
@@ -25,7 +38,7 @@ public class SpawnBuilding : MonoBehaviour
     //Max and Min Heights
     public Transform maximumBuildingHeight;
     public Transform minimumBuildingHeight;
-    public float maxmimumHeight;
+    public float maximumHeight;
     public float minimumHeight;
 
     //Building Spawned?
@@ -41,14 +54,16 @@ public class SpawnBuilding : MonoBehaviour
     {
         Debug.Log("Spawned");
 
-        //Set Variables Of Screen/Height
+        //Set Height
         buildingHeight = transform.position.y + (collider.size.y / 2); //Top of the building
+
+        //Set Screen Variables
         screenRight = Camera.main.ViewportToWorldPoint(new Vector3(1.0f, 0.0f, 0.0f)).x;
         screenLeft = Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 0f, 0f)).x;
         screenTop = Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 1f, 0f)).y;
 
         //Max and Min Heights
-        maxmimumHeight = maximumBuildingHeight.position.y;
+        maximumHeight = maximumBuildingHeight.position.y;
         minimumHeight = minimumBuildingHeight.position.y;
     }
 
@@ -123,9 +138,9 @@ public class SpawnBuilding : MonoBehaviour
         maximumY += buildingHeight; //Add maximum jump height to current building height which gives the maximum height of the new building
 
         float minimumY = minimumHeight;
-        if(maximumY > maxmimumHeight)
+        if(maximumY > maximumHeight)
         {
-            maximumY = maxmimumHeight;
+            maximumY = maximumHeight;
         }
         float buildingY = Random.Range(minimumY, maximumY);
 
