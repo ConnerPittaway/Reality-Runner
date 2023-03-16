@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -35,7 +37,7 @@ public class PlayerController : MonoBehaviour
     public BoxCollider2D playerCollider;
 
     public backgrounds Backgrounds;
-    public int currentBackground;
+    public backgrounds.Worlds currentWorld;
 
     public float screenBottom;
     public float distanceDampener = 0.6f;
@@ -60,6 +62,8 @@ public class PlayerController : MonoBehaviour
 
         Physics2D.gravity = new Vector2(0, gravity);
         isPaused = false;
+
+        currentWorld = backgrounds.Worlds.FUTURISTIC;
     }
 
     public void Awake()
@@ -214,7 +218,6 @@ public class PlayerController : MonoBehaviour
                 velocity.x = maxSpeed;
             }
         }
-        //transform.position = currentPos;
     }
 
     private bool IsPointerOverUIObject()
@@ -239,19 +242,11 @@ public class PlayerController : MonoBehaviour
                 {
                     velocity.x = 0;
                     velocity.y = 0;
-                    //Debug.Log("Collision caused first:" + buildingHeight);
-                    //Debug.Log("Building Height is :" + buildingHeight);
-                    //Debug.Log("Player Y is: " + currentPos.y);
                 }
                 else
                 {
                     onRoof = true;
                     velocity.y = 0;
-                    //Debug.Log("Collision caused second:" + buildingHeight);
-                    //Debug.Log("Building Height is :" + buildingHeight);
-                    //Debug.Log("Player Y is: " + currentPos.y);
-                    //currentPos.y = building.buildingHeight + 0.00001f;
-                    //transform.position = currentPos;
                 }
             }
             else
@@ -260,9 +255,6 @@ public class PlayerController : MonoBehaviour
                 {
                     velocity.x = 0;
                     velocity.y = 0;
-                    //Debug.Log("Collision caused :" + buildingHeight);
-                    //Debug.Log("Building Height is :" + buildingHeight);
-                    //Debug.Log("Player Y is: " + currentPos.y);
                 }
             }
         }
@@ -302,18 +294,35 @@ public class PlayerController : MonoBehaviour
             AudioManager.Instance.PlaySFX("Portal");
             Portal portalCollide = collision.gameObject.GetComponent<Portal>();
             Destroy(portalCollide.gameObject);
-            if (currentBackground == 0)
+
+            if (currentWorld == backgrounds.Worlds.INDUSTRIAL)
             {
-                AudioManager.Instance.SwapSong("City Track");
-                Backgrounds.SwitchBackgrounds(0);
-                currentBackground = 1;
+                backgrounds.Worlds randomWorld = GenerateRandom(backgrounds.Worlds.INDUSTRIAL);
+                AudioManager.Instance.SwapSong("Forest Track");
+                Backgrounds.SwitchBackgrounds(randomWorld);
+                currentWorld = randomWorld;
             }
             else
             {
-                AudioManager.Instance.SwapSong("Forest Track");
-                Backgrounds.SwitchBackgrounds(1);
-                currentBackground = 0;
+                backgrounds.Worlds randomWorld = GenerateRandom(backgrounds.Worlds.FUTURISTIC);
+                AudioManager.Instance.SwapSong("City Track");
+                Backgrounds.SwitchBackgrounds(randomWorld);
+                currentWorld = randomWorld;
             }
         }
+    }
+
+    private backgrounds.Worlds GenerateRandom(backgrounds.Worlds playerCurrentWorld)
+    {
+        //New Array Of Enums
+        var data = Enum
+        .GetValues(typeof(backgrounds.Worlds))
+        .Cast<backgrounds.Worlds>()
+        .Where(item => item != playerCurrentWorld)
+        .ToArray();
+
+        int randIndex = UnityEngine.Random.Range(0, data.Length);
+
+        return data[randIndex];
     }
 }

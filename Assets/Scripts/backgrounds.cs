@@ -8,6 +8,13 @@ public class backgrounds : MonoBehaviour
     public List<SpriteRenderer> spriteRenderers;
     public GameObject background1;
     public GameObject background2;
+
+    public enum Worlds
+    {
+        FUTURISTIC,
+        INDUSTRIAL
+    };
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +23,7 @@ public class backgrounds : MonoBehaviour
             spriteRenderers.Add(obj.GetComponent<SpriteRenderer>());
         }
     }
-    public void SwitchBackgrounds(int backGroundNumber)
+    public void SwitchBackgrounds(Worlds world)
     {
         /*if(backGroundNumber == 0)
         {
@@ -29,31 +36,85 @@ public class backgrounds : MonoBehaviour
             background2.SetActive(false);
         }*/
         int backgroundToChange = 0;
-        if(backGroundNumber == 0)
+        switch (world)
+        {
+            case Worlds.FUTURISTIC:
+                foreach (GameObject obj in background)
+                {
+                    if (backgroundToChange == 0 || backgroundToChange == 1)
+                    {
+                        spriteRenderers[backgroundToChange].sprite = Resources.Load<Sprite>("Sprites/Buildings/or_b_4");
+                        backgroundToChange++;
+                    }
+                    else if (backgroundToChange == 2 || backgroundToChange == 3)
+                    {
+                        spriteRenderers[backgroundToChange].sprite = Resources.Load<Sprite>("Sprites/Buildings/or_b_3");
+                        backgroundToChange++;
+                    }
+                    else if (backgroundToChange == 4 || backgroundToChange == 5)
+                    {
+                        spriteRenderers[backgroundToChange].sprite = Resources.Load<Sprite>("Sprites/Buildings/or_b_2");
+                        backgroundToChange++;
+                    }
+                    else if (backgroundToChange == 6 || backgroundToChange == 7)
+                    {
+                        spriteRenderers[backgroundToChange].sprite = Resources.Load<Sprite>("Sprites/Buildings/or_b_1");
+                        backgroundToChange++;
+                    }
+                }
+                break;
+            case Worlds.INDUSTRIAL:
+                foreach (GameObject obj in background)
+                {
+                    if (backgroundToChange == 0 || backgroundToChange == 1)
+                    {
+                        spriteRenderers[backgroundToChange].sprite = Resources.Load<Sprite>("Sprites/Industrial/bg");
+                        backgroundToChange++;
+                    }
+                    else if (backgroundToChange == 2 || backgroundToChange == 3)
+                    {
+                        spriteRenderers[backgroundToChange].sprite = Resources.Load<Sprite>("Sprites/Industrial/far-buildings");
+                        backgroundToChange++;
+                    }
+                    else if (backgroundToChange == 4 || backgroundToChange == 5)
+                    {
+                        spriteRenderers[backgroundToChange].sprite = Resources.Load<Sprite>("Sprites/Industrial/buildings");
+                        backgroundToChange++;
+                    }
+                    else if (backgroundToChange == 6 || backgroundToChange == 7)
+                    {
+                        spriteRenderers[backgroundToChange].sprite = Resources.Load<Sprite>("Sprites/Industrial/skill-foreground");
+                        backgroundToChange++;
+                    }
+                }
+                break;
+            default:
+                Debug.Log("Error in background");
+                break;
+        }
+
+        
+        /*if(backGroundNumber == 0)
         {
             foreach (GameObject obj in background)
             {
                 if (backgroundToChange == 0 || backgroundToChange == 1)
                 {
-                    //obj.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/Industrial/bg");
                     spriteRenderers[backgroundToChange].sprite = Resources.Load<Sprite>("Sprites/Industrial/bg");
                     backgroundToChange++;
                 }
                 else if (backgroundToChange == 2 || backgroundToChange == 3)
                 {
-                    // obj.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/Industrial/far-buildings");
                     spriteRenderers[backgroundToChange].sprite = Resources.Load<Sprite>("Sprites/Industrial/far-buildings");
                     backgroundToChange++;
                 }
                 else if (backgroundToChange == 4 || backgroundToChange == 5)
                 {
-                   // obj.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/Industrial/buildings");
                     spriteRenderers[backgroundToChange].sprite = Resources.Load<Sprite>("Sprites/Industrial/buildings");
                     backgroundToChange++;
                 }
                 else if (backgroundToChange == 6 || backgroundToChange == 7)
                 {
-                   // obj.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/Industrial/skill-foreground");
                     spriteRenderers[backgroundToChange].sprite = Resources.Load<Sprite>("Sprites/Industrial/skill-foreground");
                     backgroundToChange++;
                 }
@@ -65,29 +126,25 @@ public class backgrounds : MonoBehaviour
             {
                 if (backgroundToChange == 0 || backgroundToChange == 1)
                 {
-                   // obj.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/Forest/2");
                     spriteRenderers[backgroundToChange].sprite = Resources.Load<Sprite>("Sprites/Buildings/or_b_4");
                     backgroundToChange++;
                 }
                 else if (backgroundToChange == 2 || backgroundToChange == 3)
                 {
-                  //  obj.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/Forest/3");
                     spriteRenderers[backgroundToChange].sprite = Resources.Load<Sprite>("Sprites/Buildings/or_b_3");
                     backgroundToChange++;
                 }
                 else if (backgroundToChange == 4 || backgroundToChange == 5)
                 {
-                 //   obj.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/Forest/4");
                     spriteRenderers[backgroundToChange].sprite = Resources.Load<Sprite>("Sprites/Buildings/or_b_2");
                     backgroundToChange++;
                 }
                 else if (backgroundToChange == 6 || backgroundToChange == 7)
                 {
-                  //  obj.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/Forest/5");
                     spriteRenderers[backgroundToChange].sprite = Resources.Load<Sprite>("Sprites/Buildings/or_b_1");
                     backgroundToChange++;
                 }
             }
-        }
+        }*/
     }
 }
