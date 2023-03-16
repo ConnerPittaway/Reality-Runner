@@ -2343,7 +2343,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &750216604
 GameObject:
@@ -3769,7 +3769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8009315096243742763, guid: dabf2e184478ccb45a362230dafe31a5, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8009315096243742763, guid: dabf2e184478ccb45a362230dafe31a5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4338,7 +4338,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1254838081
 GameObject:
@@ -5081,7 +5081,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7026655591190798049, guid: 154ac57564abe68469b1ea8cf1a8852d, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7026655591190798049, guid: 154ac57564abe68469b1ea8cf1a8852d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5550,7 +5550,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5797360483892368649, guid: d5f00bb04f9ef364a9ce652db8b43a74, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5797360483892368649, guid: d5f00bb04f9ef364a9ce652db8b43a74, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6047,7 +6047,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1744289317
 GameObject:
@@ -6609,7 +6609,7 @@ MonoBehaviour:
   firstBuildingSpawned: 0
   playerCollider: {fileID: 1843588659}
   Backgrounds: {fileID: 1797302407}
-  currentBackground: 0
+  currentWorld: 0
   screenBottom: 0
   distanceDampener: 0.6
   numberOfRealities: 0
@@ -6860,7 +6860,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1861555048
 GameObject:
@@ -7154,10 +7154,10 @@ MonoBehaviour:
   - {fileID: 3743659508687786590, guid: d5f00bb04f9ef364a9ce652db8b43a74, type: 3}
   - {fileID: 3743659508687786590, guid: c6c277e778cd0d349b460784310c339f, type: 3}
   forceObjectTemplate: {fileID: 7649925053935539630, guid: da2e9d46fe7c06a409e5b984152623ff, type: 3}
-  Backgrounds: {fileID: 1797302407}
-  currentBackground: 0
-  maximumBuildingHeight: {fileID: 1175579627}
+  maximumBuildingHeight: {fileID: 1175579628}
+  minimumBuildingHeight: {fileID: 2079400559}
   maxmimumHeight: 0
+  minimumHeight: 0
 --- !u!61 &1967201282
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7860,6 +7860,37 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!1 &2079400558
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2079400559}
+  m_Layer: 0
+  m_Name: MinimumBuildingHeight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2079400559
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079400558}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.588169, y: -8, z: -2.1976025}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2083561799
 GameObject:
   m_ObjectHideFlags: 0

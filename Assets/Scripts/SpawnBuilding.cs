@@ -14,7 +14,6 @@ public class SpawnBuilding : MonoBehaviour
     public BoxCollider2D collider;
     public float buildingXReduction = 0.6f;
     public float buildingYReduction = 0.6f;
-    bool newBuildingGenerated;
     public Rigidbody2D RB;
     public box boxTemplate;
     public Portal portalTemplate;
@@ -22,10 +21,15 @@ public class SpawnBuilding : MonoBehaviour
     public FlyingObject flyingObjectTemplate;
     public List<FlyingObject> flyingObjects;
     public forcefieldPickup forceObjectTemplate;
-    public backgrounds Backgrounds;
-    public int currentBackground;
-    public GameObject maximumBuildingHeight;
+
+    //Max and Min Heights
+    public Transform maximumBuildingHeight;
+    public Transform minimumBuildingHeight;
     public float maxmimumHeight;
+    public float minimumHeight;
+
+    //Building Spawned?
+    private bool newBuildingGenerated;
 
     //New Building Data
     private SpawnBuilding newSpawnBuildingData;
@@ -35,13 +39,17 @@ public class SpawnBuilding : MonoBehaviour
     //Set Variables on Instance
     private void Awake()
     {
+        Debug.Log("Spawned");
+
+        //Set Variables Of Screen/Height
         buildingHeight = transform.position.y + (collider.size.y / 2); //Top of the building
-        //screenRight = Camera.main.transform.position.x * 2;
         screenRight = Camera.main.ViewportToWorldPoint(new Vector3(1.0f, 0.0f, 0.0f)).x;
         screenLeft = Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 0f, 0f)).x;
         screenTop = Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 1f, 0f)).y;
-        currentBackground = 1;
-        maxmimumHeight = maximumBuildingHeight.transform.position.y;
+
+        //Max and Min Heights
+        maxmimumHeight = maximumBuildingHeight.position.y;
+        minimumHeight = minimumBuildingHeight.position.y;
     }
 
     // Start is called before the first frame update
@@ -66,14 +74,11 @@ public class SpawnBuilding : MonoBehaviour
                 return;
             }
 
-            if (!newBuildingGenerated) //Ensure only one building is spawned
+            if (buildingRightSide < screenRight && !newBuildingGenerated) //If building has passed right side of the screen
             {
-                if (buildingRightSide < screenRight) //If building has passed right side of the screen
-                {
-                    newBuildingGenerated = true; //A new building has been generated
-                    generateNewBuilding(); //Generate a new building
-                    generateObjects();
-                }
+                newBuildingGenerated = true; //Ensure only one building is spawned
+                generateNewBuilding(); //Generate a new building
+                generateObjects();
             }
 
             transform.position = pos;
@@ -117,7 +122,7 @@ public class SpawnBuilding : MonoBehaviour
         float maximumY = distanceWithGravity * buildingYReduction;
         maximumY += buildingHeight; //Add maximum jump height to current building height which gives the maximum height of the new building
 
-        float minimumY = -8f;
+        float minimumY = minimumHeight;
         if(maximumY > maxmimumHeight)
         {
             maximumY = maxmimumHeight;
