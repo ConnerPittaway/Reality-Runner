@@ -44,12 +44,6 @@ public class SpawnBuilding : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void FixedUpdate()
     {
         if (!player.isPaused)
@@ -257,10 +251,10 @@ public class SpawnBuilding : MonoBehaviour
         }
         if (spawnForcefield == 1)
         {
-            //Debug.Log("Box");
+            //Debug.Log("Force Box");
             GameObject forceField = Instantiate(forceObjectTemplate.gameObject);
             BoxCollider2D boxCollider = forceField.GetComponent<BoxCollider2D>();
-            float y = buildingSetChildVariables.buildingHeight + (boxCollider.size.y / 2);
+            float y = buildingSetChildVariables.buildingHeight + (boxCollider.size.y / 2) * forceField.transform.localScale.y;
             float x = newBuilding.transform.position.x;
             Vector2 forcePosition = new Vector2(x, y);
             forceField.transform.position = forcePosition;

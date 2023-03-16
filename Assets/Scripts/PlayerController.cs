@@ -229,46 +229,19 @@ public class PlayerController : MonoBehaviour
         return results.Count > 0;
     }
 
-    //On Collision Entry
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Building"))
+        if (collision.gameObject.CompareTag("FallingObject"))
         {
-            SpawnBuilding building = collision.gameObject.GetComponent<SpawnBuilding>();
-            Vector2 currentPos = transform.position;
-            if (!onRoof)
-            {
-                if (currentPos.y < building.buildingHeight && currentPos.x < building.buildingRightSide)
-                {
-                    velocity.x = 0;
-                    velocity.y = 0;
-                }
-                else
-                {
-                    onRoof = true;
-                    velocity.y = 0;
-                }
-            }
-            else
-            {
-                if(currentPos.y < building.buildingHeight && currentPos.x < building.buildingRightSide)
-                {
-                    velocity.x = 0;
-                    velocity.y = 0;
-                }
-            }
+            FallingObject boxCollide = collision.gameObject.GetComponent<FallingObject>();
+            velocity.x *= 0.8f;
+            Destroy(boxCollide.gameObject);
         }
 
         if (collision.gameObject.CompareTag("StaticObject"))
         {
             box boxCollide = collision.gameObject.GetComponent<box>();
-            velocity.x *= 0.8f;
-            Destroy(boxCollide.gameObject);
-        }
-
-        if (collision.gameObject.CompareTag("FallingObject"))
-        {
-            FallingObject boxCollide = collision.gameObject.GetComponent<FallingObject>();
             velocity.x *= 0.8f;
             Destroy(boxCollide.gameObject);
         }
@@ -308,6 +281,37 @@ public class PlayerController : MonoBehaviour
                 AudioManager.Instance.SwapSong("City Track");
                 Backgrounds.SwitchBackgrounds(randomWorld);
                 currentWorld = randomWorld;
+            }
+        }
+    }
+
+    //On Collision Entry
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Building"))
+        {
+            SpawnBuilding building = collision.gameObject.GetComponent<SpawnBuilding>();
+            Vector2 currentPos = transform.position;
+            if (!onRoof)
+            {
+                if (currentPos.y < building.buildingHeight && currentPos.x < building.buildingRightSide)
+                {
+                    velocity.x = 0;
+                    velocity.y = 0;
+                }
+                else
+                {
+                    onRoof = true;
+                    velocity.y = 0;
+                }
+            }
+            else
+            {
+                if(currentPos.y < building.buildingHeight && currentPos.x < building.buildingRightSide)
+                {
+                    velocity.x = 0;
+                    velocity.y = 0;
+                }
             }
         }
     }

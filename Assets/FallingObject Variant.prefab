@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1441560867331851570, guid: 9f81f631e5dd69c419b0a0327fca30b9, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4605499399776832323, guid: 9f81f631e5dd69c419b0a0327fca30b9, type: 3}
       propertyPath: m_Name
       value: FallingObject Variant
