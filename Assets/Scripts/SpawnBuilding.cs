@@ -92,6 +92,8 @@ public class SpawnBuilding : MonoBehaviour
             if (buildingRightSide < screenRight && !newBuildingGenerated) //If building has passed right side of the screen
             {
                 newBuildingGenerated = true; //Ensure only one building is spawned
+
+                //Factory
                 generateNewBuilding(); //Generate a new building
                 generateObjects();
             }
