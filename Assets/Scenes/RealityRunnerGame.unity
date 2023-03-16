@@ -7139,12 +7139,7 @@ MonoBehaviour:
   player: {fileID: 1843588660}
   buildingHeight: 0
   buildingRightSide: 0
-  screenRight: 0
-  screenLeft: 0
-  screenTop: 0
   collider: {fileID: 1967201282}
-  buildingXReduction: 0.6
-  buildingYReduction: 0.6
   RB: {fileID: 1843588661}
   boxTemplate: {fileID: 1045382984480997192, guid: dabf2e184478ccb45a362230dafe31a5, type: 3}
   portalTemplate: {fileID: 5984007582593041213, guid: 154ac57564abe68469b1ea8cf1a8852d, type: 3}
@@ -7156,7 +7151,7 @@ MonoBehaviour:
   forceObjectTemplate: {fileID: 7649925053935539630, guid: da2e9d46fe7c06a409e5b984152623ff, type: 3}
   maximumBuildingHeight: {fileID: 1175579628}
   minimumBuildingHeight: {fileID: 2079400559}
-  maxmimumHeight: 0
+  maximumHeight: 0
   minimumHeight: 0
 --- !u!61 &1967201282
 BoxCollider2D:
