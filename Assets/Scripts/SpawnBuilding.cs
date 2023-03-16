@@ -44,7 +44,7 @@ public class SpawnBuilding : MonoBehaviour
     //Building Spawned?
     private bool newBuildingGenerated;
 
-    //New Building Data
+    //New Building Data - Fly Weight
     private SpawnBuilding newSpawnBuildingData;
     private Transform newSpawnBuildingTransform;
     private BoxCollider2D newSpawnBuildingCollider;
@@ -183,6 +183,8 @@ public class SpawnBuilding : MonoBehaviour
 
     private void generateObjects()
     {
+        //To:Do Abstract Further
+
         //Check for Portal Spawn
         if (rp.canSpawnPortal)
         {
@@ -209,16 +211,16 @@ public class SpawnBuilding : MonoBehaviour
         if (boxSpawnObject == 1)
         {
             int boxNumber = Random.Range(2, 3);
+            float spawnWidth = newSpawnBuildingCollider.size.x / 2 - 1;
+            float leftSide = newSpawnBuildingTransform.position.x - spawnWidth;
+            float rightSide = newSpawnBuildingTransform.position.x + spawnWidth;
             for (int i = 0; i < boxNumber; i++)
             {
                 //Debug.Log("Box");
                 GameObject box = Instantiate(boxTemplate.gameObject);
                 BoxCollider2D boxCollider = box.GetComponent<BoxCollider2D>();
-                float y = newSpawnBuildingData.buildingHeight + (boxCollider.size.y / 2);
-                float width = newSpawnBuildingCollider.size.x / 2 - 1;
-                float leftSide = newSpawnBuildingTransform.position.x - width;
-                float rightSide = newSpawnBuildingTransform.position.x + width;
                 float x = Random.Range(leftSide, rightSide);
+                float y = newSpawnBuildingData.buildingHeight + (boxCollider.size.y / 2);
                 Vector2 boxPosition = new Vector2(x, y);
                 box.transform.position = boxPosition;
             }
