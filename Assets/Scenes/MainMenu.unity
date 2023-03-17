@@ -1154,7 +1154,7 @@ GameObject:
   - component: {fileID: 101023881}
   - component: {fileID: 101023880}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: High Score Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1200,9 +1200,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-    High Score:
+  m_text: 'High Score:
 
     7694M'
   m_isRightToLeft: 0
@@ -1239,7 +1237,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1267,7 +1265,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 14.96, y: 0, z: 0, w: 0}
+  m_margin: {x: 15, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -11351,6 +11349,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1127908569}
+  - component: {fileID: 1127908570}
   m_Layer: 0
   m_Name: Global Data
   m_TagString: Untagged
@@ -11373,6 +11372,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1127908570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127908568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae0530ca3717001479a4a70049e71c7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1144343097
 GameObject:
   m_ObjectHideFlags: 0
@@ -11543,6 +11554,8 @@ MonoBehaviour:
   activeScreen: {fileID: 2031974420}
   mainScreenHeaders: {fileID: 1968452713}
   gameScreenHeaders: {fileID: 1785741694}
+  coins: {fileID: 1503402706}
+  highScore: {fileID: 101023880}
 --- !u!1 &1153430950
 GameObject:
   m_ObjectHideFlags: 0
@@ -13648,7 +13661,7 @@ GameObject:
   - component: {fileID: 1503402707}
   - component: {fileID: 1503402706}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Currency Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13694,9 +13707,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-    Currency:
+  m_text: 'Currency:
 
     145C'
   m_isRightToLeft: 0
@@ -13733,7 +13744,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0

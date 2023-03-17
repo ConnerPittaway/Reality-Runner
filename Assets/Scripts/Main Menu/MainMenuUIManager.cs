@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class MainMenuUIManager : MonoBehaviour
 {
@@ -12,10 +14,15 @@ public class MainMenuUIManager : MonoBehaviour
 
     //Headers
     public GameObject mainScreenHeaders, gameScreenHeaders;
+
+    //Text Fields
+    public TMP_Text coins;
+    public TMP_Text highScore;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        highScore.text = "High Score:\n" + GlobalDataManager.Instance.GetHighScore().ToString() + "M";
     }
 
     public void openStats()
@@ -65,5 +72,6 @@ public class MainMenuUIManager : MonoBehaviour
     void OnEnable()
     {
         EventManager.OnUIElementOpened();
+        coins.text = "Currency:\n" + GlobalDataManager.Instance.GetCoins().ToString();
     }
 }
