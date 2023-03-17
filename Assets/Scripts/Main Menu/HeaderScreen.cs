@@ -34,4 +34,9 @@ public class HeaderScreen : MonoBehaviour
     {
         coins.text = "Coins:\n" + GlobalDataManager.Instance.GetCoins().ToString();
     }
+
+    private void OnDestroy()
+    {
+        EventManager.CoinPurchase -= EventManager_OnCoinPurchase;
+    }
 }

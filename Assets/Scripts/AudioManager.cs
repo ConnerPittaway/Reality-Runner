@@ -30,6 +30,13 @@ public class AudioManager : MonoBehaviour
         isPlayingMusicSource1 = true;
     }
 
+    public void StopSongs()
+    {
+        musicSource1.Stop();
+        musicSource2.Stop();
+        isPlayingMusicSource1 = false;
+    }
+
     public void SwapSong(string name)
     {
         Sound s = Array.Find(musicSound, x => x.soundName == name);

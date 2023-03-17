@@ -49,4 +49,12 @@ public class UIManager : MonoBehaviour
         isPaused = !isPaused;
         player.isPaused = isPaused;
     }
+
+    public void MainMenu()
+    {
+        //AudioManager.Instance.StopSongs();
+        Destroy(AudioManager.Instance.gameObject);
+        SceneManager.LoadScene("MainMenu");
+    }
+
 }

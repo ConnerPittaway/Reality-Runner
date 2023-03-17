@@ -53,6 +53,11 @@ public class GlitchManager : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        EventManager.UIElementOpened -= EventManager_UIElementOpened;
+    }
+
     // Update is called once per frame
     void Update()
     {
