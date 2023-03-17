@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class SpawnBuilding : MonoBehaviour
 {
+    //Obstacle Types 
+    public enum Obstacles
+    {
+        BOX,
+        FALLINGGBOX,
+        FLYINGBOX
+    };
+
     //Radial Progress (check if portal can be spawned)
     public RadialProgress rp;
 
@@ -211,45 +219,20 @@ public class SpawnBuilding : MonoBehaviour
         if (boxSpawnObject == 1)
         {
             int boxNumber = Random.Range(2, 3);
-            float spawnWidth = newSpawnBuildingCollider.size.x / 2 - 1;
-            float leftSide = newSpawnBuildingTransform.position.x - spawnWidth;
-            float rightSide = newSpawnBuildingTransform.position.x + spawnWidth;
-            for (int i = 0; i < boxNumber; i++)
-            {
-                //Debug.Log("Box");
-                GameObject box = Instantiate(boxTemplate.gameObject);
-                BoxCollider2D boxCollider = box.GetComponent<BoxCollider2D>();
-                float x = Random.Range(leftSide, rightSide);
-                float y = newSpawnBuildingData.buildingHeight + (boxCollider.size.y / 2);
-                Vector2 boxPosition = new Vector2(x, y);
-                box.transform.position = boxPosition;
-            }
+            createObstacle(Obstacles.BOX, boxNumber);
         }
 
         int spawnFallingObject = Random.Range(0, 4);
         if (spawnFallingObject == 1)
         {
-            // Debug.Log("Falling Object");
-            GameObject box = Instantiate(fallingObjectTemplate.gameObject);
-            FallingObject fallingObject = box.GetComponent<FallingObject>();
-            BoxCollider2D boxCollider = box.GetComponent<BoxCollider2D>();
-            fallingObject.targetValue = newSpawnBuildingData.buildingHeight + (boxCollider.size.y / 2);
-            float rightSideChild = newSpawnBuildingTransform.position.x + newSpawnBuildingCollider.size.x / 2;
-            float fallPositionX = Random.Range(newSpawnBuildingTransform.position.x - (newSpawnBuildingCollider.size.x / 4), rightSideChild);
-            float fallPositionY = screenTop;
-            Vector2 fallingObjectPosition = new Vector2(fallPositionX, fallPositionY);
-            box.transform.position = fallingObjectPosition;
+            createObstacle(Obstacles.FALLINGGBOX);
         }
 
-        int spawnFlyingObjectType = ((int)player.currentWorld);
+
         int spawnFlyingObject = Random.Range(0, 5);
         if (spawnFlyingObject == 1)
         {
-            GameObject box = Instantiate(flyingObjects[spawnFlyingObjectType].gameObject);
-            float flyPositionX = newSpawnBuildingData.buildingRightSide;
-            float flyPositionY = newSpawnBuildingData.buildingHeight;// + 2.5f;
-            Vector2 fallingObjectPosition = new Vector2(flyPositionX, flyPositionY);
-            box.transform.position = fallingObjectPosition;
+            createObstacle(Obstacles.FLYINGBOX);
         }
 
         int spawnForcefield;
@@ -270,6 +253,50 @@ public class SpawnBuilding : MonoBehaviour
             float x = newSpawnBuildingTransform.position.x;
             Vector2 forcePosition = new Vector2(x, y);
             forceField.transform.position = forcePosition;
+        }
+    }
+
+    //Factory
+    private void createObstacle(Obstacles obstacle, int numberToSpawn = 1)
+    {
+        float x, y;
+        GameObject obstacleToSpawn = null;
+        BoxCollider2D boxCollider = null;
+        switch (obstacle)
+        {
+            case Obstacles.BOX:
+                float spawnWidth = newSpawnBuildingCollider.size.x / 2 - 1;
+                float leftSide = newSpawnBuildingTransform.position.x - spawnWidth;
+                float rightSide = newSpawnBuildingTransform.position.x + spawnWidth;
+                for (int i = 0; i < numberToSpawn; i++)
+                {
+                    obstacleToSpawn = Instantiate(boxTemplate.gameObject);
+                    boxCollider = obstacleToSpawn.GetComponent<BoxCollider2D>();
+                    x = Random.Range(leftSide, rightSide);
+                    y = newSpawnBuildingData.buildingHeight + (boxCollider.size.y / 2);
+                    Vector2 boxPosition = new Vector2(x, y);
+                    obstacleToSpawn.transform.position = boxPosition;
+                }
+                break;
+            case Obstacles.FALLINGGBOX:
+                obstacleToSpawn = Instantiate(fallingObjectTemplate.gameObject);
+                FallingObject fallingObject = obstacleToSpawn.GetComponent<FallingObject>();
+                boxCollider = obstacleToSpawn.GetComponent<BoxCollider2D>();
+                fallingObject.targetValue = newSpawnBuildingData.buildingHeight + (boxCollider.size.y / 2);
+                float rightSideChild = newSpawnBuildingTransform.position.x + newSpawnBuildingCollider.size.x / 2;
+                x = Random.Range(newSpawnBuildingTransform.position.x - (newSpawnBuildingCollider.size.x / 4), rightSideChild);
+                y = screenTop;
+                Vector2 fallingObjectPosition = new Vector2(x, y);
+                obstacleToSpawn.transform.position = fallingObjectPosition;
+                break;
+            case Obstacles.FLYINGBOX:
+                int spawnFlyingObjectType = ((int)player.currentWorld);
+                obstacleToSpawn = Instantiate(flyingObjects[spawnFlyingObjectType].gameObject);
+                x = newSpawnBuildingData.buildingRightSide;
+                y = newSpawnBuildingData.buildingHeight;// + 2.5f;
+                Vector2 flyingObjectPosition = new Vector2(x, y);
+                obstacleToSpawn.transform.position = flyingObjectPosition;
+                break;
         }
     }
 }
