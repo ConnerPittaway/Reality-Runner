@@ -9,6 +9,11 @@ public class HeaderScreen : MonoBehaviour
     public MainMenuUIManager mainMenu;
     public TMP_Text coins;
 
+    void Start()
+    {
+        EventManager.CoinPurchase += EventManager_OnCoinPurchase;
+    }
+
     public void openMainMenu()
     {
         //Disable Current Screen and Headers
@@ -22,6 +27,11 @@ public class HeaderScreen : MonoBehaviour
 
     private void OnEnable()
     {
-        
+        coins.text = "Coins:\n" + GlobalDataManager.Instance.GetCoins().ToString();
+    }
+
+    private void EventManager_OnCoinPurchase()
+    {
+        coins.text = "Coins:\n" + GlobalDataManager.Instance.GetCoins().ToString();
     }
 }
