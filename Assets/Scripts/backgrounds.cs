@@ -25,72 +25,47 @@ public class backgrounds : MonoBehaviour
     }
     public void SwitchBackgrounds(Worlds world)
     {
-        /*if(backGroundNumber == 0)
-        {
-            background1.SetActive(false);
-            background2.SetActive(true);
-        }
-        else
-        {
-            background1.SetActive(true);
-            background2.SetActive(false);
-        }*/
-        int backgroundToChange = 0;
         switch (world)
         {
             case Worlds.FUTURISTIC:
-                foreach (GameObject obj in background)
-                {
-                    if (backgroundToChange == 0 || backgroundToChange == 1)
-                    {
-                        spriteRenderers[backgroundToChange].sprite = Resources.Load<Sprite>("Sprites/Buildings/or_b_4");
-                        backgroundToChange++;
-                    }
-                    else if (backgroundToChange == 2 || backgroundToChange == 3)
-                    {
-                        spriteRenderers[backgroundToChange].sprite = Resources.Load<Sprite>("Sprites/Buildings/or_b_3");
-                        backgroundToChange++;
-                    }
-                    else if (backgroundToChange == 4 || backgroundToChange == 5)
-                    {
-                        spriteRenderers[backgroundToChange].sprite = Resources.Load<Sprite>("Sprites/Buildings/or_b_2");
-                        backgroundToChange++;
-                    }
-                    else if (backgroundToChange == 6 || backgroundToChange == 7)
-                    {
-                        spriteRenderers[backgroundToChange].sprite = Resources.Load<Sprite>("Sprites/Buildings/or_b_1");
-                        backgroundToChange++;
-                    }
-                }
+                LoadFirstLayer("Buildings/or_b_1");
+                LoadSecondLayer("Buildings/or_b_2");
+                LoadThirdLayer("Buildings/or_b_3");
+                LoadFourthLayer("Buildings/or_b_4");
                 break;
             case Worlds.INDUSTRIAL:
-                foreach (GameObject obj in background)
-                {
-                    if (backgroundToChange == 0 || backgroundToChange == 1)
-                    {
-                        spriteRenderers[backgroundToChange].sprite = Resources.Load<Sprite>("Sprites/Industrial/bg");
-                        backgroundToChange++;
-                    }
-                    else if (backgroundToChange == 2 || backgroundToChange == 3)
-                    {
-                        spriteRenderers[backgroundToChange].sprite = Resources.Load<Sprite>("Sprites/Industrial/far-buildings");
-                        backgroundToChange++;
-                    }
-                    else if (backgroundToChange == 4 || backgroundToChange == 5)
-                    {
-                        spriteRenderers[backgroundToChange].sprite = Resources.Load<Sprite>("Sprites/Industrial/buildings");
-                        backgroundToChange++;
-                    }
-                    else if (backgroundToChange == 6 || backgroundToChange == 7)
-                    {
-                        spriteRenderers[backgroundToChange].sprite = Resources.Load<Sprite>("Sprites/Industrial/skill-foreground");
-                        backgroundToChange++;
-                    }
-                }
+                LoadFirstLayer("Industrial/skill-foreground");
+                LoadSecondLayer("Industrial/buildings");
+                LoadThirdLayer("Industrial/far-buildings");
+                LoadFourthLayer("Industrial/bg");
                 break;
             default:
                 Debug.Log("Error in background");
                 break;
         }
     }
+
+    void LoadFourthLayer(string path)
+    {
+        spriteRenderers[0].sprite = Resources.Load<Sprite>("Sprites/" + path);
+        spriteRenderers[1].sprite = Resources.Load<Sprite>("Sprites/" + path);
+    }
+    void LoadThirdLayer(string path)
+    {
+        spriteRenderers[2].sprite = Resources.Load<Sprite>("Sprites/" + path);
+        spriteRenderers[3].sprite = Resources.Load<Sprite>("Sprites/" + path);
+    }
+    void LoadSecondLayer(string path)
+    {
+        spriteRenderers[4].sprite = Resources.Load<Sprite>("Sprites/" + path);
+        spriteRenderers[5].sprite = Resources.Load<Sprite>("Sprites/" + path);
+    }
+
+    void LoadFirstLayer(string path)
+    {
+        spriteRenderers[6].sprite = Resources.Load<Sprite>("Sprites/" + path);
+        spriteRenderers[7].sprite = Resources.Load<Sprite>("Sprites/" + path);
+    }
+
+
 }
