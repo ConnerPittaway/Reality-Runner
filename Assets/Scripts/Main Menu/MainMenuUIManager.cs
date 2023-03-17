@@ -72,6 +72,6 @@ public class MainMenuUIManager : MonoBehaviour
     void OnEnable()
     {
         EventManager.OnUIElementOpened();
-        coins.text = "Currency:\n" + GlobalDataManager.Instance.GetCoins().ToString();
+        coins.text = "Coins:\n" + GlobalDataManager.Instance.GetCoins().ToString();
     }
 }
