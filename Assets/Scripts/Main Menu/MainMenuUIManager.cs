@@ -22,7 +22,7 @@ public class MainMenuUIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        highScore.text = "High Score:\n" + GlobalDataManager.Instance.GetHighScore().ToString() + "M";
+    
     }
 
     public void openStats()
@@ -73,5 +73,6 @@ public class MainMenuUIManager : MonoBehaviour
     {
         EventManager.OnUIElementOpened();
         coins.text = "Coins:\n" + GlobalDataManager.Instance.GetCoins().ToString();
+        highScore.text = "High Score:\n" + GlobalDataManager.Instance.GetHighScore().ToString() + "M";
     }
 }

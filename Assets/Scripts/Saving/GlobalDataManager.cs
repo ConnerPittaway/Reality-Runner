@@ -7,6 +7,9 @@ public class GlobalDataManager : MonoBehaviour
     //Instance
     public static GlobalDataManager Instance;
 
+    //Save and Load System
+    private JsonDataHandler dataHandler;
+
     //Data
     private int totalCoins = 0;
     private int highScore = 0;
@@ -17,6 +20,15 @@ public class GlobalDataManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            //GameData data = SaveSystem.LoadData();
+            this.dataHandler = new JsonDataHandler(Application.persistentDataPath, "GameData");
+            GameData data = dataHandler.LoadData();
+            if(data == null)
+            {
+                data = new GameData();
+            }
+            totalCoins = data.totalCoins;
+            highScore = data.highScore;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -28,7 +40,6 @@ public class GlobalDataManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //LoadData()
     }
 
     //Coins
@@ -36,6 +47,8 @@ public class GlobalDataManager : MonoBehaviour
     public void AlterCoins(int value)
     {
         totalCoins += value;
+        dataHandler.SaveData();
+        //SaveSystem.SaveData();
     }
 
     public int GetCoins()
@@ -49,6 +62,8 @@ public class GlobalDataManager : MonoBehaviour
         if(score > highScore)
         {
             highScore = score;
+            dataHandler.SaveData();
+            //SaveSystem.SaveData();
         }
     }
 
