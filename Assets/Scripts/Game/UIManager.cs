@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
 
         if (player.isDead)
         {
-            distanceEnd.text = distance.ToString() + "m";
+            distanceEnd.text = "Distance Ran:\n" + distance.ToString() + "M";
             endScreen.SetActive(true);
         }
     }
