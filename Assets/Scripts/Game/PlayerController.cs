@@ -179,6 +179,7 @@ public class PlayerController : MonoBehaviour
             velocity.x = 0;
             velocity.y = 0;
             mainUI.SetActive(false);
+            EventManager.OnDeath();
             //Destroy(gameObject);
         }
 
@@ -258,6 +259,7 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("PortalObject"))
         {
+            EventManager.OnPortalOpened();
             numberOfRealities++;
             AudioManager.Instance.PlaySFX("Portal");
             Portal portalCollide = collision.gameObject.GetComponent<Portal>();

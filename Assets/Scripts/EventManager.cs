@@ -10,4 +10,14 @@ public static class EventManager
     //Purchase Coins
     public static event UnityAction CoinPurchase;
     public static void OnCoinPurchase() => CoinPurchase?.Invoke();
+
+
+
+
+    //In-Game
+    public static event UnityAction Death;
+    public static void OnDeath() => Death?.Invoke();
+
+    public static event UnityAction PortalOpened;
+    public static void OnPortalOpened() => PortalOpened?.Invoke();
 }
