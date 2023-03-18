@@ -80,7 +80,7 @@ MonoBehaviour:
     m_Value: 0
   colorDrift:
     m_OverrideState: 1
-    m_Value: 0.005
+    m_Value: 0
 --- !u!114 &-7011558710299706105
 MonoBehaviour:
   m_ObjectHideFlags: 3
