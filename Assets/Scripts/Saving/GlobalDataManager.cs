@@ -13,7 +13,7 @@ public class GlobalDataManager : MonoBehaviour
     //Data
     private int totalCoins = 0;
     private int highScore = 0;
-
+    public SerializedDictionary<string, bool> boughtCharacters = new SerializedDictionary<string, bool> { { "Shroud", true } };
     private void Awake()
     {
         //Create Singleton
@@ -29,6 +29,7 @@ public class GlobalDataManager : MonoBehaviour
             }
             totalCoins = data.totalCoins;
             highScore = data.highScore;
+            boughtCharacters = data.boughtCharacters;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -47,6 +48,7 @@ public class GlobalDataManager : MonoBehaviour
     public void AlterCoins(int value)
     {
         totalCoins += value;
+        boughtCharacters["Shroud"] = false;
         dataHandler.SaveData();
         //SaveSystem.SaveData();
     }
@@ -70,6 +72,11 @@ public class GlobalDataManager : MonoBehaviour
     public int GetHighScore()
     {
         return highScore;
+    }
+
+    public SerializedDictionary<string, bool> GetBoughtItems()
+    {
+        return boughtCharacters;
     }
 
     //Unlocks

@@ -8,12 +8,12 @@ public class GameData
     //Data
     public int totalCoins = 0;
     public int highScore = 0;
-    public Dictionary<string, bool> test = new Dictionary<string, bool>{ { "Test", true } };
+    public SerializedDictionary<string, bool> boughtCharacters = new SerializedDictionary<string, bool>();
     //Retrieve Data
     public GameData()
     {
         totalCoins = GlobalDataManager.Instance.GetCoins();
         highScore = GlobalDataManager.Instance.GetHighScore();
-        test = new Dictionary<string, bool> { { "Test", true} };
+        boughtCharacters = GlobalDataManager.Instance.GetBoughtItems();
     }
 }
