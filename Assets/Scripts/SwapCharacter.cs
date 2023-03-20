@@ -5,7 +5,8 @@ using UnityEngine;
 public class SwapCharacter : MonoBehaviour
 {
     public AnimatorOverrideController shroud;
-    public AnimatorOverrideController newPlayer;
+    public AnimatorOverrideController shroud2;
+    public AnimatorOverrideController shroud3;
 
     // Start is called before the first frame update
     void Start()
@@ -47,16 +48,11 @@ public class SwapCharacter : MonoBehaviour
 
     public void LoadShroud2()
     {
-        GetComponent<Animator>().runtimeAnimatorController = shroud as RuntimeAnimatorController;
+        GetComponent<Animator>().runtimeAnimatorController = shroud2 as RuntimeAnimatorController;
     }
 
     public void LoadShroud3()
     {
-        GetComponent<Animator>().runtimeAnimatorController = shroud as RuntimeAnimatorController;
-    }
-
-    public void LoadNewPlayer()
-    {
-        GetComponent<Animator>().runtimeAnimatorController = newPlayer as RuntimeAnimatorController;
+        GetComponent<Animator>().runtimeAnimatorController = shroud3 as RuntimeAnimatorController;
     }
 }

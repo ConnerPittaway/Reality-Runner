@@ -32,7 +32,6 @@ public class GlobalDataManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            //GameData data = SaveSystem.LoadData();
             this.dataHandler = new JsonDataHandler(Application.persistentDataPath, "GameData");
             GameData data = dataHandler.LoadData();
             if(data == null)
@@ -71,7 +70,6 @@ public class GlobalDataManager : MonoBehaviour
     {
         totalCoins += value;
         SaveData();
-        //SaveSystem.SaveData();
     }
 
     public int GetCoins()
@@ -86,7 +84,6 @@ public class GlobalDataManager : MonoBehaviour
         {
             highScore = score;
             SaveData();
-            //SaveSystem.SaveData();
         }
     }
 
