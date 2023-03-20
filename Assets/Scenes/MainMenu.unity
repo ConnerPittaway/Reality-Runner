@@ -3334,7 +3334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc2d3041d742464282dbb5ca787202a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterToSelect: 
+  characterToSelect: 0
   characterSelectButton: {fileID: 2023529052}
   selectButtonText: {fileID: 1595805505}
 --- !u!1 &285500767
@@ -11638,12 +11638,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae0530ca3717001479a4a70049e71c7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentlySelectedCharacter: 
+  currentlySelectedCharacter: 0
   boughtCharacters:
-    m_keys:
-    - Shroud
-    - Shroud2
-    - Shroud3
+    m_keys: 000000000100000002000000
     m_values: 010000
 --- !u!1 &1144343097
 GameObject:

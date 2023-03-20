@@ -8,7 +8,13 @@ public class GlobalDataManager : MonoBehaviour
     public static GlobalDataManager Instance;
 
     //Selected Character
-    public string currentlySelectedCharacter;
+    public enum Characters
+    {
+        SHROUD,
+        SHROUD2,
+        SHROUD3
+    }
+    public Characters currentlySelectedCharacter;
 
     //Save and Load System
     private JsonDataHandler dataHandler;
@@ -18,7 +24,7 @@ public class GlobalDataManager : MonoBehaviour
     private int highScore = 0;
 
     //Add in Editor
-    public SerializableDictionary<string, bool> boughtCharacters;
+    public SerializableDictionary<Characters, bool> boughtCharacters;
 
     private void Awake()
     {
@@ -94,9 +100,9 @@ public class GlobalDataManager : MonoBehaviour
         return highScore;
     }
 
-    public SerializableDictionary<string, bool> GetBoughtItems()
+    public SerializableDictionary<Characters, bool> GetBoughtItems()
     {
-        var charactersBought = new SerializableDictionary<string, bool>();
+        var charactersBought = new SerializableDictionary<Characters, bool>();
         foreach (var x in boughtCharacters)
         {
             charactersBought.Add(x.Key, x.Value);

@@ -8,7 +8,7 @@ public class GameData
     //Data
     public int totalCoins = 0;
     public int highScore = 0;
-    public SerializableDictionary<string, bool> boughtCharacters = new SerializableDictionary<string, bool>();
+    public SerializableDictionary<GlobalDataManager.Characters, bool> boughtCharacters = new SerializableDictionary<GlobalDataManager.Characters, bool>();
     //Retrieve Data
     public GameData()
     {

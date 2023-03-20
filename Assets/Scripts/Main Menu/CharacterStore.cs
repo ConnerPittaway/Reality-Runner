@@ -7,7 +7,7 @@ using TMPro;
 public class CharacterStore : MonoBehaviour
 {
 
-    public string characterToSelect;
+    public GlobalDataManager.Characters characterToSelect;
     public Button characterSelectButton;
     public TMP_Text selectButtonText;
 
@@ -48,19 +48,19 @@ public class CharacterStore : MonoBehaviour
 
     public void OnShroudSelected()
     {
-        characterToSelect = "Shroud";
+        characterToSelect = GlobalDataManager.Characters.SHROUD;
         CheckCharacter();
     }
 
     public void OnShroud2Selected()
     {
-        characterToSelect = "Shroud2";
+        characterToSelect = GlobalDataManager.Characters.SHROUD2;
         CheckCharacter();
     }
 
     public void OnShroud3Selected()
     {
-        characterToSelect = "Shroud3";
+        characterToSelect = GlobalDataManager.Characters.SHROUD3;
         CheckCharacter();
     }
 
