@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
+public class spriteListClass
+{
+    public List<Sprite> spriteSheet;
+}
+
+
 public class CharacterAnimator : MonoBehaviour
 {
 
     public Image image;
-    public Sprite[] spriteArray;
     public float animationSpeed = .02f;
-
+    public List<spriteListClass> nestedSpriteList = new List<spriteListClass>();
     private void Start()
     {
         
@@ -21,10 +27,11 @@ public class CharacterAnimator : MonoBehaviour
     }
     IEnumerator AnimateUISprite()
     {
-        for(int i = 0; i < spriteArray.Length; i++)
+        int currentCharacter = (int)GlobalDataManager.Instance.currentlySelectedCharacter;
+        for (int i = 0; i < nestedSpriteList[currentCharacter].spriteSheet.Count; i++)
         {
             yield return new WaitForSeconds(animationSpeed);
-            image.sprite = spriteArray[i];
+            image.sprite = nestedSpriteList[currentCharacter].spriteSheet[i];
         }
         StartCoroutine(AnimateUISprite());
     }

@@ -4161,16 +4161,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1294380644}
-  spriteArray:
-  - {fileID: 267677848, guid: 192f1c1e9af67da45b8d3a2c06c15692, type: 3}
-  - {fileID: -579174333, guid: 192f1c1e9af67da45b8d3a2c06c15692, type: 3}
-  - {fileID: 1406813780, guid: 192f1c1e9af67da45b8d3a2c06c15692, type: 3}
-  - {fileID: 1044368766, guid: 192f1c1e9af67da45b8d3a2c06c15692, type: 3}
-  - {fileID: -1716550834, guid: 192f1c1e9af67da45b8d3a2c06c15692, type: 3}
-  - {fileID: -1597177719, guid: 192f1c1e9af67da45b8d3a2c06c15692, type: 3}
-  - {fileID: 1360132907, guid: 192f1c1e9af67da45b8d3a2c06c15692, type: 3}
-  - {fileID: -17487433, guid: 192f1c1e9af67da45b8d3a2c06c15692, type: 3}
   animationSpeed: 0.1
+  nestedSpriteList:
+  - spriteSheet:
+    - {fileID: 267677848, guid: 192f1c1e9af67da45b8d3a2c06c15692, type: 3}
+    - {fileID: -579174333, guid: 192f1c1e9af67da45b8d3a2c06c15692, type: 3}
+    - {fileID: 1406813780, guid: 192f1c1e9af67da45b8d3a2c06c15692, type: 3}
+    - {fileID: 1044368766, guid: 192f1c1e9af67da45b8d3a2c06c15692, type: 3}
+    - {fileID: -1716550834, guid: 192f1c1e9af67da45b8d3a2c06c15692, type: 3}
+    - {fileID: -1597177719, guid: 192f1c1e9af67da45b8d3a2c06c15692, type: 3}
+    - {fileID: 1360132907, guid: 192f1c1e9af67da45b8d3a2c06c15692, type: 3}
+    - {fileID: -17487433, guid: 192f1c1e9af67da45b8d3a2c06c15692, type: 3}
+  - spriteSheet:
+    - {fileID: 1681209633, guid: 16497ca8db47e6b408e505f4b194466d, type: 3}
+    - {fileID: -2024255793, guid: 16497ca8db47e6b408e505f4b194466d, type: 3}
+    - {fileID: 663900634, guid: 16497ca8db47e6b408e505f4b194466d, type: 3}
+    - {fileID: 725811457, guid: 16497ca8db47e6b408e505f4b194466d, type: 3}
+    - {fileID: -1167194201, guid: 16497ca8db47e6b408e505f4b194466d, type: 3}
+    - {fileID: 658994475, guid: 16497ca8db47e6b408e505f4b194466d, type: 3}
+    - {fileID: 1359297976, guid: 16497ca8db47e6b408e505f4b194466d, type: 3}
+    - {fileID: 1502680653, guid: 16497ca8db47e6b408e505f4b194466d, type: 3}
+  - spriteSheet:
+    - {fileID: -467562187, guid: 1c58a2dca25547244953ac3330aeda2e, type: 3}
+    - {fileID: 2036287784, guid: 1c58a2dca25547244953ac3330aeda2e, type: 3}
+    - {fileID: -2096814019, guid: 1c58a2dca25547244953ac3330aeda2e, type: 3}
+    - {fileID: 2028900903, guid: 1c58a2dca25547244953ac3330aeda2e, type: 3}
+    - {fileID: -1552287720, guid: 1c58a2dca25547244953ac3330aeda2e, type: 3}
+    - {fileID: -691347994, guid: 1c58a2dca25547244953ac3330aeda2e, type: 3}
+    - {fileID: -1904604214, guid: 1c58a2dca25547244953ac3330aeda2e, type: 3}
+    - {fileID: 2113012043, guid: 1c58a2dca25547244953ac3330aeda2e, type: 3}
 --- !u!1 &420593336
 GameObject:
   m_ObjectHideFlags: 0
