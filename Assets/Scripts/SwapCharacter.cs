@@ -16,7 +16,21 @@ public class SwapCharacter : MonoBehaviour
         }
         else
         {
-            //switch 
+            switch(GlobalDataManager.Instance.currentlySelectedCharacter)
+            {
+                case GlobalDataManager.Characters.SHROUD:
+                    LoadShroud();
+                    break;
+                case GlobalDataManager.Characters.SHROUD2:
+                    LoadShroud2();
+                    break;
+                case GlobalDataManager.Characters.SHROUD3:
+                    LoadShroud3();
+                    break;
+                default:
+                    Debug.LogError("No Character Assigned");
+                    break;
+            }
         }
     }
 
@@ -27,6 +41,16 @@ public class SwapCharacter : MonoBehaviour
     }
 
     public void LoadShroud()
+    {
+        GetComponent<Animator>().runtimeAnimatorController = shroud as RuntimeAnimatorController;
+    }
+
+    public void LoadShroud2()
+    {
+        GetComponent<Animator>().runtimeAnimatorController = shroud as RuntimeAnimatorController;
+    }
+
+    public void LoadShroud3()
     {
         GetComponent<Animator>().runtimeAnimatorController = shroud as RuntimeAnimatorController;
     }
