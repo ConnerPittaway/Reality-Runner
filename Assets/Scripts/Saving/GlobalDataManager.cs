@@ -7,13 +7,19 @@ public class GlobalDataManager : MonoBehaviour
     //Instance
     public static GlobalDataManager Instance;
 
+    //Selected Character
+    public string currentlySelectedCharacter;
+
     //Save and Load System
     private JsonDataHandler dataHandler;
 
     //Data
     private int totalCoins = 0;
     private int highScore = 0;
-    public SerializedDictionary<string, bool> boughtCharacters = new SerializedDictionary<string, bool> { { "Shroud", true } };
+
+    //Add in Editor
+    public SerializableDictionary<string, bool> boughtCharacters;
+
     private void Awake()
     {
         //Create Singleton
@@ -27,9 +33,19 @@ public class GlobalDataManager : MonoBehaviour
             {
                 data = new GameData();
             }
+
+            //Load Data
             totalCoins = data.totalCoins;
             highScore = data.highScore;
-            boughtCharacters = data.boughtCharacters;
+            foreach(var character in data.boughtCharacters)
+            {
+                if(boughtCharacters.ContainsKey(character.Key))
+                {
+                    boughtCharacters[character.Key] = character.Value;
+                }
+            }
+
+
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -48,7 +64,6 @@ public class GlobalDataManager : MonoBehaviour
     public void AlterCoins(int value)
     {
         totalCoins += value;
-        boughtCharacters["Shroud"] = false;
         dataHandler.SaveData();
         //SaveSystem.SaveData();
     }
@@ -74,9 +89,14 @@ public class GlobalDataManager : MonoBehaviour
         return highScore;
     }
 
-    public SerializedDictionary<string, bool> GetBoughtItems()
+    public SerializableDictionary<string, bool> GetBoughtItems()
     {
-        return boughtCharacters;
+        var charactersBought = new SerializableDictionary<string, bool>();
+        foreach (var x in boughtCharacters)
+        {
+            charactersBought.Add(x.Key, x.Value);
+        }
+        return charactersBought;
     }
 
     //Unlocks
