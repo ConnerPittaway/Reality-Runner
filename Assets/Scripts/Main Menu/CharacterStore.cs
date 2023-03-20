@@ -28,6 +28,24 @@ public class CharacterStore : MonoBehaviour
         EventManager.OnUIElementOpened();
     }
 
+    public void SelectOrBuy()
+    {
+        if(selectButtonText.text == "Select")
+        {
+            //Must mean player owns character
+            GlobalDataManager.Instance.currentlySelectedCharacter = characterToSelect;
+            CheckCharacter();
+        }
+        else
+        {
+            //Buy Character
+            GlobalDataManager.Instance.boughtCharacters[characterToSelect] = true;
+            GlobalDataManager.Instance.currentlySelectedCharacter = characterToSelect;
+            GlobalDataManager.Instance.SaveData();
+            CheckCharacter();
+        }
+    }
+
     public void OnShroudSelected()
     {
         characterToSelect = "Shroud";
@@ -37,6 +55,12 @@ public class CharacterStore : MonoBehaviour
     public void OnShroud2Selected()
     {
         characterToSelect = "Shroud2";
+        CheckCharacter();
+    }
+
+    public void OnShroud3Selected()
+    {
+        characterToSelect = "Shroud3";
         CheckCharacter();
     }
 

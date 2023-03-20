@@ -11642,8 +11642,9 @@ MonoBehaviour:
   boughtCharacters:
     m_keys:
     - Shroud
+    - Shroud2
     - Shroud3
-    m_values: 0000
+    m_values: 010000
 --- !u!1 &1144343097
 GameObject:
   m_ObjectHideFlags: 0
@@ -12976,7 +12977,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1322355575}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 284763078}
+        m_TargetAssemblyTypeName: CharacterStore, Assembly-CSharp
+        m_MethodName: OnShroud3Selected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1322355575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19282,7 +19295,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2023529050}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 284763078}
+        m_TargetAssemblyTypeName: CharacterStore, Assembly-CSharp
+        m_MethodName: SelectOrBuy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2031974420
 GameObject:
   m_ObjectHideFlags: 0

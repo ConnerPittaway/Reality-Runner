@@ -64,7 +64,7 @@ public class GlobalDataManager : MonoBehaviour
     public void AlterCoins(int value)
     {
         totalCoins += value;
-        dataHandler.SaveData();
+        SaveData();
         //SaveSystem.SaveData();
     }
 
@@ -79,9 +79,14 @@ public class GlobalDataManager : MonoBehaviour
         if(score > highScore)
         {
             highScore = score;
-            dataHandler.SaveData();
+            SaveData();
             //SaveSystem.SaveData();
         }
+    }
+
+    public void SaveData()
+    {
+        dataHandler.SaveData();
     }
 
     public int GetHighScore()
