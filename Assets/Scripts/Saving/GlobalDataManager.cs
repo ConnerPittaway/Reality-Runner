@@ -15,7 +15,6 @@ public class GlobalDataManager : MonoBehaviour
         SHROUD3
     }
     
-
     //Save and Load System
     private JsonDataHandler dataHandler;
 
@@ -60,19 +59,17 @@ public class GlobalDataManager : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void SaveData()
     {
+        dataHandler.SaveData();
     }
 
     //Coins
-    //Add or Subtract Coins
     public void AlterCoins(int value)
     {
         totalCoins += value;
         SaveData();
     }
-
     public int GetCoins()
     {
         return totalCoins;
@@ -87,12 +84,6 @@ public class GlobalDataManager : MonoBehaviour
             SaveData();
         }
     }
-
-    public void SaveData()
-    {
-        dataHandler.SaveData();
-    }
-
     public int GetHighScore()
     {
         return highScore;
