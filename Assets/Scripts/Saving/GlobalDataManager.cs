@@ -14,7 +14,7 @@ public class GlobalDataManager : MonoBehaviour
         SHROUD2,
         SHROUD3
     }
-    public Characters currentlySelectedCharacter;
+    
 
     //Save and Load System
     private JsonDataHandler dataHandler;
@@ -22,6 +22,7 @@ public class GlobalDataManager : MonoBehaviour
     //Data
     private int totalCoins = 0;
     private int highScore = 0;
+    public Characters currentlySelectedCharacter;
 
     //Add in Editor
     public SerializableDictionary<Characters, bool> boughtCharacters;
@@ -49,7 +50,7 @@ public class GlobalDataManager : MonoBehaviour
                     boughtCharacters[character.Key] = character.Value;
                 }
             }
-
+            currentlySelectedCharacter = data.currentlySelectedCharacter;
 
             DontDestroyOnLoad(gameObject);
         }

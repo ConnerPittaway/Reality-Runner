@@ -410,7 +410,7 @@ GameObject:
   - component: {fileID: 21761332}
   - component: {fileID: 21761331}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Character Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -519,7 +519,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 10, y: 0, z: 10, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -11833,6 +11833,7 @@ MonoBehaviour:
   gameScreenHeaders: {fileID: 1785741694}
   coins: {fileID: 1503402706}
   highScore: {fileID: 101023880}
+  characterText: {fileID: 21761331}
 --- !u!1 &1153430950
 GameObject:
   m_ObjectHideFlags: 0
@@ -12646,7 +12647,7 @@ GameObject:
   - component: {fileID: 1294380645}
   - component: {fileID: 1294380644}
   m_Layer: 5
-  m_Name: Player
+  m_Name: Player Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

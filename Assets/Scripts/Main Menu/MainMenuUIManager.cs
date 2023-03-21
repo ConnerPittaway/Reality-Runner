@@ -18,6 +18,7 @@ public class MainMenuUIManager : MonoBehaviour
     //Text Fields
     public TMP_Text coins;
     public TMP_Text highScore;
+    public TMP_Text characterText;
 
     // Start is called before the first frame update
     void Start()
@@ -74,5 +75,21 @@ public class MainMenuUIManager : MonoBehaviour
         EventManager.OnUIElementOpened();
         coins.text = "Coins:\n" + GlobalDataManager.Instance.GetCoins().ToString();
         highScore.text = "High Score:\n" + GlobalDataManager.Instance.GetHighScore().ToString() + "M";
+
+        //Character Name
+        string name = "";
+        switch(GlobalDataManager.Instance.currentlySelectedCharacter)
+        {
+            case GlobalDataManager.Characters.SHROUD:
+                name = "Shroud";
+                break;
+            case GlobalDataManager.Characters.SHROUD2:
+                name = "Shroud 2";
+                break;
+            case GlobalDataManager.Characters.SHROUD3:
+                name = "Shroud 3";
+                break;
+        }
+        characterText.text = name;
     }
 }

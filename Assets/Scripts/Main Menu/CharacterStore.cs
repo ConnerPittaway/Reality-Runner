@@ -34,6 +34,7 @@ public class CharacterStore : MonoBehaviour
         {
             //Must mean player owns character
             GlobalDataManager.Instance.currentlySelectedCharacter = characterToSelect;
+            GlobalDataManager.Instance.SaveData();
             CheckCharacter();
         }
         else
