@@ -16,6 +16,7 @@ public class CharacterAnimator : MonoBehaviour
     public Image image;
     public float animationSpeed = .02f;
     public List<spriteListClass> nestedSpriteList = new List<spriteListClass>();
+    private int currentCharacter = 0;
     private void Start()
     {
         
@@ -27,7 +28,7 @@ public class CharacterAnimator : MonoBehaviour
     }
     IEnumerator AnimateUISprite()
     {
-        int currentCharacter = (int)GlobalDataManager.Instance.currentlySelectedCharacter;
+        
         for (int i = 0; i < nestedSpriteList[currentCharacter].spriteSheet.Count; i++)
         {
             yield return new WaitForSeconds(animationSpeed);
@@ -38,6 +39,7 @@ public class CharacterAnimator : MonoBehaviour
 
     private void OnEnable()
     {
+        currentCharacter = (int)GlobalDataManager.Instance.currentlySelectedCharacter;
         StartCoroutine(AnimateUISprite());
     }
 

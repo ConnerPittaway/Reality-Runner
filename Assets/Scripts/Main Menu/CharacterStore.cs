@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+
 public class CharacterStore : MonoBehaviour
 {
 
@@ -11,10 +12,15 @@ public class CharacterStore : MonoBehaviour
     public Button characterSelectButton;
     public TMP_Text selectButtonText;
 
+    //Animation
+    public Image image;
+    public float animationSpeed = .02f;
+    public List<spriteListClass> nestedSpriteList = new List<spriteListClass>();
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -25,7 +31,11 @@ public class CharacterStore : MonoBehaviour
 
     void OnEnable()
     {
+        characterToSelect = GlobalDataManager.Instance.currentlySelectedCharacter;
+        selectButtonText.text = "Selected";
+        characterSelectButton.interactable = false;
         EventManager.OnUIElementOpened();
+        StartCoroutine(AnimateUISprite());
     }
 
     public void SelectOrBuy()
@@ -51,18 +61,24 @@ public class CharacterStore : MonoBehaviour
     {
         characterToSelect = GlobalDataManager.Characters.SHROUD;
         CheckCharacter();
+        StopUIAnimation();
+        StartCoroutine(AnimateUISprite());
     }
 
     public void OnShroud2Selected()
     {
         characterToSelect = GlobalDataManager.Characters.SHROUD2;
         CheckCharacter();
+        StopUIAnimation();
+        StartCoroutine(AnimateUISprite());
     }
 
     public void OnShroud3Selected()
     {
         characterToSelect = GlobalDataManager.Characters.SHROUD3;
         CheckCharacter();
+        StopUIAnimation();
+        StartCoroutine(AnimateUISprite());
     }
 
     public void CheckCharacter()
@@ -85,5 +101,25 @@ public class CharacterStore : MonoBehaviour
                 characterSelectButton.interactable = true;
             }
         }
+    }
+
+    public void StopUIAnimation()
+    {
+        StopAllCoroutines();
+    }
+    IEnumerator AnimateUISprite()
+    {
+        int currentCharacter = (int)characterToSelect;
+        for (int i = 0; i < nestedSpriteList[currentCharacter].spriteSheet.Count; i++)
+        {
+            yield return new WaitForSeconds(animationSpeed);
+            image.sprite = nestedSpriteList[currentCharacter].spriteSheet[i];
+        }
+        StartCoroutine(AnimateUISprite());
+    }
+
+    private void OnDisable()
+    {
+        StopUIAnimation();
     }
 }
