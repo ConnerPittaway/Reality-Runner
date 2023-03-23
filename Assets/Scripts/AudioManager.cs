@@ -10,12 +10,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource musicSource1, musicSource2, sfxSource;
     public bool isPlayingMusicSource1;
 
-    public enum ActiveTrack
-    {
-        SHROUD,
-        SHROUD2,
-        SHROUD3
-    }
+    public backgrounds.Worlds activeTrack;
 
     private void Awake()
     {
@@ -33,7 +28,9 @@ public class AudioManager : MonoBehaviour
 
     public void Start()
     {
+        //musicSource1.clip = Array.Find(musicSound, x => x.soundName == "City Track").audioClip;
         PlayMusic(backgrounds.Worlds.FUTURISTIC);
+        activeTrack = backgrounds.Worlds.FUTURISTIC;
         isPlayingMusicSource1 = true;
     }
 
@@ -65,12 +62,12 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeTrack(s.audioClip));
+            StartCoroutine(FadeTrack(s.audioClip, world));
             isPlayingMusicSource1 = !isPlayingMusicSource1;
         }
     }
 
-    private IEnumerator FadeTrack(AudioClip newSong)
+    private IEnumerator FadeTrack(AudioClip newSong, backgrounds.Worlds world)
     {
         float fadeTime = 0.75f;
         float timeElapsed = 0.0f;
@@ -104,6 +101,7 @@ public class AudioManager : MonoBehaviour
             }
            musicSource2.Pause();
         }
+        activeTrack = world;
     }
 
 
