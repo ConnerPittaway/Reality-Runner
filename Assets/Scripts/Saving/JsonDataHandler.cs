@@ -66,4 +66,55 @@ public class JsonDataHandler
             return dataToLoad;
         }
     }
+
+    public void SaveSettingsData()
+    {
+        string path = Path.Combine(directoryPath, fileName);
+        try
+        {
+            Directory.CreateDirectory(Path.GetDirectoryName(path));
+            SettingsData data = new SettingsData();
+            string dataString = JsonUtility.ToJson(data, true);
+            using (FileStream stream = new FileStream(path, FileMode.Create))
+            {
+                using (StreamWriter writer = new StreamWriter(stream))
+                {
+                    writer.Write(dataString);
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Failed to save file in " + path + " " + e);
+        }
+    }
+
+    public SettingsData LoadSettingsData()
+    {
+        string path = Path.Combine(directoryPath, fileName);
+        SettingsData dataToLoad = null;
+        {
+            if (File.Exists(path))
+            {
+                try
+                {
+                    string dataString = "";
+                    using (FileStream stream = new FileStream(path, FileMode.Open))
+                    {
+                        using (StreamReader reader = new StreamReader(stream))
+                        {
+                            dataString = reader.ReadToEnd();
+                        }
+                    }
+
+                    dataToLoad = JsonUtility.FromJson<SettingsData>(dataString);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError("Failed to load file in " + path + " " + e);
+                }
+            }
+            return dataToLoad;
+        }
+    }
 }

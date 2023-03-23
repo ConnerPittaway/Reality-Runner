@@ -268,14 +268,14 @@ public class PlayerController : MonoBehaviour
             if (currentWorld == backgrounds.Worlds.INDUSTRIAL)
             {
                 backgrounds.Worlds randomWorld = GenerateRandom(backgrounds.Worlds.INDUSTRIAL);
-                AudioManager.Instance.SwapSong("Forest Track");
+                AudioManager.Instance.SwapSong(randomWorld);
                 Backgrounds.SwitchBackgrounds(randomWorld);
                 currentWorld = randomWorld;
             }
             else
             {
                 backgrounds.Worlds randomWorld = GenerateRandom(backgrounds.Worlds.FUTURISTIC);
-                AudioManager.Instance.SwapSong("City Track");
+                AudioManager.Instance.SwapSong(randomWorld);
                 Backgrounds.SwitchBackgrounds(randomWorld);
                 currentWorld = randomWorld;
             }

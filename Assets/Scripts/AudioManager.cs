@@ -10,6 +10,13 @@ public class AudioManager : MonoBehaviour
     public AudioSource musicSource1, musicSource2, sfxSource;
     public bool isPlayingMusicSource1;
 
+    public enum ActiveTrack
+    {
+        SHROUD,
+        SHROUD2,
+        SHROUD3
+    }
+
     private void Awake()
     {
         //Create Singleton
@@ -26,7 +33,7 @@ public class AudioManager : MonoBehaviour
 
     public void Start()
     {
-        PlayMusic("Forest Track");
+        PlayMusic(backgrounds.Worlds.FUTURISTIC);
         isPlayingMusicSource1 = true;
     }
 
@@ -37,10 +44,21 @@ public class AudioManager : MonoBehaviour
         isPlayingMusicSource1 = false;
     }
 
-    public void SwapSong(string name)
+    public void SwapSong(backgrounds.Worlds world)
     {
-        Sound s = Array.Find(musicSound, x => x.soundName == name);
+        string songName = "";
 
+        switch(world)
+        {
+            case backgrounds.Worlds.INDUSTRIAL:
+                songName = "City Track";
+                break;
+            case backgrounds.Worlds.FUTURISTIC:
+                songName = "Forest Track";
+                break;
+        }
+
+        Sound s = Array.Find(musicSound, x => x.soundName == songName);
         if (s == null)
         {
             Debug.Log("No Sound Found");
@@ -89,9 +107,21 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    public void PlayMusic(string name)
+    public void PlayMusic(backgrounds.Worlds world)
     {
-        Sound s = Array.Find(musicSound, x => x.soundName == name);
+        string songName = "";
+
+        switch (world)
+        {
+            case backgrounds.Worlds.INDUSTRIAL:
+                songName = "City Track";
+                break;
+            case backgrounds.Worlds.FUTURISTIC:
+                songName = "Forest Track";
+                break;
+        }
+
+        Sound s = Array.Find(musicSound, x => x.soundName == songName);
 
         if(s == null)
         {
@@ -111,11 +141,11 @@ public class AudioManager : MonoBehaviour
 
         if(isPlayingMusicSource1)
         {
-            PlayMusic("Forest Track");
+            PlayMusic(backgrounds.Worlds.FUTURISTIC);
         }
         else
         {
-            SwapSong("Forest Track");
+            SwapSong(backgrounds.Worlds.FUTURISTIC);
         }
     }
 
@@ -130,8 +160,6 @@ public class AudioManager : MonoBehaviour
         else
         {
             sfxSource.PlayOneShot(s.audioClip);
-           // sfxSource.clip = s.audioClip;
-            //sfxSource.PlayOneShot(sfxSource.clip);
         }
     }
 }

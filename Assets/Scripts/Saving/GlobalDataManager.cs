@@ -17,11 +17,15 @@ public class GlobalDataManager : MonoBehaviour
     
     //Save and Load System
     private JsonDataHandler dataHandler;
+    private JsonDataHandler settingsDataHandler;
 
-    //Data
+    //Game Data
     private int totalCoins = 0;
     private int highScore = 0;
     public Characters currentlySelectedCharacter;
+
+    //Settings Data
+    private int audioLevel = 1;
 
     //Add in Editor
     public SerializableDictionary<Characters, bool> boughtCharacters;
@@ -32,14 +36,16 @@ public class GlobalDataManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+
+            //Load Game Data
             this.dataHandler = new JsonDataHandler(Application.persistentDataPath, "GameData");
             GameData data = dataHandler.LoadData();
+
             if(data == null)
             {
                 data = new GameData();
             }
 
-            //Load Data
             totalCoins = data.totalCoins;
             highScore = data.highScore;
             foreach(var character in data.boughtCharacters)
@@ -51,6 +57,17 @@ public class GlobalDataManager : MonoBehaviour
             }
             currentlySelectedCharacter = data.currentlySelectedCharacter;
 
+            //Load Settings Data
+           this.settingsDataHandler = new JsonDataHandler(Application.persistentDataPath, "SettingsData");
+           SettingsData settingsData = dataHandler.LoadSettingsData();
+
+            if (settingsData == null)
+            {
+                settingsData = new SettingsData();
+            }
+
+            audioLevel = settingsData.audioLevel;
+
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -59,11 +76,7 @@ public class GlobalDataManager : MonoBehaviour
         }
     }
 
-    public void SaveData()
-    {
-        dataHandler.SaveData();
-    }
-
+    #region GameData
     //Coins
     public void AlterCoins(int value)
     {
@@ -98,7 +111,30 @@ public class GlobalDataManager : MonoBehaviour
         }
         return charactersBought;
     }
-
     //Unlocks
 
+
+    public void SaveData()
+    {
+        dataHandler.SaveData();
+        settingsDataHandler.SaveSettingsData();
+    }
+    #endregion
+
+    #region SettingsData
+    public void ChangeAudio(int value)
+    {
+        audioLevel = value;
+        SaveData();
+    }
+    public int GetAudio()
+    {
+        return audioLevel;
+    }
+
+    public void SaveSettingsData()
+    {
+        dataHandler.SaveSettingsData();
+    }
+    #endregion
 }
