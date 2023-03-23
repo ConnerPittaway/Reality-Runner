@@ -265,7 +265,13 @@ public class PlayerController : MonoBehaviour
             Portal portalCollide = collision.gameObject.GetComponent<Portal>();
             Destroy(portalCollide.gameObject);
 
-            if (currentWorld == backgrounds.Worlds.INDUSTRIAL)
+            backgrounds.Worlds randomWorld = GenerateRandom(currentWorld);
+            AudioManager.Instance.SwapSong(randomWorld);
+            Backgrounds.SwitchBackgrounds(randomWorld);
+            currentWorld = randomWorld;
+
+
+            /*if (currentWorld == backgrounds.Worlds.INDUSTRIAL)
             {
                 backgrounds.Worlds randomWorld = GenerateRandom(backgrounds.Worlds.INDUSTRIAL);
                 AudioManager.Instance.SwapSong(randomWorld);
@@ -278,7 +284,7 @@ public class PlayerController : MonoBehaviour
                 AudioManager.Instance.SwapSong(randomWorld);
                 Backgrounds.SwitchBackgrounds(randomWorld);
                 currentWorld = randomWorld;
-            }
+            }*/
         }
     }
 

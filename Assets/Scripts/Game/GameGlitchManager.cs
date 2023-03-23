@@ -59,7 +59,7 @@ public class GameGlitchManager : MonoBehaviour
 
     private IEnumerator DigiGlitchOut(float timeSpeed, DigitalGlitchVolume glitch)
     {
-        while (glitch.intensity.value > 0.005f)
+        while (glitch.intensity.value > 0.0f)
         {
             glitch.intensity.value -= (Time.deltaTime * timeSpeed);
             yield return null;
