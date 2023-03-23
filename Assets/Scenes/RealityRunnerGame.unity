@@ -6574,6 +6574,7 @@ MonoBehaviour:
   musicSource2: {fileID: 407823803}
   sfxSource: {fileID: 1254838082}
   isPlayingMusicSource1: 0
+  activeTrack: 0
 --- !u!4 &1574489990
 Transform:
   m_ObjectHideFlags: 0
