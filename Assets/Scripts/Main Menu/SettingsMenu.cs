@@ -19,6 +19,7 @@ public class SettingsMenu : MonoBehaviour
         
     }
 
+    //Push Slider Value To Global and Audio Manager
     public void OnAudioVolumeChanged()
     {
         EventManager.OnAudioChanged(audioSilder.value);
@@ -27,5 +28,9 @@ public class SettingsMenu : MonoBehaviour
     void OnEnable()
     {
         EventManager.OnUIElementOpened();
+        Debug.Log("Audio Settings");
+        Debug.Log(GlobalSettingsManager.Instance.audioLevel);
+        audioSilder.value = GlobalSettingsManager.Instance.audioLevel;
+        Debug.Log(audioSilder.value);
     }
 }

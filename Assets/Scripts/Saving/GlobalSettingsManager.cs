@@ -15,19 +15,29 @@ public class GlobalSettingsManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
-
-        //Load Settings Data
-        this.settingsDataHandler = new JsonDataHandler(Application.persistentDataPath, "SettingsData");
-        SettingsData settingsData = settingsDataHandler.LoadSettingsData();
-
-        if (settingsData == null)
+        //Create Singleton
+        if (Instance == null)
         {
-            settingsData = new SettingsData();
-        }
+            Instance = this;
 
-        audioLevel = settingsData.audioLevel;
-        EventManager.AudioChanged += EventManager_OnAudioChanged;
+            //Load Settings Data
+            this.settingsDataHandler = new JsonDataHandler(Application.persistentDataPath, "SettingsData");
+            SettingsData settingsData = settingsDataHandler.LoadSettingsData();
+
+            if (settingsData == null)
+            {
+                settingsData = new SettingsData();
+            }
+
+            audioLevel = settingsData.audioLevel;
+            EventManager.AudioChanged += EventManager_OnAudioChanged;
+
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
 
