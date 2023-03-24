@@ -74,8 +74,6 @@ public class AudioManager : MonoBehaviour
 
     public void SwapSong(backgrounds.Worlds worldToSwapTo)
     {
-        Debug.Log("Swapping to: " + worldToSwapTo);
-        Debug.Log("Active Track to: " + activeTrack);
         StartCoroutine(FadeTrack(worldToSwapTo, musicSources[(int)worldToSwapTo], musicSources[(int)activeTrack]));
     }
 
