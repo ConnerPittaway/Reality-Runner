@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class MainMenuUIManager : MonoBehaviour
@@ -24,6 +25,12 @@ public class MainMenuUIManager : MonoBehaviour
     void Start()
     {
     
+    }
+
+    public void startGame()
+    {
+        AudioManager.Instance.StartGameAudio();
+        SceneManager.LoadScene("RealityRunnerGame");
     }
 
     public void openStats()

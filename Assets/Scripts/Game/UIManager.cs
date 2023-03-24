@@ -53,7 +53,7 @@ public class UIManager : MonoBehaviour
     public void MainMenu()
     {
         //AudioManager.Instance.StopSongs();
-        Destroy(AudioManager.Instance.gameObject);
+        AudioManager.Instance.ReturnToMainMenu();
         SceneManager.LoadScene("MainMenu");
     }
 

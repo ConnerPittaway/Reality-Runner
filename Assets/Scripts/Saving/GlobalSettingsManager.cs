@@ -11,8 +11,7 @@ public class GlobalSettingsManager : MonoBehaviour
     private JsonDataHandler settingsDataHandler;
 
     //Settings Data
-    private int audioLevel = 1;
-
+    public float audioLevel = 1;
 
     private void Awake()
     {
@@ -28,16 +27,13 @@ public class GlobalSettingsManager : MonoBehaviour
         }
 
         audioLevel = settingsData.audioLevel;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        EventManager.AudioChanged += EventManager_OnAudioChanged;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void EventManager_OnAudioChanged(float audioValue)
     {
-        
+        Debug.Log("Settings Volume: " + audioValue);
+        audioLevel = audioValue;
     }
 }

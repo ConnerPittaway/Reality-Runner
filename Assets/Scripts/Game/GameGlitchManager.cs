@@ -38,7 +38,6 @@ public class GameGlitchManager : MonoBehaviour
 
     private void EventManager_OnDeath()
     {
-        StopAllCoroutines(); //Ensure one play at a time
         StartCoroutine(DigiGlitch(digitalGlitch));
     }
 

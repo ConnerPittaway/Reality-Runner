@@ -6561,20 +6561,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSound:
-  - soundName: City Track
-    audioClip: {fileID: 8300000, guid: f5b156ea413a7f8459a8f6ef8ecb5736, type: 3}
-  - soundName: Forest Track
+  - soundName: Futuristic City
     audioClip: {fileID: 8300000, guid: 5854fcd1b44355748b56c54f6065704c, type: 3}
+  - soundName: Industrial City
+    audioClip: {fileID: 8300000, guid: f5b156ea413a7f8459a8f6ef8ecb5736, type: 3}
   sfxSounds:
   - soundName: Jump
     audioClip: {fileID: 8300000, guid: d330792658d1c8b4ea801274ec4961ed, type: 3}
   - soundName: Portal
     audioClip: {fileID: 8300000, guid: 2c844afbcb5e017439fc19ad71ebd733, type: 3}
-  musicSource1: {fileID: 1818820672}
-  musicSource2: {fileID: 407823803}
+  musicSources:
+  - {fileID: 1818820672}
+  - {fileID: 407823803}
   sfxSource: {fileID: 1254838082}
-  isPlayingMusicSource1: 0
+  mainMenuTrack: {fileID: 0}
   activeTrack: 0
+  bgmVolume: 1
 --- !u!4 &1574489990
 Transform:
   m_ObjectHideFlags: 0

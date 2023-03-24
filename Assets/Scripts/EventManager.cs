@@ -12,12 +12,15 @@ public static class EventManager
     public static void OnCoinPurchase() => CoinPurchase?.Invoke();
 
 
-
-
     //In-Game
     public static event UnityAction Death;
     public static void OnDeath() => Death?.Invoke();
 
     public static event UnityAction PortalOpened;
     public static void OnPortalOpened() => PortalOpened?.Invoke();
+
+
+    //Settings
+    public static event UnityAction<float> AudioChanged;
+    public static void OnAudioChanged(float audioValue) => AudioChanged?.Invoke(audioValue);
 }

@@ -7,10 +7,12 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
     public Sound[] musicSound, sfxSounds;
-    public AudioSource musicSource1, musicSource2, sfxSource;
-    public bool isPlayingMusicSource1;
-
+    public List<AudioSource> musicSources;
+    public AudioSource sfxSource;
+    public AudioSource mainMenuTrack;
     public backgrounds.Worlds activeTrack;
+
+    public float bgmVolume = 1;
 
     private void Awake()
     {
@@ -28,123 +30,89 @@ public class AudioManager : MonoBehaviour
 
     public void Start()
     {
-        //musicSource1.clip = Array.Find(musicSound, x => x.soundName == "City Track").audioClip;
+        //Load Clips
+        musicSources[0].clip = Array.Find(musicSound, x => x.soundName == "Futuristic City").audioClip;
+        musicSources[1].clip = Array.Find(musicSound, x => x.soundName == "Industrial City").audioClip;
+        
+        //Subscribe to Slider Changes
+        EventManager.AudioChanged += EventManager_OnAudioChanged;
+
+        //Main Menu Music
+        mainMenuTrack.Play();
+    }
+
+    private void EventManager_OnAudioChanged(float audioValue)
+    {
+        Debug.Log("Audio Volume: " + audioValue);
+        bgmVolume = audioValue;
+        foreach (AudioSource audioSource in musicSources)
+        {
+            audioSource.volume = bgmVolume;
+        }
+    }
+
+    public void StartGameAudio()
+    {
+        mainMenuTrack.Stop();
         PlayMusic(backgrounds.Worlds.FUTURISTIC);
         activeTrack = backgrounds.Worlds.FUTURISTIC;
-        isPlayingMusicSource1 = true;
+    }
+
+    public void ReturnToMainMenu()
+    {
+        StopSongs();
+        mainMenuTrack.Play();
     }
 
     public void StopSongs()
     {
-        musicSource1.Stop();
-        musicSource2.Stop();
-        isPlayingMusicSource1 = false;
+        foreach(AudioSource audioSource in musicSources)
+        {
+            audioSource.Stop();
+        }
     }
 
-    public void SwapSong(backgrounds.Worlds world)
+    public void SwapSong(backgrounds.Worlds worldToSwapTo)
     {
-        string songName = "";
-
-        switch(world)
-        {
-            case backgrounds.Worlds.INDUSTRIAL:
-                songName = "City Track";
-                break;
-            case backgrounds.Worlds.FUTURISTIC:
-                songName = "Forest Track";
-                break;
-        }
-
-        Sound s = Array.Find(musicSound, x => x.soundName == songName);
-        if (s == null)
-        {
-            Debug.Log("No Sound Found");
-        }
-        else
-        {
-            StartCoroutine(FadeTrack(s.audioClip, world));
-            isPlayingMusicSource1 = !isPlayingMusicSource1;
-        }
+        Debug.Log("Swapping to: " + worldToSwapTo);
+        Debug.Log("Active Track to: " + activeTrack);
+        StartCoroutine(FadeTrack(worldToSwapTo, musicSources[(int)worldToSwapTo], musicSources[(int)activeTrack]));
     }
 
-    private IEnumerator FadeTrack(AudioClip newSong, backgrounds.Worlds world)
+    private IEnumerator FadeTrack(backgrounds.Worlds world, AudioSource musicSourceToPlay, AudioSource musicSourceToPause)
     {
         float fadeTime = 0.75f;
         float timeElapsed = 0.0f;
 
-        if (isPlayingMusicSource1)
+        musicSourceToPlay.Play();
+        while (timeElapsed < fadeTime)
         {
-
-            musicSource2.clip = newSong;
-            musicSource2.Play();
-
-            while(timeElapsed < fadeTime)
-            {
-                musicSource2.volume = Mathf.Lerp(0, 1, timeElapsed / fadeTime);
-                musicSource1.volume = Mathf.Lerp(1, 0, timeElapsed / fadeTime);
-                timeElapsed += Time.deltaTime;
-                yield return null;
-            }
-            musicSource1.Pause();
+            musicSourceToPlay.volume = Mathf.Lerp(0, bgmVolume, timeElapsed / fadeTime);
+            musicSourceToPause.volume = Mathf.Lerp(bgmVolume, 0, timeElapsed / fadeTime);
+            timeElapsed += Time.deltaTime;
+            yield return null;
         }
-        else
-        {
-            musicSource1.clip = newSong;
-            musicSource1.Play();
 
-            while (timeElapsed < fadeTime)
-            {
-                musicSource1.volume = Mathf.Lerp(0, 1, timeElapsed / fadeTime);
-                musicSource2.volume = Mathf.Lerp(1, 0, timeElapsed / fadeTime);
-                timeElapsed += Time.deltaTime;
-                yield return null;
-            }
-           musicSource2.Pause();
-        }
+        musicSourceToPlay.volume = bgmVolume;
+        musicSourceToPause.volume = 0;
+        musicSourceToPause.Pause();
+
         activeTrack = world;
     }
 
 
     public void PlayMusic(backgrounds.Worlds world)
     {
-        string songName = "";
-
-        switch (world)
-        {
-            case backgrounds.Worlds.INDUSTRIAL:
-                songName = "City Track";
-                break;
-            case backgrounds.Worlds.FUTURISTIC:
-                songName = "Forest Track";
-                break;
-        }
-
-        Sound s = Array.Find(musicSound, x => x.soundName == songName);
-
-        if(s == null)
-        {
-            Debug.Log("No Sound Found");
-        }
-        else
-        {
-            musicSource1.clip = s.audioClip;
-            musicSource1.Play();
-        }
+        musicSources[(int)world].Play();
+        activeTrack = world;
     }
 
     public void RestartMusic()
     {
-        musicSource1.Stop();
-        musicSource2.Stop();
-
-        if(isPlayingMusicSource1)
-        {
-            PlayMusic(backgrounds.Worlds.FUTURISTIC);
-        }
-        else
-        {
-            SwapSong(backgrounds.Worlds.FUTURISTIC);
-        }
+        StopSongs();
+        musicSources[0].volume = bgmVolume;
+        musicSources[0].Play();
+        activeTrack = backgrounds.Worlds.FUTURISTIC;
     }
 
     public void PlaySFX(string name)
