@@ -12,6 +12,9 @@ public class GlobalSettingsManager : MonoBehaviour
 
     //Settings Data
     public float audioLevel = 1;
+    public float preMuteLevel = 1;
+
+    private bool isMuted = false;
 
     private void Awake()
     {
@@ -30,6 +33,9 @@ public class GlobalSettingsManager : MonoBehaviour
             }
 
             audioLevel = settingsData.audioLevel;
+            preMuteLevel = settingsData.preMuteLevel;
+            isMuted = settingsData.isMuted;
+
             EventManager.AudioChanged += EventManager_OnAudioChanged;
 
             DontDestroyOnLoad(gameObject);
@@ -40,10 +46,30 @@ public class GlobalSettingsManager : MonoBehaviour
         }
     }
 
+    public void SaveSettingsData()
+    {
+        settingsDataHandler.SaveSettingsData();
+    }
 
     private void EventManager_OnAudioChanged(float audioValue)
     {
         Debug.Log("Settings Volume: " + audioValue);
         audioLevel = audioValue;
+        SaveSettingsData();
+    }
+
+    public float GetAudio()
+    {
+        return audioLevel;
+    }
+
+    public void SetMuted(bool muted)
+    {
+        isMuted = muted;
+    }
+
+    public bool GetMuted()
+    {
+        return isMuted;
     }
 }

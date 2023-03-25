@@ -27,7 +27,7 @@ public class GlobalDataManager : MonoBehaviour
     //Settings Data
     private int audioLevel = 1;
 
-    //Add in Editor
+    //Add in Editor -> Has to be public
     public SerializableDictionary<Characters, bool> boughtCharacters;
 
     private void Awake()
@@ -56,17 +56,6 @@ public class GlobalDataManager : MonoBehaviour
                 }
             }
             currentlySelectedCharacter = data.currentlySelectedCharacter;
-
-            //Load Settings Data
-           this.settingsDataHandler = new JsonDataHandler(Application.persistentDataPath, "SettingsData");
-           SettingsData settingsData = dataHandler.LoadSettingsData();
-
-            if (settingsData == null)
-            {
-                settingsData = new SettingsData();
-            }
-
-            audioLevel = settingsData.audioLevel;
 
             DontDestroyOnLoad(gameObject);
         }
@@ -117,24 +106,6 @@ public class GlobalDataManager : MonoBehaviour
     public void SaveData()
     {
         dataHandler.SaveData();
-        settingsDataHandler.SaveSettingsData();
-    }
-    #endregion
-
-    #region SettingsData
-    public void ChangeAudio(int value)
-    {
-        audioLevel = value;
-        SaveData();
-    }
-    public int GetAudio()
-    {
-        return audioLevel;
-    }
-
-    public void SaveSettingsData()
-    {
-        dataHandler.SaveSettingsData();
     }
     #endregion
 }

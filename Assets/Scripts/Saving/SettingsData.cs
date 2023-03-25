@@ -6,11 +6,15 @@ using UnityEngine;
 public class SettingsData
 {
     //Data
-    public int audioLevel = 0;
+    public float audioLevel = 1;
+    public float preMuteLevel = 1;
+    public bool isMuted = false;
 
     //Retrieve Data
     public SettingsData()
     {
-        audioLevel = GlobalDataManager.Instance.GetAudio();
+        audioLevel = GlobalSettingsManager.Instance.GetAudio();
+        preMuteLevel = GlobalSettingsManager.Instance.preMuteLevel;
+        isMuted = GlobalSettingsManager.Instance.GetMuted();
     }
 }

@@ -6,31 +6,50 @@ using UnityEngine.UI;
 public class SettingsMenu : MonoBehaviour
 {
     public Slider audioSilder;
+    public GameObject muteButton, unmuteButton;
 
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        audioSilder.value = GlobalSettingsManager.Instance.audioLevel;
+        if(GlobalSettingsManager.Instance.GetMuted())
+        {
+            muteButton.SetActive(false);
+            unmuteButton.SetActive(true);
+        }
     }
 
     //Push Slider Value To Global and Audio Manager
-    public void OnAudioVolumeChanged()
+    public void SliderVolumeChanged()
     {
+        muteButton.SetActive(true);
+        unmuteButton.SetActive(false);
+        GlobalSettingsManager.Instance.SetMuted(false);
         EventManager.OnAudioChanged(audioSilder.value);
+    }
+
+    public void MuteAll()
+    {
+        GlobalSettingsManager.Instance.preMuteLevel = audioSilder.value;
+        audioSilder.value = 0;
+        muteButton.SetActive(false);
+        unmuteButton.SetActive(true);
+        GlobalSettingsManager.Instance.SetMuted(true);
+        EventManager.OnAudioChanged(0);
+    }
+
+    public void UnMuteAll()
+    {
+        GlobalSettingsManager.Instance.audioLevel = GlobalSettingsManager.Instance.preMuteLevel;
+        audioSilder.value = GlobalSettingsManager.Instance.preMuteLevel;
+        muteButton.SetActive(true);
+        unmuteButton.SetActive(false);
+        GlobalSettingsManager.Instance.SetMuted(false);
+        EventManager.OnAudioChanged(GlobalSettingsManager.Instance.preMuteLevel);
     }
 
     void OnEnable()
     {
         EventManager.OnUIElementOpened();
-        Debug.Log("Audio Settings");
-        Debug.Log(GlobalSettingsManager.Instance.audioLevel);
-        audioSilder.value = GlobalSettingsManager.Instance.audioLevel;
-        Debug.Log(audioSilder.value);
     }
 }

@@ -23,12 +23,6 @@ public class CharacterStore : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnEnable()
     {
         characterToSelect = GlobalDataManager.Instance.currentlySelectedCharacter;

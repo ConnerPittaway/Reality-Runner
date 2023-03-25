@@ -33,7 +33,10 @@ public class AudioManager : MonoBehaviour
         //Load Clips
         musicSources[0].clip = Array.Find(musicSound, x => x.soundName == "Futuristic City").audioClip;
         musicSources[1].clip = Array.Find(musicSound, x => x.soundName == "Industrial City").audioClip;
-        
+
+        //Set Saved Volume
+        EventManager_OnAudioChanged(GlobalSettingsManager.Instance.audioLevel);
+
         //Subscribe to Slider Changes
         EventManager.AudioChanged += EventManager_OnAudioChanged;
 
@@ -49,6 +52,7 @@ public class AudioManager : MonoBehaviour
         {
             audioSource.volume = bgmVolume;
         }
+        mainMenuTrack.volume = bgmVolume;
     }
 
     public void StartGameAudio()
