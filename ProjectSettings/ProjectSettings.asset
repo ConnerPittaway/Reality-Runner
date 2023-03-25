@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
-  productName: RR2
+  companyName: BaconGames
+  productName: RealityRunner
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -770,7 +770,8 @@ PlayerSettings:
   webGLMemoryLinearGrowthStep: 16
   webGLMemoryGeometricGrowthStep: 0.2
   webGLMemoryGeometricGrowthCap: 96
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    Android: UNITY_ANALYTICS_EVENT_LOGS
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
@@ -860,11 +861,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: 
+  cloudProjectId: 1d21d1d0-8268-4cb5-b4e6-da80d82f1b72
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: Reality Runner
+  organizationId: conner_pittaway
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 
