@@ -173,10 +173,8 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-
+        //Check for death
         Vector2 currentPos = transform.position;
-
-        
         if(currentPos.y < screenBottom)
         {
             isDead = true;
@@ -184,16 +182,15 @@ public class PlayerController : MonoBehaviour
             velocity.y = 0;
             mainUI.SetActive(false);
 
-            //Custom Event
+            //Custom Event "distanceRan" (also includes number of realities)
             if(AnalyticsService.Instance != null)
             {
-                Dictionary<string, object> parameters = new Dictionary<string, object>() { { "distance", distance } };
+                Dictionary<string, object> parameters = new Dictionary<string, object>() { { "distance", distance }, {"realitiesExplored", numberOfRealities } };
                 AnalyticsService.Instance.CustomData("distanceRan", parameters);
                 AnalyticsService.Instance.Flush();
             }
 
             EventManager.OnDeath();
-            //Destroy(gameObject);
         }
 
         if(!onRoof)
@@ -278,26 +275,11 @@ public class PlayerController : MonoBehaviour
             Portal portalCollide = collision.gameObject.GetComponent<Portal>();
             Destroy(portalCollide.gameObject);
 
+            //Swap Reality
             backgrounds.Worlds randomWorld = GenerateRandom(currentWorld);
             AudioManager.Instance.SwapSong(randomWorld);
             Backgrounds.SwitchBackgrounds(randomWorld);
             currentWorld = randomWorld;
-
-
-            /*if (currentWorld == backgrounds.Worlds.INDUSTRIAL)
-            {
-                backgrounds.Worlds randomWorld = GenerateRandom(backgrounds.Worlds.INDUSTRIAL);
-                AudioManager.Instance.SwapSong(randomWorld);
-                Backgrounds.SwitchBackgrounds(randomWorld);
-                currentWorld = randomWorld;
-            }
-            else
-            {
-                backgrounds.Worlds randomWorld = GenerateRandom(backgrounds.Worlds.FUTURISTIC);
-                AudioManager.Instance.SwapSong(randomWorld);
-                Backgrounds.SwitchBackgrounds(randomWorld);
-                currentWorld = randomWorld;
-            }*/
         }
     }
 
