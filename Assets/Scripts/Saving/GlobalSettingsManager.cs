@@ -11,10 +11,25 @@ public class GlobalSettingsManager : MonoBehaviour
     private JsonDataHandler settingsDataHandler;
 
     //Settings Data
+    //Audio
     public float audioLevel = 1;
     public float preMuteLevel = 1;
-
     private bool isMuted = false;
+
+    //Frame Counter
+    private bool frameCountOn = false;
+
+    //Language
+    //Enum Languages
+    public enum Languages
+    {
+        ENGLISHUK,
+        ENGLISHUS,
+        ENGLISHAU,
+        ENGLISHNZ,
+        ENGLISHCA
+    }
+    public Languages currentlySelectedLanguage;
 
     private void Awake()
     {
@@ -35,6 +50,8 @@ public class GlobalSettingsManager : MonoBehaviour
             audioLevel = settingsData.audioLevel;
             preMuteLevel = settingsData.preMuteLevel;
             isMuted = settingsData.isMuted;
+            currentlySelectedLanguage = settingsData.currentlySelectedLanguage;
+
 
             EventManager.AudioChanged += EventManager_OnAudioChanged;
 

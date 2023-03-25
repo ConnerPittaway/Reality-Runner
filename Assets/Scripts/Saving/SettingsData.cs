@@ -9,6 +9,7 @@ public class SettingsData
     public float audioLevel = 1;
     public float preMuteLevel = 1;
     public bool isMuted = false;
+    public GlobalSettingsManager.Languages currentlySelectedLanguage;
 
     //Retrieve Data
     public SettingsData()
@@ -16,5 +17,6 @@ public class SettingsData
         audioLevel = GlobalSettingsManager.Instance.GetAudio();
         preMuteLevel = GlobalSettingsManager.Instance.preMuteLevel;
         isMuted = GlobalSettingsManager.Instance.GetMuted();
+        currentlySelectedLanguage = GlobalSettingsManager.Instance.currentlySelectedLanguage;
     }
 }
