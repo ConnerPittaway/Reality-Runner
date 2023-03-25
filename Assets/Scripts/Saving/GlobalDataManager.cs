@@ -17,15 +17,11 @@ public class GlobalDataManager : MonoBehaviour
     
     //Save and Load System
     private JsonDataHandler dataHandler;
-    private JsonDataHandler settingsDataHandler;
 
     //Game Data
     private int totalCoins = 0;
     private int highScore = 0;
     public Characters currentlySelectedCharacter;
-
-    //Settings Data
-    private int audioLevel = 1;
 
     //Add in Editor -> Has to be public
     public SerializableDictionary<Characters, bool> boughtCharacters;
@@ -39,7 +35,7 @@ public class GlobalDataManager : MonoBehaviour
 
             //Load Game Data
             this.dataHandler = new JsonDataHandler(Application.persistentDataPath, "GameData");
-            GameData data = dataHandler.LoadData();
+            GameData data = dataHandler.LoadData<GameData>();
 
             if(data == null)
             {
@@ -105,7 +101,7 @@ public class GlobalDataManager : MonoBehaviour
 
     public void SaveData()
     {
-        dataHandler.SaveData();
+        dataHandler.SaveData<GameData>();
     }
     #endregion
 }

@@ -16,83 +16,10 @@ public class JsonDataHandler
         this.fileName = fileName;
     }
 
-    public void SaveData()
+    public T LoadData<T>()
     {
         string path = Path.Combine(directoryPath, fileName);
-        try
-        {
-            Directory.CreateDirectory(Path.GetDirectoryName(path));
-            GameData data = new GameData();
-            string dataString = JsonUtility.ToJson(data, true);
-            using(FileStream stream = new FileStream(path, FileMode.Create))
-            {
-                using(StreamWriter writer = new StreamWriter(stream))
-                {
-                    writer.Write(dataString);
-                }
-            }
-        }
-        catch (Exception e)
-        {
-            Debug.LogError("Failed to save file in " + path + " " + e);
-        }
-    }
-
-    public GameData LoadData()
-    {
-        string path = Path.Combine(directoryPath, fileName);
-        GameData dataToLoad = null;
-        {
-            if(File.Exists(path))
-            {
-                try
-                {
-                    string dataString = "";
-                    using(FileStream stream = new FileStream(path, FileMode.Open))
-                    {
-                        using (StreamReader reader = new StreamReader(stream))
-                        {
-                            dataString = reader.ReadToEnd();
-                        }
-                    }
-
-                    dataToLoad = JsonUtility.FromJson<GameData>(dataString);
-                }
-                catch (Exception e)
-                {
-                    Debug.LogError("Failed to load file in " + path + " " + e);
-                }
-            }
-            return dataToLoad;
-        }
-    }
-
-    public void SaveSettingsData()
-    {
-        string path = Path.Combine(directoryPath, fileName);
-        try
-        {
-            Directory.CreateDirectory(Path.GetDirectoryName(path));
-            SettingsData data = new SettingsData();
-            string dataString = JsonUtility.ToJson(data, true);
-            using (FileStream stream = new FileStream(path, FileMode.Create))
-            {
-                using (StreamWriter writer = new StreamWriter(stream))
-                {
-                    writer.Write(dataString);
-                }
-            }
-        }
-        catch (Exception e)
-        {
-            Debug.LogError("Failed to save file in " + path + " " + e);
-        }
-    }
-
-    public SettingsData LoadSettingsData()
-    {
-        string path = Path.Combine(directoryPath, fileName);
-        SettingsData dataToLoad = null;
+        T dataToLoad = default(T);
         {
             if (File.Exists(path))
             {
@@ -107,7 +34,7 @@ public class JsonDataHandler
                         }
                     }
 
-                    dataToLoad = JsonUtility.FromJson<SettingsData>(dataString);
+                    dataToLoad = JsonUtility.FromJson<T>(dataString);
                 }
                 catch (Exception e)
                 {
@@ -115,6 +42,28 @@ public class JsonDataHandler
                 }
             }
             return dataToLoad;
+        }
+    }
+
+    public void SaveData<T>() where T : new()
+    {
+        string path = Path.Combine(directoryPath, fileName);
+        try
+        {
+            Directory.CreateDirectory(Path.GetDirectoryName(path));
+            T data = new T();
+            string dataString = JsonUtility.ToJson(data, true);
+            using (FileStream stream = new FileStream(path, FileMode.Create))
+            {
+                using (StreamWriter writer = new StreamWriter(stream))
+                {
+                    writer.Write(dataString);
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Failed to save file in " + path + " " + e);
         }
     }
 }

@@ -40,7 +40,7 @@ public class GlobalSettingsManager : MonoBehaviour
 
             //Load Settings Data
             this.settingsDataHandler = new JsonDataHandler(Application.persistentDataPath, "SettingsData");
-            SettingsData settingsData = settingsDataHandler.LoadSettingsData();
+            SettingsData settingsData = settingsDataHandler.LoadData<SettingsData>();
 
             if (settingsData == null)
             {
@@ -65,7 +65,7 @@ public class GlobalSettingsManager : MonoBehaviour
 
     public void SaveSettingsData()
     {
-        settingsDataHandler.SaveSettingsData();
+        settingsDataHandler.SaveData<SettingsData>();
     }
 
     private void EventManager_OnAudioChanged(float audioValue)
