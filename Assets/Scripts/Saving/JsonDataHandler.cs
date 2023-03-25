@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using System.IO;
 
-//Uses JSON 
+//Uses JSON to save and load data between files
 public class JsonDataHandler
 {
     private string directoryPath;
