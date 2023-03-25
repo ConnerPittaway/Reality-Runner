@@ -5,6 +5,10 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+using Unity.Services.Analytics;
+using Unity.Services.Core;
+using Unity.Services.Core.Analytics;
+
 public class PlayerController : MonoBehaviour
 {
     //Jump Variables
@@ -179,6 +183,15 @@ public class PlayerController : MonoBehaviour
             velocity.x = 0;
             velocity.y = 0;
             mainUI.SetActive(false);
+
+            //Custom Event
+            if(AnalyticsService.Instance != null)
+            {
+                Dictionary<string, object> parameters = new Dictionary<string, object>() { { "distance", distance } };
+                AnalyticsService.Instance.CustomData("distanceRan", parameters);
+                AnalyticsService.Instance.Flush();
+            }
+
             EventManager.OnDeath();
             //Destroy(gameObject);
         }
