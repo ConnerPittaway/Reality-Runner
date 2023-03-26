@@ -13540,6 +13540,7 @@ MonoBehaviour:
   boughtCharacters:
     m_keys: 000000000100000002000000
     m_values: 010000
+  timeRewardOpened: 0
 --- !u!1 &1144343097
 GameObject:
   m_ObjectHideFlags: 0
@@ -21181,7 +21182,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1992234720}
         m_TargetAssemblyTypeName: Store, Assembly-CSharp
-        m_MethodName: On1000CoinPurchase
+        m_MethodName: FreeReward
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22322,6 +22323,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17228e0b0c5748d45b5c17f154d89080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  freeReward: {fileID: 1904334821}
+  timeToWaitMS: 86400000
+  rewardText: {fileID: 1349595421}
 --- !u!1 &2004562628
 GameObject:
   m_ObjectHideFlags: 0

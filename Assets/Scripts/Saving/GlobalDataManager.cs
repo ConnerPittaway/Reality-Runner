@@ -26,6 +26,10 @@ public class GlobalDataManager : MonoBehaviour
     //Add in Editor -> Has to be public
     public SerializableDictionary<Characters, bool> boughtCharacters;
 
+    //Rewards Timer
+    public ulong timeRewardOpened = 0;
+
+
     private void Awake()
     {
         //Create Singleton
@@ -42,8 +46,11 @@ public class GlobalDataManager : MonoBehaviour
                 data = new GameData();
             }
 
+            //Game Data
             totalCoins = data.totalCoins;
             highScore = data.highScore;
+
+            //Characters
             foreach(var character in data.boughtCharacters)
             {
                 if(boughtCharacters.ContainsKey(character.Key))
@@ -52,6 +59,9 @@ public class GlobalDataManager : MonoBehaviour
                 }
             }
             currentlySelectedCharacter = data.currentlySelectedCharacter;
+
+            //Rewards
+            timeRewardOpened = data.timeRewardOpened;
 
             DontDestroyOnLoad(gameObject);
         }
