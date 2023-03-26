@@ -235,54 +235,6 @@ public class PlayerController : MonoBehaviour
         return results.Count > 0;
     }
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("FallingObject"))
-        {
-            FallingObject boxCollide = collision.gameObject.GetComponent<FallingObject>();
-            velocity.x *= 0.8f;
-            Destroy(boxCollide.gameObject);
-        }
-
-        if (collision.gameObject.CompareTag("StaticObject"))
-        {
-            box boxCollide = collision.gameObject.GetComponent<box>();
-            velocity.x *= 0.8f;
-            Destroy(boxCollide.gameObject);
-        }
-
-        if (collision.gameObject.CompareTag("FlyingObject"))
-        {
-            FlyingObject boxCollide = collision.gameObject.GetComponent<FlyingObject>();
-            velocity.x *= 0.8f;
-            Destroy(boxCollide.gameObject);
-        }
-
-        if (collision.gameObject.CompareTag("ForceFieldObject"))
-        {
-            forcefieldPickup boxCollide = collision.gameObject.GetComponent<forcefieldPickup>();
-            hasPowerup = true;
-            itemRadial.currentAmount = 100;
-            Destroy(boxCollide.gameObject);
-        }
-
-        if (collision.gameObject.CompareTag("PortalObject"))
-        {
-            EventManager.OnPortalOpened();
-            numberOfRealities++;
-            AudioManager.Instance.PlaySFX("Portal");
-            Portal portalCollide = collision.gameObject.GetComponent<Portal>();
-            Destroy(portalCollide.gameObject);
-
-            //Swap Reality
-            backgrounds.Worlds randomWorld = GenerateRandom(currentWorld);
-            AudioManager.Instance.SwapSong(randomWorld);
-            Backgrounds.SwitchBackgrounds(randomWorld);
-            currentWorld = randomWorld;
-        }
-    }
-
     //On Collision Entry
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -312,19 +264,5 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-    }
-
-    private backgrounds.Worlds GenerateRandom(backgrounds.Worlds playerCurrentWorld)
-    {
-        //New Array Of Enums
-        var data = Enum
-        .GetValues(typeof(backgrounds.Worlds))
-        .Cast<backgrounds.Worlds>()
-        .Where(item => item != playerCurrentWorld)
-        .ToArray();
-
-        int randIndex = UnityEngine.Random.Range(0, data.Length);
-
-        return data[randIndex];
     }
 }

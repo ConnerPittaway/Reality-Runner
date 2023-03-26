@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Portal : MonoBehaviour
@@ -11,17 +13,6 @@ public class Portal : MonoBehaviour
     {
         player = GameObject.Find("Player").GetComponent<PlayerController>();
         screenLeft = Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 0f, 0f)).x;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     private void FixedUpdate()
@@ -36,5 +27,36 @@ public class Portal : MonoBehaviour
         }
 
         transform.position = pos;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            EventManager.OnPortalOpened();
+            player.numberOfRealities++;
+            AudioManager.Instance.PlaySFX("Portal");;
+            Destroy(gameObject);
+
+            //Swap Reality
+            backgrounds.Worlds randomWorld = GenerateRandom(player.currentWorld);
+            AudioManager.Instance.SwapSong(randomWorld);
+            player.Backgrounds.SwitchBackgrounds(randomWorld);
+            player.currentWorld = randomWorld;
+        }
+    }
+
+    private backgrounds.Worlds GenerateRandom(backgrounds.Worlds playerCurrentWorld)
+    {
+        //New Array Of Enums
+        var data = Enum
+        .GetValues(typeof(backgrounds.Worlds))
+        .Cast<backgrounds.Worlds>()
+        .Where(item => item != playerCurrentWorld)
+        .ToArray();
+
+        int randIndex = UnityEngine.Random.Range(0, data.Length);
+
+        return data[randIndex];
     }
 }

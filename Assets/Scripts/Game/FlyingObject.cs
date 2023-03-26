@@ -24,12 +24,6 @@ public class FlyingObject : MonoBehaviour
         transform.position = pos;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void FixedUpdate()
     {
         if (!player.isPaused)
@@ -44,6 +38,15 @@ public class FlyingObject : MonoBehaviour
             }
 
             transform.position = pos;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            player.velocity.x *= 0.8f;
+            Destroy(gameObject);
         }
     }
 }

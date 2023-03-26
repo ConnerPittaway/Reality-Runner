@@ -9,6 +9,7 @@ public class FallingObject : MonoBehaviour
     public float screenRight;
     public bool routineStarted;
     public Vector2 positionToMoveTo;
+
     private void Awake()
     {
         player = GameObject.Find("Player").GetComponent<PlayerController>();
@@ -18,10 +19,12 @@ public class FallingObject : MonoBehaviour
 
     // Start is called before the first frame update
     public float targetValue;
+
     void Start()
     {
         routineStarted = false;
     }
+
     IEnumerator LerpFunction(float endValue, float duration)
     {
         float time = 0;
@@ -41,12 +44,6 @@ public class FallingObject : MonoBehaviour
             }
             yield return null;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void FixedUpdate()
@@ -69,6 +66,15 @@ public class FallingObject : MonoBehaviour
             }
 
             transform.position = pos;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            player.velocity.x *= 0.8f;
+            Destroy(gameObject);
         }
     }
 }

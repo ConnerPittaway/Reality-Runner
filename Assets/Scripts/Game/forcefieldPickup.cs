@@ -12,17 +12,6 @@ public class forcefieldPickup : MonoBehaviour
         player = GameObject.Find("Player").GetComponent<PlayerController>();
         screenLeft = Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 0f, 0f)).x;
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     private void FixedUpdate()
     {
@@ -38,6 +27,16 @@ public class forcefieldPickup : MonoBehaviour
             }
 
             transform.position = pos;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            player.hasPowerup = true;
+            player.itemRadial.currentAmount = 100;
+            Destroy(gameObject);
         }
     }
 }

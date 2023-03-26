@@ -1224,7 +1224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &90619622
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1270,6 +1270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7479c3d40fd6f4341b167dcc38f3a05c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statsText: {fileID: 0}
 --- !u!1 &101023878
 GameObject:
   m_ObjectHideFlags: 0
@@ -13294,7 +13295,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1149313678
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20974,21 +20975,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Stat 1:.............
-
-    Stat 2:.............
-
-    Stat 3:.............
-
-    Stat
-    4..............
-
-    Stat 5:.............
-
-    Stat 6:.............
-
-    Stat
-    7:.............'
+  m_text: "Total Runs:\nTotal Shields Collected: \nTotal Obstacles Hit: \nTotal Realities
+    Explored: \nTotal Distance: \nHighest Coins Earned: \nTotal Coins Earned: "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bdac85d6f4d230a44b5318f987241399, type: 2}
   m_sharedMaterial: {fileID: -4354188635747516789, guid: bdac85d6f4d230a44b5318f987241399, type: 2}

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+//Delete Later
+using UnityEngine.SceneManagement;
+
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
@@ -35,13 +38,21 @@ public class AudioManager : MonoBehaviour
         musicSources[1].clip = Array.Find(musicSound, x => x.soundName == "Industrial City").audioClip;
 
         //Set Saved Volume
-        EventManager_OnAudioChanged(GlobalSettingsManager.Instance.audioLevel);
+       // EventManager_OnAudioChanged(GlobalSettingsManager.Instance.audioLevel);
 
         //Subscribe to Slider Changes
         EventManager.AudioChanged += EventManager_OnAudioChanged;
 
         //Main Menu Music
-        mainMenuTrack.Play();
+        if(SceneManager.GetSceneByName("MainMenu") == SceneManager.GetActiveScene())
+        {
+            mainMenuTrack.Play();
+        }
+        else
+        {
+            PlayMusic(backgrounds.Worlds.FUTURISTIC);
+            activeTrack = backgrounds.Worlds.FUTURISTIC;
+        }
     }
 
     private void EventManager_OnAudioChanged(float audioValue)

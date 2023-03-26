@@ -10,6 +10,15 @@ public class GlobalStatsData : MonoBehaviour
     //Data Handler
     private JsonDataHandler statsDataHandler;
 
+    //Data
+    public int totalRuns = 0;
+    public int totalShieldsCollected = 0;
+    public int totalObstaclesHit = 0;
+    public int totalRealitiesExplored = 0;
+    public int totalDistance = 0;
+    public int highestCoinsEarned = 0;
+    public int totalCoinsEarned = 0;
+
     private void Awake()
     {
         //Create Singleton
@@ -17,14 +26,21 @@ public class GlobalStatsData : MonoBehaviour
         {
             Instance = this;
 
-            //Load Settings Data
+            //Load Stats Data
             this.statsDataHandler = new JsonDataHandler(Application.persistentDataPath, "SettingsData");
-            //SettingsData settingsData = statsDataHandler.LoadData<SettingsData>();
+            StatsData statsData = statsDataHandler.LoadData<StatsData>();
 
-            //if (settingsData == null)
-            //{
-            //    settingsData = new SettingsData();
-           // }
+            if (statsData == null)
+            {
+                statsData = new StatsData();
+            }
+            totalRuns = statsData.totalRuns;
+            totalShieldsCollected = statsData.totalShieldsCollected;
+            totalObstaclesHit = statsData.totalObstaclesHit;
+            totalRealitiesExplored = statsData.totalRealitiesExplored;
+            totalDistance = statsData.totalDistance;
+            highestCoinsEarned = statsData.highestCoinsEarned;
+            totalCoinsEarned = statsData.totalCoinsEarned;
 
             DontDestroyOnLoad(gameObject);
         }
@@ -34,15 +50,8 @@ public class GlobalStatsData : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void SaveData()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        statsDataHandler.SaveData<StatsData>();
     }
 }
