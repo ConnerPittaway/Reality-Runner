@@ -15,11 +15,6 @@ public class UIManager : MonoBehaviour
     public GameObject mainUI;
     public bool isPaused;
 
-    private void Awake()
-    {
-
-    }
-
     // Start is called before the first frame update
     void Start()
     {

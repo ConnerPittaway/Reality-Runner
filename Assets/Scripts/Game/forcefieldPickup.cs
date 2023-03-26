@@ -36,6 +36,7 @@ public class forcefieldPickup : MonoBehaviour
         {
             player.hasPowerup = true;
             player.itemRadial.currentAmount = 100;
+            player.shieldsCollected++;
             Destroy(gameObject);
         }
     }

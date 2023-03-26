@@ -7,6 +7,14 @@
     public Text fpsText;
     public float deltaTime;
 
+    private void Start()
+    {
+        if(!GlobalSettingsManager.Instance.GetFrameCounter())
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
     void Update()
     {
         deltaTime += (Time.deltaTime - deltaTime) * 0.1f;

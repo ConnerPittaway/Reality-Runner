@@ -10,6 +10,7 @@ public class SettingsData
     public float preMuteLevel = 1;
     public bool isMuted = false;
     public GlobalSettingsManager.Languages currentlySelectedLanguage;
+    public bool frameCounterOn = true;
 
     //Retrieve Data
     public SettingsData()
@@ -18,5 +19,6 @@ public class SettingsData
         preMuteLevel = GlobalSettingsManager.Instance.preMuteLevel;
         isMuted = GlobalSettingsManager.Instance.GetMuted();
         currentlySelectedLanguage = GlobalSettingsManager.Instance.currentlySelectedLanguage;
+        frameCounterOn = GlobalSettingsManager.Instance.GetFrameCounter();
     }
 }

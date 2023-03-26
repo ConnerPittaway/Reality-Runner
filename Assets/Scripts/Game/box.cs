@@ -35,6 +35,7 @@ public class box : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             player.velocity.x *= 0.8f;
+            player.obstaclesHit++;
             Destroy(gameObject);
         }
     }

@@ -38,7 +38,7 @@ public class AudioManager : MonoBehaviour
         musicSources[1].clip = Array.Find(musicSound, x => x.soundName == "Industrial City").audioClip;
 
         //Set Saved Volume
-       // EventManager_OnAudioChanged(GlobalSettingsManager.Instance.audioLevel);
+        EventManager_OnAudioChanged(GlobalSettingsManager.Instance.audioLevel);
 
         //Subscribe to Slider Changes
         EventManager.AudioChanged += EventManager_OnAudioChanged;

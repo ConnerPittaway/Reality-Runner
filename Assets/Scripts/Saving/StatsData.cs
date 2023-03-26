@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class StatsData : MonoBehaviour
+public class StatsData
 {
     //Data
     public int totalRuns = 0;

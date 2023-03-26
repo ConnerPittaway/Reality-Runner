@@ -273,6 +273,7 @@ public class PlayerController : MonoBehaviour
 
         //Calculate Coins
         coinsEarned = (int)distance / 100;
+        GlobalDataManager.Instance.AlterCoins(coinsEarned);
 
         //Custom Event "distanceRan" (also includes number of realities)
         if (AnalyticsService.Instance != null)
@@ -282,22 +283,27 @@ public class PlayerController : MonoBehaviour
             AnalyticsService.Instance.Flush();
         }
 
+        UpdateStats();
+
         //Push Death Events
         EventManager.OnDeath();
     }
 
     public void UpdateStats()
     {
-        GlobalStatsData.Instance.totalRuns += 1;
-        GlobalStatsData.Instance.totalShieldsCollected += shieldsCollected;
-        GlobalStatsData.Instance.totalObstaclesHit += obstaclesHit;
-        GlobalStatsData.Instance.totalRealitiesExplored += numberOfRealities;
-        GlobalStatsData.Instance.totalDistance += (int)distance;
-        if(coinsEarned > GlobalStatsData.Instance.highestCoinsEarned)
+        if(GlobalStatsData.Instance != null)
         {
-            GlobalStatsData.Instance.highestCoinsEarned = coinsEarned;
+            GlobalStatsData.Instance.totalRuns++;
+            GlobalStatsData.Instance.totalShieldsCollected += shieldsCollected;
+            GlobalStatsData.Instance.totalObstaclesHit += obstaclesHit;
+            GlobalStatsData.Instance.totalRealitiesExplored += numberOfRealities;
+            GlobalStatsData.Instance.totalDistance += (int)distance;
+            if (coinsEarned > GlobalStatsData.Instance.highestCoinsEarned)
+            {
+                GlobalStatsData.Instance.highestCoinsEarned = coinsEarned;
+            }
+            GlobalStatsData.Instance.totalCoinsEarned += coinsEarned;
+            GlobalStatsData.Instance.SaveData();
         }
-        GlobalStatsData.Instance.totalCoinsEarned += coinsEarned;
-        GlobalStatsData.Instance.SaveData();
     }
 }

@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class SettingsMenu : MonoBehaviour
 {
     public Slider audioSilder;
-    public GameObject muteButton, unmuteButton, languageScreen;
-
+    public GameObject muteButton, unmuteButton, frameButtonOn, frameButtonOff, languageScreen;
+    public bool bootedGameFlag = true;
     //Main Menu Reference
     public MainMenuUIManager mainMenu;
 
@@ -20,6 +20,14 @@ public class SettingsMenu : MonoBehaviour
             muteButton.SetActive(false);
             unmuteButton.SetActive(true);
         }
+
+        if(!GlobalSettingsManager.Instance.GetFrameCounter())
+        {
+            frameButtonOn.SetActive(false);
+            frameButtonOff.SetActive(true);
+        }
+
+        bootedGameFlag = false;
     }
 
     //Languages
@@ -43,10 +51,29 @@ public class SettingsMenu : MonoBehaviour
     //Audio Slider
     public void SliderVolumeChanged()
     {
-        muteButton.SetActive(true);
-        unmuteButton.SetActive(false);
-        GlobalSettingsManager.Instance.SetMuted(false);
-        EventManager.OnAudioChanged(audioSilder.value);
+        if(!bootedGameFlag)
+        {
+            muteButton.SetActive(true);
+            unmuteButton.SetActive(false);
+            GlobalSettingsManager.Instance.SetMuted(false);
+            EventManager.OnAudioChanged(audioSilder.value);
+        }
+    }
+
+    public void TurnFrameCounterOn()
+    {
+        GlobalSettingsManager.Instance.SetFrameCounter(true);
+        frameButtonOff.SetActive(false);
+        frameButtonOn.SetActive(true);
+        GlobalSettingsManager.Instance.SaveSettingsData();
+    }
+
+    public void TurnFrameCounterOff()
+    {
+        GlobalSettingsManager.Instance.SetFrameCounter(false);
+        frameButtonOn.SetActive(false);
+        frameButtonOff.SetActive(true);
+        GlobalSettingsManager.Instance.SaveSettingsData();
     }
 
     //Mute and UnMute Buttons

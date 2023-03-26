@@ -12,11 +12,11 @@ public class Stats : MonoBehaviour
     {
         statsText.text = "Total Runs: " + GlobalStatsData.Instance.totalRuns.ToString() + 
                        "\nTotal Shields Collected: " + GlobalStatsData.Instance.totalShieldsCollected.ToString() +
-                       "\n Total Obstacles Hit: " + GlobalStatsData.Instance.totalObstaclesHit.ToString() +
-                       "\n Total Realities Explored: " + GlobalStatsData.Instance.totalRealitiesExplored.ToString() +
-                       "\n Total Distance: " + GlobalStatsData.Instance.totalDistance.ToString() +
-                       "\n Highest Coins Earned: " + GlobalStatsData.Instance.highestCoinsEarned.ToString() +
-                       "\n Total Coins Earned: " + GlobalStatsData.Instance.totalCoinsEarned.ToString();
+                       "\nTotal Obstacles Hit: " + GlobalStatsData.Instance.totalObstaclesHit.ToString() +
+                       "\nTotal Realities Explored: " + GlobalStatsData.Instance.totalRealitiesExplored.ToString() +
+                       "\nTotal Distance: " + GlobalStatsData.Instance.totalDistance.ToString() + "m" +
+                       "\nHighest Coins Earned: " + GlobalStatsData.Instance.highestCoinsEarned.ToString() +
+                       "\nTotal Coins Earned: " + GlobalStatsData.Instance.totalCoinsEarned.ToString();
         EventManager.OnUIElementOpened();
     }
 }

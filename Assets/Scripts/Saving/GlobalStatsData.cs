@@ -27,7 +27,7 @@ public class GlobalStatsData : MonoBehaviour
             Instance = this;
 
             //Load Stats Data
-            this.statsDataHandler = new JsonDataHandler(Application.persistentDataPath, "SettingsData");
+            this.statsDataHandler = new JsonDataHandler(Application.persistentDataPath, "StatsData");
             StatsData statsData = statsDataHandler.LoadData<StatsData>();
 
             if (statsData == null)

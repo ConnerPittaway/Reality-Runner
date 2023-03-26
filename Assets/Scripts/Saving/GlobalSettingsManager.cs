@@ -17,7 +17,7 @@ public class GlobalSettingsManager : MonoBehaviour
     private bool isMuted = false;
 
     //Frame Counter
-    private bool frameCountOn = false;
+    private bool frameCountOn = true;
 
     //Language
     //Enum Languages
@@ -51,6 +51,7 @@ public class GlobalSettingsManager : MonoBehaviour
             preMuteLevel = settingsData.preMuteLevel;
             isMuted = settingsData.isMuted;
             currentlySelectedLanguage = settingsData.currentlySelectedLanguage;
+            frameCountOn = settingsData.frameCounterOn;
 
 
             EventManager.AudioChanged += EventManager_OnAudioChanged;
@@ -75,11 +76,13 @@ public class GlobalSettingsManager : MonoBehaviour
         SaveSettingsData();
     }
 
+    //Audio Volume
     public float GetAudio()
     {
         return audioLevel;
     }
 
+    //Audio Muted
     public void SetMuted(bool muted)
     {
         isMuted = muted;
@@ -88,5 +91,16 @@ public class GlobalSettingsManager : MonoBehaviour
     public bool GetMuted()
     {
         return isMuted;
+    }
+
+    //Frame Counter
+    public void SetFrameCounter(bool frameCounter)
+    {
+        frameCountOn = frameCounter;
+    }
+
+    public bool GetFrameCounter()
+    {
+        return frameCountOn;
     }
 }
