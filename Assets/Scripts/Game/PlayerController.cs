@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
     public bool onRoof = false;
     public float jumpVelocity = 35;
 
-
     //Holding Jump Variables
     public bool isJumping = false;
     public float currentMaximumJumpTime = 0.0f;
@@ -28,33 +27,46 @@ public class PlayerController : MonoBehaviour
     //Threshold to prevent need for frame perfect jumps
     public float jumpThreshold = 0.5f;
 
-    //Speed Variables
+    //Speed/Movement Variables
     public float maximumAcceleration = 5.0f;
     public float acceleration = 2.0f;
     public float maxSpeed = 70.0f;
-    public float distance = 0.0f;
-
     Rigidbody2D RB;
+    private RigidbodyConstraints2D originalConstraints;
+
+    //Distance
+    public float distance = 0.0f;
+    public float distanceDampener = 0.6f;
+
+    //Pause Control
+    public bool isPaused;
+    public Animator playerAnimator;
+
+    //Death
     public bool isDead = false;
-    public bool firstBuildingSpawned = false;
 
     public BoxCollider2D playerCollider;
 
+    //Background Controller
     public backgrounds Backgrounds;
     public backgrounds.Worlds currentWorld;
 
-    public float screenBottom;
-    public float distanceDampener = 0.6f;
-    public int numberOfRealities;
-    public bool isPaused;
+    //Item Control
     public bool hasPowerup;
-
-    private RigidbodyConstraints2D originalConstraints;
-
     public RadialTest2 itemRadial;
+
+    //UI Elements
     public GameObject mainUI;
 
-    public Animator playerAnimator;
+    //Screen Variables
+    private float screenBottom;
+
+    //Current Run Stats (Other Than Distance Which Is Above)
+    public int numberOfRealities;
+    public int coinsEarned;
+    public int obstaclesHit;
+    public int shieldsCollected;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -76,7 +88,6 @@ public class PlayerController : MonoBehaviour
         RB = GetComponent<Rigidbody2D>();
         originalConstraints = RB.constraints;
         screenBottom = Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 0.0f, 0f)).y;
-       // playerAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -177,20 +188,7 @@ public class PlayerController : MonoBehaviour
         Vector2 currentPos = transform.position;
         if(currentPos.y < screenBottom)
         {
-            isDead = true;
-            velocity.x = 0;
-            velocity.y = 0;
-            mainUI.SetActive(false);
-
-            //Custom Event "distanceRan" (also includes number of realities)
-            if(AnalyticsService.Instance != null)
-            {
-                Dictionary<string, object> parameters = new Dictionary<string, object>() { { "distance", distance }, {"realitiesExplored", numberOfRealities } };
-                AnalyticsService.Instance.CustomData("distanceRan", parameters);
-                AnalyticsService.Instance.Flush();
-            }
-
-            EventManager.OnDeath();
+            GameOver();
         }
 
         if(!onRoof)
@@ -235,7 +233,7 @@ public class PlayerController : MonoBehaviour
         return results.Count > 0;
     }
 
-    //On Collision Entry
+    //Handle Collisions With Buildings
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Building"))
@@ -264,5 +262,42 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void GameOver()
+    {
+        isDead = true;
+        velocity.x = 0;
+        velocity.y = 0;
+        //mainUI.SetActive(false);
+
+        //Calculate Coins
+        coinsEarned = (int)distance / 100;
+
+        //Custom Event "distanceRan" (also includes number of realities)
+        if (AnalyticsService.Instance != null)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>() { { "distance", distance }, { "realitiesExplored", numberOfRealities } };
+            AnalyticsService.Instance.CustomData("distanceRan", parameters);
+            AnalyticsService.Instance.Flush();
+        }
+
+        //Push Death Events
+        EventManager.OnDeath();
+    }
+
+    public void UpdateStats()
+    {
+        GlobalStatsData.Instance.totalRuns += 1;
+        GlobalStatsData.Instance.totalShieldsCollected += shieldsCollected;
+        GlobalStatsData.Instance.totalObstaclesHit += obstaclesHit;
+        GlobalStatsData.Instance.totalRealitiesExplored += numberOfRealities;
+        GlobalStatsData.Instance.totalDistance += (int)distance;
+        if(coinsEarned > GlobalStatsData.Instance.highestCoinsEarned)
+        {
+            GlobalStatsData.Instance.highestCoinsEarned = coinsEarned;
+        }
+        GlobalStatsData.Instance.totalCoinsEarned += coinsEarned;
+        GlobalStatsData.Instance.SaveData();
     }
 }

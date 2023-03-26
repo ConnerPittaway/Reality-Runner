@@ -166,11 +166,6 @@ public class SpawnBuilding : MonoBehaviour
 
         float minX = buildingRightSide + 10.0f; 
 
-        if (player.firstBuildingSpawned == false)
-        {
-            //minX -= 5;
-            player.firstBuildingSpawned = true;
-        }
         float buildingX = Random.Range(minX, maxX);
 
         //Center of the building

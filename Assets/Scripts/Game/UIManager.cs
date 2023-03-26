@@ -9,19 +9,22 @@ public class UIManager : MonoBehaviour
     public PlayerController player;
     public TMPro.TextMeshProUGUI distanceGame;
     public TMPro.TextMeshProUGUI distanceEnd;
+    public TMPro.TextMeshProUGUI realitiesExplored;
+    public TMPro.TextMeshProUGUI coinsEarned;
     public GameObject endScreen;
     public GameObject mainUI;
     public bool isPaused;
 
     private void Awake()
     {
-        endScreen.SetActive(false);
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
         isPaused = false;
+        EventManager.Death += EventManager_OnDeath;
     }
 
     // Update is called once per frame
@@ -29,12 +32,6 @@ public class UIManager : MonoBehaviour
     {
         int distance = Mathf.RoundToInt(player.distance);
         distanceGame.text = distance.ToString() + "m";
-
-        if (player.isDead)
-        {
-            distanceEnd.text = "Distance Ran:\n" + distance.ToString() + "M";
-            endScreen.SetActive(true);
-        }
     }
 
     public void Restart()
@@ -47,14 +44,24 @@ public class UIManager : MonoBehaviour
     {
         player.playerAnimator.enabled = !player.playerAnimator.enabled;
         isPaused = !isPaused;
-        player.isPaused = isPaused;
+        player.isPaused = !player.isPaused;
     }
 
     public void MainMenu()
     {
-        //AudioManager.Instance.StopSongs();
         AudioManager.Instance.ReturnToMainMenu();
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void EventManager_OnDeath()
+    {
+        EventManager.Death -= EventManager_OnDeath;
+        int distance = Mathf.RoundToInt(player.distance);
+        distanceEnd.text = "Distance Ran:\n" + distance.ToString() + "M";
+        realitiesExplored.text = "Realities Explored:\n" + player.numberOfRealities.ToString();
+        coinsEarned.text = "Coins Earned:\n" + player.coinsEarned.ToString();
+        endScreen.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 
 }
