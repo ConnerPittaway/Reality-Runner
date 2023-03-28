@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SettingsMenu : MonoBehaviour
+public class SettingsMenuUI : MonoBehaviour
 {
     public Slider audioSilder;
     public GameObject muteButton, unmuteButton, frameButtonOn, frameButtonOff, languageScreen;
