@@ -62,18 +62,26 @@ public class SettingsMenuUI : MonoBehaviour
 
     public void TurnFrameCounterOn()
     {
+        //Save Frame Setting
         GlobalSettingsManager.Instance.SetFrameCounter(true);
         frameButtonOff.SetActive(false);
         frameButtonOn.SetActive(true);
         GlobalSettingsManager.Instance.SaveSettingsData();
+
+        //Push Event (for game)
+        EventManager.OnFrameShowChanged(true);
     }
 
     public void TurnFrameCounterOff()
     {
+        //Save Frame Setting
         GlobalSettingsManager.Instance.SetFrameCounter(false);
         frameButtonOn.SetActive(false);
         frameButtonOff.SetActive(true);
         GlobalSettingsManager.Instance.SaveSettingsData();
+
+        //Push Event (for game)
+        EventManager.OnFrameShowChanged(false);
     }
 
     //Mute and UnMute Buttons

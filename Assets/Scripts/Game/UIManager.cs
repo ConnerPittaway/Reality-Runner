@@ -14,12 +14,10 @@ public class UIManager : MonoBehaviour
     public GameObject endScreen;
     public GameObject mainUI;
     public GameObject pauseScreen;
-    public bool isPaused;
 
     // Start is called before the first frame update
     void Start()
     {
-        isPaused = false;
         EventManager.Death += EventManager_OnDeath;
     }
 
@@ -39,7 +37,6 @@ public class UIManager : MonoBehaviour
     public void Pause()
     {
         player.playerAnimator.enabled = !player.playerAnimator.enabled;
-        isPaused = !isPaused;
         player.isPaused = !player.isPaused;
         pauseScreen.SetActive(true);
         gameObject.SetActive(false);
@@ -54,7 +51,6 @@ public class UIManager : MonoBehaviour
 
     public void EventManager_OnDeath()
     {
-        EventManager.Death -= EventManager_OnDeath;
         int distance = Mathf.RoundToInt(player.distance);
         distanceEnd.text = "Distance Ran:\n" + distance.ToString() + "M";
         realitiesExplored.text = "Realities Explored:\n" + player.numberOfRealities.ToString();
@@ -63,4 +59,8 @@ public class UIManager : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
+    private void OnDestroy()
+    {
+        EventManager.Death -= EventManager_OnDeath;
+    }
 }

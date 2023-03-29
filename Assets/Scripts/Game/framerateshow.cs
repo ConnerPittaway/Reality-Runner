@@ -9,7 +9,8 @@
 
     private void Start()
     {
-        if(!GlobalSettingsManager.Instance.GetFrameCounter())
+        EventManager.FrameShowChanged += EventManager_OnFrameShowChanged;
+        if (!GlobalSettingsManager.Instance.GetFrameCounter())
         {
             gameObject.SetActive(false);
         }
@@ -20,5 +21,15 @@
         deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
         float fps = 1.0f / deltaTime;
         fpsText.text = Mathf.Ceil(fps).ToString();
+    }
+
+    private void EventManager_OnFrameShowChanged(bool frameShow)
+    {
+        gameObject.SetActive(frameShow);
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.FrameShowChanged -= EventManager_OnFrameShowChanged;
     }
 }
