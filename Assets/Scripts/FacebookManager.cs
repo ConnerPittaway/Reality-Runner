@@ -10,15 +10,30 @@ using Facebook.Unity;
 
 public class FacebookManager : MonoBehaviour
 {
+    public static FacebookManager Instance;
     public Image testImage;
 
     // Awake function from Unity's MonoBehavior
-    void Awake()
+    private void Awake()
+    {
+        //Create Singleton
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void ActivateFacebook()
     {
         if (!FB.IsInitialized)
         {
             // Initialize the Facebook SDK
-            FB.Init(InitCallback);
+            FB.Init(InternalInit);
         }
         else
         {
@@ -27,7 +42,7 @@ public class FacebookManager : MonoBehaviour
         }
     }
 
-    private void InitCallback()
+    private void InternalInit()
     {
         if (FB.IsInitialized)
         {
@@ -35,7 +50,6 @@ public class FacebookManager : MonoBehaviour
             // Signal an app activation App Event
             FB.ActivateApp();
             FB.LogInWithReadPermissions(new List<string>() { "public_profile" }, AuthCallback);
-
         }
         else
         {
@@ -56,18 +70,6 @@ public class FacebookManager : MonoBehaviour
             {
                 Debug.Log(perm);
             }
-            
-            /*FB.ShareLink(
-                //contentURL: new Uri("https://play.google.com/store/apps/details?id=com.halfbrick.jetpackjoyride&hl=en_GB"),
-                contentTitle: "test",
-                contentDescription: "test"
-            );*/
-
-            FB.FeedShare(
-                link: new Uri("https://play.google.com/store/apps/details?id=com.halfbrick.jetpackjoyride&hl=en_GB"),
-                linkCaption: "test",
-                linkDescription: "test"
-            );
         }
         else
         {
@@ -75,12 +77,27 @@ public class FacebookManager : MonoBehaviour
         }
     }
 
-    void LoginCallback(IResult result)
+    public bool ShareRun()
     {
         if (FB.IsLoggedIn)
         {
-            testImage.enabled = true;
-            //OnLoggedIn();
+            /*FB.ShareLink(
+               //contentURL: new Uri("https://play.google.com/store/apps/details?id=com.halfbrick.jetpackjoyride&hl=en_GB"),
+               contentTitle: "test",
+               contentDescription: "test"
+           );*/
+
+            FB.FeedShare(
+                link: new Uri("https://play.google.com/store/apps/details?id=com.halfbrick.jetpackjoyride&hl=en_GB"),
+                linkCaption: "test",
+                linkDescription: "test"
+            );
+
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

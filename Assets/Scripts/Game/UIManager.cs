@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+// Include Facebook namespace
+using Facebook.Unity;
+
 public class UIManager : MonoBehaviour
 {
     public PlayerController player;
@@ -41,6 +44,19 @@ public class UIManager : MonoBehaviour
         pauseScreen.SetActive(true);
         gameObject.SetActive(false);
 
+    }
+
+    public void ShareToFacebook()
+    {
+        if (!FacebookManager.Instance.ShareRun())
+        {
+            FacebookManager.Instance.ActivateFacebook();
+
+            if(FB.IsLoggedIn)
+            {
+                FacebookManager.Instance.ShareRun();
+            }
+        }
     }
 
     public void MainMenu()
