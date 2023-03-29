@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     public TMPro.TextMeshProUGUI coinsEarned;
     public GameObject endScreen;
     public GameObject mainUI;
+    public GameObject pauseScreen;
     public bool isPaused;
 
     // Start is called before the first frame update
@@ -40,6 +41,9 @@ public class UIManager : MonoBehaviour
         player.playerAnimator.enabled = !player.playerAnimator.enabled;
         isPaused = !isPaused;
         player.isPaused = !player.isPaused;
+        pauseScreen.SetActive(true);
+        gameObject.SetActive(false);
+
     }
 
     public void MainMenu()
