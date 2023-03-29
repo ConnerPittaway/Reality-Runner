@@ -271,6 +271,10 @@ public class PlayerController : MonoBehaviour
         velocity.y = 0;
         //mainUI.SetActive(false);
 
+        //Update High Score
+        if ((int)distance > GlobalDataManager.Instance.GetHighScore())
+            GlobalDataManager.Instance.UpdateHighScore((int)distance);
+
         //Calculate Coins
         coinsEarned = (int)distance / 100;
         GlobalDataManager.Instance.AlterCoins(coinsEarned);
