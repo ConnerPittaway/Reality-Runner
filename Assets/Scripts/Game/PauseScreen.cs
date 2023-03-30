@@ -19,12 +19,6 @@ public class PauseScreen : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void Quit()
-    {
-        AudioManager.Instance.ReturnToMainMenu();
-        SceneManager.LoadScene("MainMenu");
-    }
-
     public void OpenSettings()
     {
         options.SetActive(false);
@@ -35,11 +29,5 @@ public class PauseScreen : MonoBehaviour
     {
         settings.SetActive(false);
         options.SetActive(true);
-    }
-
-    public void Restart()
-    {
-        AudioManager.Instance.RestartMusic();
-        SceneManager.LoadScene("RealityRunnerGame");
     }
 }

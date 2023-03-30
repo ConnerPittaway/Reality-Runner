@@ -18,6 +18,9 @@ public class UIManager : MonoBehaviour
     public GameObject mainUI;
     public GameObject pauseScreen;
 
+    //Ads 
+    public GameAd gameAdsManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +35,12 @@ public class UIManager : MonoBehaviour
     }
 
     public void Restart()
+    {
+        AudioManager.Instance.StopSongs();
+        gameAdsManager.ShowAd(false);
+    }
+
+    public static void OnRestartCompleted()
     {
         AudioManager.Instance.RestartMusic();
         SceneManager.LoadScene("RealityRunnerGame");
@@ -60,6 +69,12 @@ public class UIManager : MonoBehaviour
     }
 
     public void MainMenu()
+    {
+        AudioManager.Instance.StopSongs();
+        gameAdsManager.ShowAd(true);
+    }
+
+    public static void OnMainMenuCompleted()
     {
         AudioManager.Instance.ReturnToMainMenu();
         SceneManager.LoadScene("MainMenu");

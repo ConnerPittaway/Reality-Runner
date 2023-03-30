@@ -282,9 +282,16 @@ public class PlayerController : MonoBehaviour
         //Custom Event "distanceRan" (also includes number of realities)
         if (AnalyticsService.Instance != null)
         {
-            Dictionary<string, object> parameters = new Dictionary<string, object>() { { "distance", distance }, { "realitiesExplored", numberOfRealities } };
-            AnalyticsService.Instance.CustomData("distanceRan", parameters);
-            AnalyticsService.Instance.Flush();
+            try
+            {
+                Dictionary<string, object> parameters = new Dictionary<string, object>() { { "distance", distance }, { "realitiesExplored", numberOfRealities } };
+                AnalyticsService.Instance.CustomData("distanceRan", parameters);
+                AnalyticsService.Instance.Flush();
+            }
+            catch
+            {
+                Debug.LogError("Failed to upload data");
+            }
         }
 
         UpdateStats();
