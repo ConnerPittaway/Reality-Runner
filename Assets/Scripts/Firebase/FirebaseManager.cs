@@ -177,14 +177,16 @@ public class FirebaseManager : MonoBehaviour
         yield return new WaitUntil(predicate: () => task.IsCompleted);
 
         //When Completed
-        if (dataType == "GameData")
+        if(!task.IsFaulted && !task.IsCanceled)
         {
-            GlobalDataManager.Instance.UpdateData();
+            if (dataType == "GameData")
+            {
+                GlobalDataManager.Instance.UpdateData();
+            }
+            else if (dataType == "StatsData")
+            {
+                GlobalStatsData.Instance.UpdateData();
+            }
         }
-        else if (dataType == "StatsData")
-        {
-            GlobalStatsData.Instance.UpdateData();
-        }
-
     }
 }
