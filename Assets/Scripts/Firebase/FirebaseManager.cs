@@ -137,7 +137,58 @@ public class FirebaseManager : MonoBehaviour
             });
     }
 
-    public async void LoadData(string localFileLocation, string dataType)
+    public IEnumerator BeginLoadData(string localFileLocation, string dataType)
+    {
+        Debug.Log(dataType);
+
+        StorageReference dataRef = default;
+        // Create a reference to the file you want to upload
+        if (dataType == "GameData")
+        {
+            dataRef = storageRef.Child("gameData");
+        }
+        else if (dataType == "StatsData")
+        {
+            dataRef = storageRef.Child("statsData");
+        }
+        else
+        {
+            Debug.Log("Not correct Type");
+        }
+
+        StorageReference playerDataRef = dataRef.Child(SystemInfo.deviceUniqueIdentifier);
+
+        // Start downloading a file
+        Task task = playerDataRef.GetFileAsync(localFileLocation,
+            new StorageProgress<DownloadState>(state => {
+                // called periodically during the download
+                Debug.Log(string.Format(
+                            "Progress: {0} of {1} bytes transferred.",
+                            state.BytesTransferred,
+                            state.TotalByteCount
+                        ));
+            }), CancellationToken.None);
+
+        yield return new WaitUntil(predicate: () => task.IsCompleted);
+
+        //When Completed
+        if (dataType == "GameData")
+        {
+            GlobalDataManager.Instance.UpdateData();
+        }
+        else if (dataType == "StatsData")
+        {
+            GlobalStatsData.Instance.UpdateData();
+        }
+
+    }
+
+    public void LoadData(string localFileLocation, string dataType)
+    {
+        StartCoroutine(BeginLoadData(localFileLocation, dataType));
+    }
+
+   /* public async void LoadData(string localFileLocation, string dataType)
     {
         Debug.Log(dataType);
 
@@ -169,6 +220,7 @@ public class FirebaseManager : MonoBehaviour
                 ));
             }), CancellationToken.None);
 
+
         await task.ContinueWithOnMainThread(resultTask => {
             if (!resultTask.IsFaulted && !resultTask.IsCanceled)
             {
@@ -183,11 +235,5 @@ public class FirebaseManager : MonoBehaviour
                 }
             }
         });
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    }*/
 }
