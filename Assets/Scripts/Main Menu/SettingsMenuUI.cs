@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SettingsMenuUI : MonoBehaviour
 {
     public Slider audioSilder;
-    public GameObject muteButton, unmuteButton, frameButtonOn, frameButtonOff, languageScreen;
+    public GameObject muteButton, unmuteButton, frameButtonOn, frameButtonOff, languageScreen, audioScreen;
     public bool bootedGameFlag = true;
     //Main Menu Reference
     public MainMenuUIManager mainMenu;
@@ -28,6 +28,17 @@ public class SettingsMenuUI : MonoBehaviour
         }
 
         bootedGameFlag = false;
+    }
+
+    //Audio
+    public void OpenAudio()
+    {
+        audioScreen.SetActive(true);
+    }
+
+    public void CloseAudio()
+    {
+        audioScreen.SetActive(false);
     }
 
     //Languages
@@ -105,6 +116,12 @@ public class SettingsMenuUI : MonoBehaviour
         EventManager.OnAudioChanged(GlobalSettingsManager.Instance.preMuteLevel);
     }
 
+    public void LoadCloudData()
+    {
+        GlobalDataManager.Instance.LoadCloudData();
+        GlobalStatsData.Instance.LoadCloudData();
+    }
+
     void OnEnable()
     {
         EventManager.OnUIElementOpened();
@@ -113,5 +130,6 @@ public class SettingsMenuUI : MonoBehaviour
     void OnDisable()
     {
         languageScreen.SetActive(false);
+        audioScreen.SetActive(false);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,8 +36,14 @@ public class GlobalStatsData : MonoBehaviour
 
             if (statsData == null)
             {
-                statsData = new StatsData();
+
+                //Failed Create New Data
+                if(statsData == null)
+                {
+                    statsData = new StatsData();
+                }
             }
+
             //Time of Save
             timeOfLastSave = statsData.timeOfLastSave;
 
@@ -56,8 +63,26 @@ public class GlobalStatsData : MonoBehaviour
         }
     }
 
+    public void LoadCloudData()
+    {
+        //Try Loading from cloud
+        StatsData statsData = statsDataHandler.LoadCloudData<StatsData>();
+        //Time of Save
+        timeOfLastSave = statsData.timeOfLastSave;
+
+        totalRuns = statsData.totalRuns;
+        totalShieldsCollected = statsData.totalShieldsCollected;
+        totalObstaclesHit = statsData.totalObstaclesHit;
+        totalRealitiesExplored = statsData.totalRealitiesExplored;
+        totalDistance = statsData.totalDistance;
+        highestCoinsEarned = statsData.highestCoinsEarned;
+        totalCoinsEarned = statsData.totalCoinsEarned;
+    }
+
     public void SaveData()
     {
+        //Update Time of Save
+        timeOfLastSave = (ulong)DateTime.Now.Ticks;
         statsDataHandler.SaveData<StatsData>();
     }
 }

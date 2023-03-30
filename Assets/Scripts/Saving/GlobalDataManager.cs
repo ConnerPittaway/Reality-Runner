@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -114,10 +115,38 @@ public class GlobalDataManager : MonoBehaviour
     }
     //Unlocks
 
-
     public void SaveData()
     {
+        //Update Time of Save
+        timeOfLastSave = (ulong)DateTime.Now.Ticks;
         dataHandler.SaveData<GameData>();
     }
+
+    public void LoadCloudData()
+    {
+        //Try Loading from cloud
+        GameData data = dataHandler.LoadCloudData<GameData>();
+
+        //Time of Save
+        timeOfLastSave = data.timeOfLastSave;
+
+        //Game Data
+        totalCoins = data.totalCoins;
+        highScore = data.highScore;
+
+        //Characters
+        foreach (var character in data.boughtCharacters)
+        {
+            if (boughtCharacters.ContainsKey(character.Key))
+            {
+                boughtCharacters[character.Key] = character.Value;
+            }
+        }
+        currentlySelectedCharacter = data.currentlySelectedCharacter;
+
+        //Rewards
+        timeRewardOpened = data.timeRewardOpened;
+    }
+
     #endregion
 }

@@ -33,7 +33,6 @@ public class JsonDataHandler
                             dataString = reader.ReadToEnd();
                         }
                     }
-
                     dataToLoad = JsonUtility.FromJson<T>(dataString);
                 }
                 catch (Exception e)
@@ -41,11 +40,33 @@ public class JsonDataHandler
                     Debug.LogError("Failed to load file in " + path + " " + e);
                 }
             }
+            //Return Default data
             return dataToLoad;
         }
     }
 
-    public void SaveData<T>() where T : new()
+    public T LoadCloudData<T>()
+    {
+        T cloudDataToLoad = default(T);
+        byte[] cloudDataArray = null;
+        string cloudString = "";
+        {
+            if (FirebaseManager.Instance != null)
+            {
+                Debug.Log("Downloading From Firebase");
+                cloudDataArray = FirebaseManager.Instance.LoadData(typeof(T).FullName).Result;
+                cloudString = System.Text.Encoding.UTF8.GetString(cloudDataArray, 0, cloudDataArray.Length);
+                cloudDataToLoad = JsonUtility.FromJson<T>(cloudString);
+            }
+            else
+            {
+                Debug.Log("Firebase Load Error:" + typeof(T).FullName);
+            }
+        }
+        return cloudDataToLoad;
+    }
+
+        public void SaveData<T>() where T : new()
     {
         string path = Path.Combine(directoryPath, fileName);
         try

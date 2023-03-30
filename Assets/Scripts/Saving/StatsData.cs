@@ -21,7 +21,7 @@ public class StatsData
     //Retrieve Data
     public StatsData()
     {
-        timeOfLastSave = (ulong)DateTime.Now.Ticks;
+        timeOfLastSave = GlobalStatsData.Instance.timeOfLastSave;
         totalRuns = GlobalStatsData.Instance.totalRuns;
         totalShieldsCollected = GlobalStatsData.Instance.totalShieldsCollected;
         totalObstaclesHit = GlobalStatsData.Instance.totalObstaclesHit;

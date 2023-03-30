@@ -21,7 +21,7 @@ public class GameData
     //Retrieve Data
     public GameData()
     {
-        timeOfLastSave = (ulong)DateTime.Now.Ticks;
+        timeOfLastSave = GlobalDataManager.Instance.timeOfLastSave;
         totalCoins = GlobalDataManager.Instance.GetCoins();
         highScore = GlobalDataManager.Instance.GetHighScore();
         boughtCharacters = GlobalDataManager.Instance.GetBoughtItems();

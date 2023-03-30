@@ -10,7 +10,11 @@ using System.Threading.Tasks;
 
 public class FirebaseManager : MonoBehaviour
 {
+    //Instance
     public static FirebaseManager Instance;
+
+    //Ready Flag
+    public bool fireBaseReady = false;
 
     //Firebase App
     private FirebaseApp app;
@@ -30,6 +34,16 @@ public class FirebaseManager : MonoBehaviour
     void Awake()
     {
         Debug.Log("Firebase Started");
+        //Create Singleton
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
             var dependencyStatus = task.Result;
             if (dependencyStatus == Firebase.DependencyStatus.Available)
@@ -48,19 +62,10 @@ public class FirebaseManager : MonoBehaviour
                 InitialiseCloudStorage();
                 Debug.Log("Firebase Cloud Done");
 
-                //Create Singleton
-                if (Instance == null)
-                {
-                    Instance = this;
-                    DontDestroyOnLoad(gameObject);
-                }
-                else
-                {
-                    Destroy(gameObject);
-                }
-
                 // Set a flag here to indicate whether Firebase is ready to use by your app.
-                
+                fireBaseReady = true;   
+
+                //Push Event To Compare Data To Load
             }
             else
             {
@@ -106,7 +111,7 @@ public class FirebaseManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Not correct Type");
+            Debug.Log("Not Saving Settings To Cloud");
             return;
         }
 
@@ -131,6 +136,47 @@ public class FirebaseManager : MonoBehaviour
             });
     }
 
+    public async Task<byte[]> LoadData(string dataType)
+    {
+        Debug.Log(dataType);
+
+        StorageReference dataRef = default;
+        // Create a reference to the file you want to upload
+        if (dataType == "GameData")
+        {
+            dataRef = storageRef.Child("gameData");
+        }
+        else if (dataType == "StatsData")
+        {
+            dataRef = storageRef.Child("statsData");
+        }
+        else
+        {
+            Debug.Log("Not correct Type");
+            return null;
+        }
+
+        StorageReference playerDataRef = dataRef.Child(SystemInfo.deviceUniqueIdentifier);
+
+        const long maxAllowedSize = 1 * 1024 * 1024;
+        await playerDataRef.GetBytesAsync(maxAllowedSize).ContinueWithOnMainThread(task => {
+            if (task.IsFaulted || task.IsCanceled)
+            {
+                Debug.LogException(task.Exception);
+                return null;
+                // Uh-oh, an error occurred!
+            }
+            else
+            {
+                byte[] fileContents = task.Result;
+                Debug.Log("Finished downloading!");
+                return fileContents;
+            }
+        });
+
+        Debug.Log("Returning Null");
+        return null;
+    }
 
     // Update is called once per frame
     void Update()
