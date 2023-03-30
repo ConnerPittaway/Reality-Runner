@@ -11,8 +11,8 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener
     private string _gameId;
 
     void Awake()
-    {
-        InitializeAds();
+    { 
+      InitializeAds();
     }
 
     public void InitializeAds()

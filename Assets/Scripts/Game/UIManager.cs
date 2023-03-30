@@ -19,7 +19,7 @@ public class UIManager : MonoBehaviour
     public GameObject pauseScreen;
 
     //Ads 
-    public GameAd gameAdsManager;
+    public GameAds gameAdsManager;
 
     // Start is called before the first frame update
     void Start()

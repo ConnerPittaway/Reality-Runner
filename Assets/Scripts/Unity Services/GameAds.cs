@@ -1,8 +1,15 @@
 using UnityEngine;
 using UnityEngine.Advertisements;
 
-public class GameAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
+public class GameAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener, IUnityAdsInitializationListener
 {
+    //Intialisation
+    [SerializeField] string _androidGameId;
+    [SerializeField] string _iOSGameId;
+    [SerializeField] bool _testMode = true;
+    private string _gameId;
+
+    //Ad Info
     [SerializeField] string _androidAdUnitId = "Interstitial_Android";
     [SerializeField] string _iOsAdUnitId = "Interstitial_iOS";
     string _adUnitId;
@@ -14,6 +21,17 @@ public class GameAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListene
         _adUnitId = (Application.platform == RuntimePlatform.IPhonePlayer)
             ? _iOsAdUnitId
             : _androidAdUnitId;
+
+        InitializeAds();
+    }
+
+    public void InitializeAds()
+    {
+        _gameId = (Application.platform == RuntimePlatform.IPhonePlayer)
+            ? _iOSGameId
+            : _androidGameId;
+
+        Advertisement.Initialize(_gameId, _testMode, this);
 
         LoadAd();
     }
@@ -49,6 +67,10 @@ public class GameAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListene
     public void OnUnityAdsShowFailure(string adUnitId, UnityAdsShowError error, string message)
     {
         Debug.Log($"Error showing Ad Unit {adUnitId}: {error.ToString()} - {message}");
+
+        // Try and reload ads
+        InitializeAds();
+
         //Load as Normal
         if (toMainMenu)
         {
@@ -76,5 +98,15 @@ public class GameAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListene
                 UIManager.OnRestartCompleted();
             }
         }
+    }
+
+    public void OnInitializationComplete()
+    {
+        Debug.Log("Unity Ads initialization complete.");
+    }
+
+    public void OnInitializationFailed(UnityAdsInitializationError error, string message)
+    {
+        Debug.Log($"Unity Ads Initialization Failed: {error.ToString()} - {message}");
     }
 }
