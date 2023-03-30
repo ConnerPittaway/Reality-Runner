@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1034124840206",
+    "project_id": "reality-runner",
+    "storage_bucket": "reality-runner.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034124840206:android:b4c2f189bf8b474e511b5f",
+        "android_client_info": {
+          "package_name": "com.BaconGames.RealityRunner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1034124840206-ba7b8ksoc6b2tg0ih13e2740qshoi3ic.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBElCfeYp_0GUVPcvkupa_lLWkdH-LEerA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1034124840206-ba7b8ksoc6b2tg0ih13e2740qshoi3ic.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

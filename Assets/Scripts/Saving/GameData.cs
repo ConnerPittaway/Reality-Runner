@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,9 @@ using UnityEngine;
 [System.Serializable]
 public class GameData
 {
+    //Time of Save (Use to Compare If Data in Cloud is More Recent)
+    public ulong timeOfLastSave = 0;
+
     //Game Data
     public int totalCoins = 0;
     public int highScore = 0;
@@ -17,6 +21,7 @@ public class GameData
     //Retrieve Data
     public GameData()
     {
+        timeOfLastSave = (ulong)DateTime.Now.Ticks;
         totalCoins = GlobalDataManager.Instance.GetCoins();
         highScore = GlobalDataManager.Instance.GetHighScore();
         boughtCharacters = GlobalDataManager.Instance.GetBoughtItems();

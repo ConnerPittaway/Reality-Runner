@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,9 @@ using UnityEngine;
 [System.Serializable]
 public class StatsData
 {
+    //Time of Save (Use to Compare If Data in Cloud is More Recent)
+    public ulong timeOfLastSave = 0;
+
     //Data
     public int totalRuns = 0;
     public int totalShieldsCollected = 0;
@@ -17,6 +21,7 @@ public class StatsData
     //Retrieve Data
     public StatsData()
     {
+        timeOfLastSave = (ulong)DateTime.Now.Ticks;
         totalRuns = GlobalStatsData.Instance.totalRuns;
         totalShieldsCollected = GlobalStatsData.Instance.totalShieldsCollected;
         totalObstaclesHit = GlobalStatsData.Instance.totalObstaclesHit;

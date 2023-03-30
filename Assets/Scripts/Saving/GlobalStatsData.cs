@@ -10,6 +10,9 @@ public class GlobalStatsData : MonoBehaviour
     //Data Handler
     private JsonDataHandler statsDataHandler;
 
+    //Time Of Save
+    public ulong timeOfLastSave = 0;
+
     //Data
     public int totalRuns = 0;
     public int totalShieldsCollected = 0;
@@ -34,6 +37,9 @@ public class GlobalStatsData : MonoBehaviour
             {
                 statsData = new StatsData();
             }
+            //Time of Save
+            timeOfLastSave = statsData.timeOfLastSave;
+
             totalRuns = statsData.totalRuns;
             totalShieldsCollected = statsData.totalShieldsCollected;
             totalObstaclesHit = statsData.totalObstaclesHit;

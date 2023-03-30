@@ -7,6 +7,9 @@ public class GlobalDataManager : MonoBehaviour
     //Instance
     public static GlobalDataManager Instance;
 
+    //Time Of Save
+    public ulong timeOfLastSave = 0;
+
     //Selected Character
     public enum Characters
     {
@@ -45,6 +48,9 @@ public class GlobalDataManager : MonoBehaviour
             {
                 data = new GameData();
             }
+
+            //Time of Save
+            timeOfLastSave = data.timeOfLastSave;
 
             //Game Data
             totalCoins = data.totalCoins;

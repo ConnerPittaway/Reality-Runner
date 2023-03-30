@@ -65,5 +65,16 @@ public class JsonDataHandler
         {
             Debug.LogError("Failed to save file in " + path + " " + e);
         }
+
+        if(FirebaseManager.Instance != null)
+        {
+            Debug.Log("Uploading to Firebase");
+            FirebaseManager.Instance.UploadData(path, typeof(T).FullName);
+        }
+        else
+        {
+            Debug.Log("Is Null");
+        }
+
     }
 }
