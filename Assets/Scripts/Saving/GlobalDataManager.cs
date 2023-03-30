@@ -122,10 +122,10 @@ public class GlobalDataManager : MonoBehaviour
         dataHandler.SaveData<GameData>();
     }
 
-    public void LoadCloudData()
+    public void UpdateData()
     {
         //Try Loading from cloud
-        GameData data = dataHandler.LoadCloudData<GameData>();
+        GameData data = dataHandler.LoadData<GameData>();
 
         //Time of Save
         timeOfLastSave = data.timeOfLastSave;
@@ -146,6 +146,12 @@ public class GlobalDataManager : MonoBehaviour
 
         //Rewards
         timeRewardOpened = data.timeRewardOpened;
+    }
+
+    public void LoadCloudData()
+    {
+        //Try Loading from cloud
+        dataHandler.LoadCloudData<GameData>();
     }
 
     #endregion

@@ -47,16 +47,13 @@ public class JsonDataHandler
 
     public T LoadCloudData<T>()
     {
+        string path = Path.Combine(directoryPath, fileName);
         T cloudDataToLoad = default(T);
-        byte[] cloudDataArray = null;
-        string cloudString = "";
         {
             if (FirebaseManager.Instance != null)
             {
                 Debug.Log("Downloading From Firebase");
-                cloudDataArray = FirebaseManager.Instance.LoadData(typeof(T).FullName).Result;
-                cloudString = System.Text.Encoding.UTF8.GetString(cloudDataArray, 0, cloudDataArray.Length);
-                cloudDataToLoad = JsonUtility.FromJson<T>(cloudString);
+                FirebaseManager.Instance.LoadData(path, typeof(T).FullName);
             }
             else
             {

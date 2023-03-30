@@ -7,6 +7,7 @@ using Firebase.Auth;
 using Firebase.Database;
 using Firebase.Storage;
 using System.Threading.Tasks;
+using System.Threading;
 
 public class FirebaseManager : MonoBehaviour
 {
@@ -136,7 +137,7 @@ public class FirebaseManager : MonoBehaviour
             });
     }
 
-    public async Task<byte[]> LoadData(string dataType)
+    public async void LoadData(string localFileLocation, string dataType)
     {
         Debug.Log(dataType);
 
@@ -153,29 +154,35 @@ public class FirebaseManager : MonoBehaviour
         else
         {
             Debug.Log("Not correct Type");
-            return null;
         }
 
         StorageReference playerDataRef = dataRef.Child(SystemInfo.deviceUniqueIdentifier);
 
-        const long maxAllowedSize = 1 * 1024 * 1024;
-        await playerDataRef.GetBytesAsync(maxAllowedSize).ContinueWithOnMainThread(task => {
-            if (task.IsFaulted || task.IsCanceled)
+        // Start downloading a file
+        Task task = playerDataRef.GetFileAsync(localFileLocation,
+            new StorageProgress<DownloadState>(state => {
+        // called periodically during the download
+        Debug.Log(string.Format(
+                    "Progress: {0} of {1} bytes transferred.",
+                    state.BytesTransferred,
+                    state.TotalByteCount
+                ));
+            }), CancellationToken.None);
+
+        await task.ContinueWithOnMainThread(resultTask => {
+            if (!resultTask.IsFaulted && !resultTask.IsCanceled)
             {
-                Debug.LogException(task.Exception);
-                return null;
-                // Uh-oh, an error occurred!
-            }
-            else
-            {
-                byte[] fileContents = task.Result;
-                Debug.Log("Finished downloading!");
-                return fileContents;
+                Debug.Log("Download finished.");
+                if (dataType == "GameData")
+                {
+                    GlobalDataManager.Instance.UpdateData();
+                }
+                else if (dataType == "StatsData")
+                {
+                    GlobalStatsData.Instance.UpdateData();
+                }
             }
         });
-
-        Debug.Log("Returning Null");
-        return null;
     }
 
     // Update is called once per frame

@@ -36,7 +36,6 @@ public class GlobalStatsData : MonoBehaviour
 
             if (statsData == null)
             {
-
                 //Failed Create New Data
                 if(statsData == null)
                 {
@@ -63,13 +62,13 @@ public class GlobalStatsData : MonoBehaviour
         }
     }
 
-    public void LoadCloudData()
+    public void UpdateData()
     {
         //Try Loading from cloud
-        StatsData statsData = statsDataHandler.LoadCloudData<StatsData>();
+        StatsData statsData = statsDataHandler.LoadData<StatsData>();
+
         //Time of Save
         timeOfLastSave = statsData.timeOfLastSave;
-
         totalRuns = statsData.totalRuns;
         totalShieldsCollected = statsData.totalShieldsCollected;
         totalObstaclesHit = statsData.totalObstaclesHit;
@@ -77,6 +76,12 @@ public class GlobalStatsData : MonoBehaviour
         totalDistance = statsData.totalDistance;
         highestCoinsEarned = statsData.highestCoinsEarned;
         totalCoinsEarned = statsData.totalCoinsEarned;
+    }
+
+    public void LoadCloudData()
+    {
+        //Try Loading from cloud
+        statsDataHandler.LoadCloudData<StatsData>();
     }
 
     public void SaveData()
