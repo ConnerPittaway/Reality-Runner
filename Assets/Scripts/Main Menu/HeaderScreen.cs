@@ -25,7 +25,7 @@ public class HeaderScreen : MonoBehaviour
         mainMenu.mainScreenHeaders.SetActive(true);
     }
 
-    private void OnEnable()
+    private void Update()
     {
         coins.text = "Coins:\n" + GlobalDataManager.Instance.GetCoins().ToString();
     }

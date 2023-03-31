@@ -80,12 +80,16 @@ public class MainMenuUIManager : MonoBehaviour
     void OnEnable()
     {
         EventManager.OnUIElementOpened();
+    }
+
+    private void Update()
+    {
         coins.text = "Coins:\n" + GlobalDataManager.Instance.GetCoins().ToString();
         highScore.text = "High Score:\n" + GlobalDataManager.Instance.GetHighScore().ToString() + "M";
 
         //Character Name
         string name = "";
-        switch(GlobalDataManager.Instance.currentlySelectedCharacter)
+        switch (GlobalDataManager.Instance.currentlySelectedCharacter)
         {
             case GlobalDataManager.Characters.SHROUD:
                 name = "Shroud";

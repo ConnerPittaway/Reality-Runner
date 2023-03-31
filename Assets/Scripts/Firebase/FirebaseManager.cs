@@ -45,6 +45,7 @@ public class FirebaseManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
             var dependencyStatus = task.Result;
             if (dependencyStatus == Firebase.DependencyStatus.Available)
@@ -64,7 +65,7 @@ public class FirebaseManager : MonoBehaviour
                 Debug.Log("Firebase Cloud Done");
 
                 // Set a flag here to indicate whether Firebase is ready to use by your app.
-                fireBaseReady = true;   
+                fireBaseReady = true;
 
                 //Push Event To Compare Data To Load
             }
@@ -139,10 +140,10 @@ public class FirebaseManager : MonoBehaviour
 
     public void LoadData(string localFileLocation, string dataType)
     {
-        StartCoroutine(BeginLoadData(localFileLocation, dataType));
+        BeginLoadData(localFileLocation, dataType);
     }
 
-    public IEnumerator BeginLoadData(string localFileLocation, string dataType)
+    public void BeginLoadData(string localFileLocation, string dataType)
     {
         Debug.Log(dataType);
 
@@ -165,7 +166,8 @@ public class FirebaseManager : MonoBehaviour
 
         // Start downloading a file
         Task task = playerDataRef.GetFileAsync(localFileLocation,
-            new StorageProgress<DownloadState>(state => {
+            new StorageProgress<DownloadState>(state =>
+            {
                 // called periodically during the download
                 Debug.Log(string.Format(
                             "Progress: {0} of {1} bytes transferred.",
@@ -174,19 +176,20 @@ public class FirebaseManager : MonoBehaviour
                         ));
             }), CancellationToken.None);
 
-        yield return new WaitUntil(predicate: () => task.IsCompleted);
-
-        //When Completed
-        if(!task.IsFaulted && !task.IsCanceled)
+        task.ContinueWithOnMainThread(resultTask =>
         {
-            if (dataType == "GameData")
+            //When Completed
+            if (!resultTask.IsFaulted && !resultTask.IsCanceled)
             {
-                GlobalDataManager.Instance.UpdateData();
+                if (dataType == "GameData")
+                {
+                    GlobalDataManager.Instance.UpdateData();
+                }
+                else if (dataType == "StatsData")
+                {
+                    GlobalStatsData.Instance.UpdateData();
+                }
             }
-            else if (dataType == "StatsData")
-            {
-                GlobalStatsData.Instance.UpdateData();
-            }
-        }
+        });
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class GlobalDataManager : MonoBehaviour
@@ -33,8 +34,12 @@ public class GlobalDataManager : MonoBehaviour
     //Rewards Timer
     public ulong timeRewardOpened = 0;
 
-
     private void Awake()
+    {
+        StartCoroutine(AwakeInternal());
+    }
+
+    private IEnumerator AwakeInternal()
     {
         //Create Singleton
         if (Instance == null)
@@ -43,10 +48,18 @@ public class GlobalDataManager : MonoBehaviour
 
             //Load Game Data
             this.dataHandler = new JsonDataHandler(Application.persistentDataPath, "GameData");
-            GameData data = dataHandler.LoadData<GameData>();
 
-            if(data == null)
+            while (!FirebaseManager.Instance.fireBaseReady)
             {
+                yield return new WaitForEndOfFrame();
+            }
+
+
+            GameData data = dataHandler.LoadCloudData<GameData>();
+
+            if (data == null)
+            {
+                //Ask for cloud
                 data = new GameData();
             }
 

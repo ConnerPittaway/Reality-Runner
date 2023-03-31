@@ -39,8 +39,13 @@ public class CharacterAnimator : MonoBehaviour
 
     private void OnEnable()
     {
-        currentCharacter = (int)GlobalDataManager.Instance.currentlySelectedCharacter;
+        
         StartCoroutine(AnimateUISprite());
+    }
+
+    private void Update()
+    {
+        currentCharacter = (int)GlobalDataManager.Instance.currentlySelectedCharacter;
     }
 
     private void OnDisable()
