@@ -85,16 +85,16 @@ public class Store : MonoBehaviour
 
     public void On1000CoinPurchase()
     {
-        IAPs.Instance.Coins1000();
-        /*if (IAPs.Instance.m_StoreController != null)
+        if (IAPs.Instance.m_StoreController != null)
         {
             IAPs.Instance.Coins1000();
         }
         else
         {
+            //Internal Manager
             GlobalDataManager.Instance.AlterCoins(1000);
             EventManager.OnCoinPurchase();
-        }*/
+        }
     }
 
     public void On5000CoinPurchase()
