@@ -84,6 +84,8 @@ public class MainMenuUIManager : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("Updating UI");
+
         coins.text = "Coins:\n" + GlobalDataManager.Instance.GetCoins().ToString();
         highScore.text = "High Score:\n" + GlobalDataManager.Instance.GetHighScore().ToString() + "M";
 

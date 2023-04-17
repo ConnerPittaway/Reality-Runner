@@ -14116,6 +14116,7 @@ MonoBehaviour:
     m_keys: 000000000100000002000000
     m_values: 010000
   timeRewardOpened: 0
+  checkCloud: 0
 --- !u!1 &1144343097
 GameObject:
   m_ObjectHideFlags: 0
@@ -14236,7 +14237,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1149313678
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23485,7 +23486,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1992234718
 RectTransform:
   m_ObjectHideFlags: 0

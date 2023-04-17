@@ -29,42 +29,63 @@ public class GlobalStatsData : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-
-            //Load Stats Data
-            this.statsDataHandler = new JsonDataHandler(Application.persistentDataPath, "StatsData");
-            StatsData statsData = statsDataHandler.LoadData<StatsData>();
-
-            if (statsData == null)
-            {
-                //Failed Create New Data
-                if(statsData == null)
-                {
-                    statsData = new StatsData();
-                }
-            }
-
-            //Time of Save
-            timeOfLastSave = statsData.timeOfLastSave;
-
-            totalRuns = statsData.totalRuns;
-            totalShieldsCollected = statsData.totalShieldsCollected;
-            totalObstaclesHit = statsData.totalObstaclesHit;
-            totalRealitiesExplored = statsData.totalRealitiesExplored;
-            totalDistance = statsData.totalDistance;
-            highestCoinsEarned = statsData.highestCoinsEarned;
-            totalCoinsEarned = statsData.totalCoinsEarned;
-
             DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
+        StartCoroutine(AwakeInternal());
+    }
+
+    private IEnumerator AwakeInternal()
+    {
+        //Load Stats Data
+        this.statsDataHandler = new JsonDataHandler(Application.persistentDataPath, "StatsData");
+        StatsData statsData = statsDataHandler.LoadData<StatsData>();
+
+        if (statsData == null)
+        {
+            Debug.Log("Default Stats Data");
+
+            //No Data Found Ask For Cloud
+            if (GlobalDataManager.Instance.checkCloud)
+            {
+                while (!FirebaseManager.Instance.fireBaseReady)
+                {
+                    yield return new WaitForEndOfFrame();
+                }
+
+                Debug.Log("Loading Stats Cloud");
+                statsData = statsDataHandler.LoadCloudData<StatsData>();
+            }
+        }
+        else
+        {
+            Debug.Log("Local Stats Data");
+        }
+
+        //No Data Found
+        if (statsData == null)
+        {
+            statsData = new StatsData();
+        }
+        
+        //Time of Save
+        timeOfLastSave = statsData.timeOfLastSave;
+
+        totalRuns = statsData.totalRuns;
+        totalShieldsCollected = statsData.totalShieldsCollected;
+        totalObstaclesHit = statsData.totalObstaclesHit;
+        totalRealitiesExplored = statsData.totalRealitiesExplored;
+        totalDistance = statsData.totalDistance;
+        highestCoinsEarned = statsData.highestCoinsEarned;
+        totalCoinsEarned = statsData.totalCoinsEarned;
+        yield return null;
     }
 
     public void UpdateData()
     {
-        //Try Loading from cloud
         StatsData statsData = statsDataHandler.LoadData<StatsData>();
 
         //Time of Save

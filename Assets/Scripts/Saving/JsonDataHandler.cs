@@ -63,7 +63,7 @@ public class JsonDataHandler
         return cloudDataToLoad;
     }
 
-        public void SaveData<T>() where T : new()
+    public void SaveData<T>() where T : new()
     {
         string path = Path.Combine(directoryPath, fileName);
         try
@@ -84,7 +84,7 @@ public class JsonDataHandler
             Debug.LogError("Failed to save file in " + path + " " + e);
         }
 
-        if(FirebaseManager.Instance != null)
+        if (FirebaseManager.Instance != null)
         {
             Debug.Log("Uploading to Firebase");
             FirebaseManager.Instance.UploadData(path, typeof(T).FullName);
@@ -93,6 +93,5 @@ public class JsonDataHandler
         {
             Debug.Log("Is Null");
         }
-
     }
 }

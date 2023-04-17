@@ -34,61 +34,78 @@ public class GlobalDataManager : MonoBehaviour
     //Rewards Timer
     public ulong timeRewardOpened = 0;
 
-    private void Awake()
-    {
-        StartCoroutine(AwakeInternal());
-    }
+    //Cloud Data
+    public bool checkCloud = false;
 
-    private IEnumerator AwakeInternal()
+    private void Awake()
     {
         //Create Singleton
         if (Instance == null)
         {
             Instance = this;
-
-            //Load Game Data
-            this.dataHandler = new JsonDataHandler(Application.persistentDataPath, "GameData");
-
-            while (!FirebaseManager.Instance.fireBaseReady)
-            {
-                yield return new WaitForEndOfFrame();
-            }
-
-
-            GameData data = dataHandler.LoadCloudData<GameData>();
-
-            if (data == null)
-            {
-                //Ask for cloud
-                data = new GameData();
-            }
-
-            //Time of Save
-            timeOfLastSave = data.timeOfLastSave;
-
-            //Game Data
-            totalCoins = data.totalCoins;
-            highScore = data.highScore;
-
-            //Characters
-            foreach(var character in data.boughtCharacters)
-            {
-                if(boughtCharacters.ContainsKey(character.Key))
-                {
-                    boughtCharacters[character.Key] = character.Value;
-                }
-            }
-            currentlySelectedCharacter = data.currentlySelectedCharacter;
-
-            //Rewards
-            timeRewardOpened = data.timeRewardOpened;
-
             DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
+        StartCoroutine(AwakeInternal());
+    }
+
+    private IEnumerator AwakeInternal()
+    {
+        //Intialise Game Data Handler
+        this.dataHandler = new JsonDataHandler(Application.persistentDataPath, "GameData");
+        GameData data = dataHandler.LoadData<GameData>();
+        if (data == null)
+        {
+            Debug.Log("Default Data");
+
+            //No Data Found Ask For Cloud
+            checkCloud = true;
+
+            if (checkCloud)
+            {
+                while (!FirebaseManager.Instance.fireBaseReady)
+                {
+                    yield return new WaitForEndOfFrame();
+                }
+
+                Debug.Log("Loading Cloud");
+                data = dataHandler.LoadCloudData<GameData>();
+            }
+        }
+        else
+        {
+            Debug.Log("Local Data");
+        }
+
+        //No Data Found
+        if(data == null)
+        {
+            data = new GameData();
+        }
+
+        //Time of Save
+        timeOfLastSave = data.timeOfLastSave;
+
+        //Game Data
+        totalCoins = data.totalCoins;
+        highScore = data.highScore;
+
+        //Characters
+        foreach (var character in data.boughtCharacters)
+        {
+            if (boughtCharacters.ContainsKey(character.Key))
+            {
+                boughtCharacters[character.Key] = character.Value;
+            }
+        }
+        currentlySelectedCharacter = data.currentlySelectedCharacter;
+
+        //Rewards
+        timeRewardOpened = data.timeRewardOpened;
+        yield return null;
     }
 
     #region GameData
