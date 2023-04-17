@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Purchasing;
 using TMPro;
 
 public class Store : MonoBehaviour
@@ -84,8 +85,16 @@ public class Store : MonoBehaviour
 
     public void On1000CoinPurchase()
     {
-        GlobalDataManager.Instance.AlterCoins(1000);
-        EventManager.OnCoinPurchase();
+        IAPs.Instance.Coins1000();
+        /*if (IAPs.Instance.m_StoreController != null)
+        {
+            IAPs.Instance.Coins1000();
+        }
+        else
+        {
+            GlobalDataManager.Instance.AlterCoins(1000);
+            EventManager.OnCoinPurchase();
+        }*/
     }
 
     public void On5000CoinPurchase()
