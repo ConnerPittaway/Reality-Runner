@@ -13,6 +13,21 @@ public class Store : MonoBehaviour
     public float timeToWaitMS = 3000;
     public TMP_Text rewardText;
 
+    //Store Pop-Up
+    public TMP_Text itemToPurchase;
+    public GameObject popUp;
+    
+    //Purchaseables
+    public enum Purchases
+    {
+        COINS1000,
+        COINS5000,
+        COINS10000,
+        COINS40000,
+        ALLCHARACTERS,
+        PREMIUM
+    }
+    Purchases activePurchase;
 
     // Start is called before the first frame update
     void Start()
@@ -91,28 +106,72 @@ public class Store : MonoBehaviour
         }
         else
         {
-            //Internal Manager
-            GlobalDataManager.Instance.AlterCoins(1000);
-            EventManager.OnCoinPurchase();
+            //Internal Pop-Up (Pre-Google-Play Integration)
+            activePurchase = Purchases.COINS1000;
+            itemToPurchase.text = "Coins 1000 - $0.99";
+            popUp.SetActive(true);
         }
     }
 
     public void On5000CoinPurchase()
     {
-        GlobalDataManager.Instance.AlterCoins(5000);
-        EventManager.OnCoinPurchase();
+        Debug.Log("Here");
+        //Internal Pop-Up (Pre-Google-Play Integration)
+        activePurchase = Purchases.COINS5000;
+        itemToPurchase.text = "Coins 5000 - $2.99";
+        popUp.SetActive(true);
     }
 
     public void On10000CoinPurchase()
     {
-        GlobalDataManager.Instance.AlterCoins(10000);
-        EventManager.OnCoinPurchase();
+        //Internal Pop-Up (Pre-Google-Play Integration)
+        activePurchase = Purchases.COINS10000;
+        itemToPurchase.text = "Coins 10000 - $4.99";
+        popUp.SetActive(true);
     }
 
     public void On40000CoinPurchase()
     {
-        GlobalDataManager.Instance.AlterCoins(40000);
-        EventManager.OnCoinPurchase();
+        //Internal Pop-Up (Pre-Google-Play Integration)
+        activePurchase = Purchases.COINS40000;
+        itemToPurchase.text = "Coins 40000 - $9.99";
+        popUp.SetActive(true);
+    }
+
+    public void ConfirmPurchase()
+    {
+        switch(activePurchase)
+        {
+            case Purchases.COINS1000:
+                GlobalDataManager.Instance.AlterCoins(1000);
+                EventManager.OnCoinPurchase();
+                popUp.SetActive(false);
+                break;
+            case Purchases.COINS5000:
+                GlobalDataManager.Instance.AlterCoins(5000);
+                EventManager.OnCoinPurchase();
+                popUp.SetActive(false);
+                break;
+            case Purchases.COINS10000:
+                GlobalDataManager.Instance.AlterCoins(10000);
+                EventManager.OnCoinPurchase();
+                popUp.SetActive(false);
+                break;
+            case Purchases.COINS40000:
+                GlobalDataManager.Instance.AlterCoins(40000);
+                EventManager.OnCoinPurchase();
+                popUp.SetActive(false);
+                break;
+            case Purchases.ALLCHARACTERS:
+                break;
+            case Purchases.PREMIUM:
+                break;
+        }    
+    }
+
+    public void DenyPurchase()
+    {
+        popUp.SetActive(false);
     }
 
     void OnEnable()
