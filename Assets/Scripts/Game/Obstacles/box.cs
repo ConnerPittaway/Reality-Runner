@@ -11,6 +11,8 @@ public class box : MonoBehaviour
     {
         player = GameObject.Find("Player").GetComponent<PlayerController>();
         screenLeft = Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 0f, 0f)).x;
+
+        //Sub to Portal Event
     }
 
     private void FixedUpdate()

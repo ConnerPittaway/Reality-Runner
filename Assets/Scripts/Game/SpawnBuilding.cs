@@ -73,6 +73,10 @@ public class SpawnBuilding : MonoBehaviour
         //Max and Min Heights
         maximumHeight = maximumBuildingHeight.position.y;
         minimumHeight = minimumBuildingHeight.position.y;
+
+        //Set Sprite
+
+        //Sub To Portal Event
     }
 
     // Start is called before the first frame update

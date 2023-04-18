@@ -15,6 +15,8 @@ public class FallingObject : MonoBehaviour
         player = GameObject.Find("Player").GetComponent<PlayerController>();
         screenLeft = Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 0f, 0f)).x;
         screenRight = Camera.main.ViewportToWorldPoint(new Vector3(1.0f, 0.0f, 0.0f)).x;
+
+        //Sub to Portal Event
     }
 
     // Start is called before the first frame update
