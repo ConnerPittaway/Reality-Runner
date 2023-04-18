@@ -17,6 +17,8 @@ public class GameData
     //Purchases Data
     public SerializableDictionary<GlobalDataManager.Characters, bool> boughtCharacters = new SerializableDictionary<GlobalDataManager.Characters, bool>();
     public ulong timeRewardOpened = 0;
+    public bool hasPremium = false;
+
 
     //Retrieve Data
     public GameData()
@@ -27,5 +29,6 @@ public class GameData
         boughtCharacters = GlobalDataManager.Instance.GetBoughtItems();
         currentlySelectedCharacter = GlobalDataManager.Instance.currentlySelectedCharacter;
         timeRewardOpened = GlobalDataManager.Instance.timeRewardOpened;
+        hasPremium = GlobalDataManager.Instance.GetPremiumStatus();
     }
 }

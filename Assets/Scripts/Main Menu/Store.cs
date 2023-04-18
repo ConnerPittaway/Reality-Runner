@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Purchasing;
 using TMPro;
+using System.Linq;
 
 public class Store : MonoBehaviour
 {
@@ -65,8 +66,8 @@ public class Store : MonoBehaviour
                 //Extract Minutes
                 timeLeft += ((int)secondsLeft / 60).ToString("00") + "m ";
 
-                //Seconds
-                timeLeft += (secondsLeft % 60).ToString("00") + "s ";
+                //Extract Seconds
+                timeLeft += (secondsLeft % 60).ToString("00") + "s";
 
                 rewardText.text = timeLeft;
             }
@@ -138,6 +139,14 @@ public class Store : MonoBehaviour
         popUp.SetActive(true);
     }
 
+    public void OnAllCharactersPurchase()
+    {
+        //Internal Pop-Up (Pre-Google-Play Integration)
+        activePurchase = Purchases.ALLCHARACTERS;
+        itemToPurchase.text = "All Characters - $9.99";
+        popUp.SetActive(true);
+    }
+
     public void ConfirmPurchase()
     {
         switch(activePurchase)
@@ -145,28 +154,31 @@ public class Store : MonoBehaviour
             case Purchases.COINS1000:
                 GlobalDataManager.Instance.AlterCoins(1000);
                 EventManager.OnCoinPurchase();
-                popUp.SetActive(false);
                 break;
             case Purchases.COINS5000:
                 GlobalDataManager.Instance.AlterCoins(5000);
                 EventManager.OnCoinPurchase();
-                popUp.SetActive(false);
                 break;
             case Purchases.COINS10000:
                 GlobalDataManager.Instance.AlterCoins(10000);
                 EventManager.OnCoinPurchase();
-                popUp.SetActive(false);
                 break;
             case Purchases.COINS40000:
                 GlobalDataManager.Instance.AlterCoins(40000);
                 EventManager.OnCoinPurchase();
-                popUp.SetActive(false);
                 break;
             case Purchases.ALLCHARACTERS:
+                foreach (var key in GlobalDataManager.Instance.boughtCharacters.Keys.ToList())
+                {
+                    GlobalDataManager.Instance.boughtCharacters[key] = true;
+                }
+                GlobalDataManager.Instance.SaveData();
                 break;
             case Purchases.PREMIUM:
+                GlobalDataManager.Instance.SetPremiumStatus(true);
                 break;
-        }    
+        }
+        popUp.SetActive(false);
     }
 
     public void DenyPurchase()

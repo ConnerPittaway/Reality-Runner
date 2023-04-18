@@ -27,9 +27,9 @@ public class GlobalDataManager : MonoBehaviour
     private int totalCoins = 0;
     private int highScore = 0;
     public Characters currentlySelectedCharacter;
-
     //Add in Editor -> Has to be public
     public SerializableDictionary<Characters, bool> boughtCharacters;
+    private bool hasPremium = false;
 
     //Rewards Timer
     public ulong timeRewardOpened = 0;
@@ -105,6 +105,10 @@ public class GlobalDataManager : MonoBehaviour
 
         //Rewards
         timeRewardOpened = data.timeRewardOpened;
+
+        //Premium
+        hasPremium = data.hasPremium;
+
         yield return null;
     }
 
@@ -143,7 +147,18 @@ public class GlobalDataManager : MonoBehaviour
         }
         return charactersBought;
     }
+
     //Unlocks
+    public bool GetPremiumStatus()
+    {
+        return hasPremium;
+    }
+
+    public void SetPremiumStatus(bool status)
+    {
+        hasPremium = status;
+        SaveData();
+    }
 
     public void SaveData()
     {
