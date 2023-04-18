@@ -147,6 +147,14 @@ public class Store : MonoBehaviour
         popUp.SetActive(true);
     }
 
+    public void OnPremiumPurchase()
+    {
+        //Internal Pop-Up (Pre-Google-Play Integration)
+        activePurchase = Purchases.PREMIUM;
+        itemToPurchase.text = "Premium - $4.99";
+        popUp.SetActive(true);
+    }
+
     public void ConfirmPurchase()
     {
         switch(activePurchase)
@@ -189,5 +197,10 @@ public class Store : MonoBehaviour
     void OnEnable()
     {
         EventManager.OnUIElementOpened();
+    }
+
+    void OnDisable()
+    {
+        popUp.SetActive(false);
     }
 }

@@ -277,6 +277,12 @@ public class PlayerController : MonoBehaviour
 
         //Calculate Coins
         coinsEarned = (int)distance / 100;
+        coinsEarned += numberOfRealities;
+        if (GlobalDataManager.Instance.GetPremiumStatus())
+        {
+            coinsEarned += coinsEarned / 2;
+        }
+
         GlobalDataManager.Instance.AlterCoins(coinsEarned);
 
         //Custom Event "distanceRan" (also includes number of realities)

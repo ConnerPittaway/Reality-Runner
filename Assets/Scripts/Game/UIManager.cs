@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     public TMPro.TextMeshProUGUI distanceGame;
     public TMPro.TextMeshProUGUI distanceEnd;
     public TMPro.TextMeshProUGUI realitiesExplored;
+    public TMPro.TextMeshProUGUI premiumBonus;
     public TMPro.TextMeshProUGUI coinsEarned;
     public GameObject endScreen;
     public GameObject mainUI;
@@ -85,7 +86,15 @@ public class UIManager : MonoBehaviour
         int distance = Mathf.RoundToInt(player.distance);
         distanceEnd.text = "Distance Ran:\n" + distance.ToString() + "M";
         realitiesExplored.text = "Realities Explored:\n" + player.numberOfRealities.ToString();
-        coinsEarned.text = "Coins Earned:\n" + player.coinsEarned.ToString();
+
+        if(GlobalDataManager.Instance.GetPremiumStatus())
+        {
+            premiumBonus.text = "Premium Bonus (+50%):\n" + (((distance/100) + player.numberOfRealities) / 2).ToString();
+        }
+
+        Debug.Log("Total Coins UI " + player.coinsEarned);
+
+        coinsEarned.text = "Total Coins Earned:\n" + player.coinsEarned.ToString();
         endScreen.SetActive(true);
         this.gameObject.SetActive(false);
     }
