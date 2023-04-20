@@ -69,8 +69,7 @@ public class AudioManager : MonoBehaviour
     public void StartGameAudio()
     {
         mainMenuTrack.Stop();
-        PlayMusic(backgrounds.Worlds.FUTURISTIC);
-        activeTrack = backgrounds.Worlds.FUTURISTIC;
+        RestartMusic();
     }
 
     public void ReturnToMainMenu()

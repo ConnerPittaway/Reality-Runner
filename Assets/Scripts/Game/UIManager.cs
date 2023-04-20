@@ -43,6 +43,10 @@ public class UIManager : MonoBehaviour
         {
             gameAdsManager.ShowAd(false);
         }
+        else
+        {
+            OnRestartCompleted();
+        }
     }
 
     public static void OnRestartCompleted()
@@ -79,6 +83,10 @@ public class UIManager : MonoBehaviour
         if (!GlobalDataManager.Instance.GetPremiumStatus())
         {
             gameAdsManager.ShowAd(true);
+        }
+        else
+        {
+            OnMainMenuCompleted();
         }
     }
 
