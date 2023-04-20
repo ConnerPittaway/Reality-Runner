@@ -248,7 +248,7 @@ public class SpawnBuilding : MonoBehaviour
             //Debug.Log("Force Box");
             GameObject forceField = Instantiate(forceObjectTemplate.gameObject);
             BoxCollider2D boxCollider = forceField.GetComponent<BoxCollider2D>();
-            float y = (newSpawnBuildingData.buildingHeight + (boxCollider.size.y / 2) * forceField.transform.localScale.y) + 1.0f;
+            float y = (newSpawnBuildingData.buildingHeight + (boxCollider.size.y / 2) * forceField.transform.localScale.y) + 1.5f;
             float x = newSpawnBuildingTransform.position.x;
             Vector2 forcePosition = new Vector2(x, y);
             forceField.transform.position = forcePosition;
