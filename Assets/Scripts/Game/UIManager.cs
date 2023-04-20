@@ -38,7 +38,11 @@ public class UIManager : MonoBehaviour
     public void Restart()
     {
         AudioManager.Instance.StopSongs();
-        gameAdsManager.ShowAd(false);
+        //Show Ads
+        if(!GlobalDataManager.Instance.GetPremiumStatus())
+        {
+            gameAdsManager.ShowAd(false);
+        }
     }
 
     public static void OnRestartCompleted()
@@ -72,7 +76,10 @@ public class UIManager : MonoBehaviour
     public void MainMenu()
     {
         AudioManager.Instance.StopSongs();
-        gameAdsManager.ShowAd(true);
+        if (!GlobalDataManager.Instance.GetPremiumStatus())
+        {
+            gameAdsManager.ShowAd(true);
+        }
     }
 
     public static void OnMainMenuCompleted()
