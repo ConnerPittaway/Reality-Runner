@@ -7,23 +7,6 @@ using Unity.Services.Core.Analytics;
 
 public class AnalyticsManager : MonoBehaviour
 {
-    public static AnalyticsManager Instance;
-
-    //Keep Analytics Loaded
-    private void Awake()
-    {
-        //Create Singleton
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
     // Start is called before the first frame update
     async void Start()
     {
