@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using UnityEngine;
 
@@ -157,6 +158,15 @@ public class GlobalDataManager : MonoBehaviour
     public void SetPremiumStatus(bool status)
     {
         hasPremium = status;
+        SaveData();
+    }
+
+    public void UnlockAllCharacters()
+    {
+        foreach (var key in boughtCharacters.Keys.ToList())
+        {
+            boughtCharacters[key] = true;
+        }
         SaveData();
     }
 

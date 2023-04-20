@@ -116,43 +116,76 @@ public class Store : MonoBehaviour
 
     public void On5000CoinPurchase()
     {
-        Debug.Log("Here");
-        //Internal Pop-Up (Pre-Google-Play Integration)
-        activePurchase = Purchases.COINS5000;
-        itemToPurchase.text = "Coins 5000 - $2.99";
-        popUp.SetActive(true);
+        if (IAPs.Instance.m_StoreController != null)
+        {
+            IAPs.Instance.Coins5000();
+        }
+        else
+        {
+            activePurchase = Purchases.COINS5000;
+            itemToPurchase.text = "Coins 5000 - $2.99";
+            popUp.SetActive(true);
+        }
     }
 
     public void On10000CoinPurchase()
     {
-        //Internal Pop-Up (Pre-Google-Play Integration)
-        activePurchase = Purchases.COINS10000;
-        itemToPurchase.text = "Coins 10000 - $4.99";
-        popUp.SetActive(true);
+        if (IAPs.Instance.m_StoreController != null)
+        {
+            IAPs.Instance.Coins10000();
+        }
+        else
+        {
+            //Internal Pop-Up (Pre-Google-Play Integration)
+            activePurchase = Purchases.COINS10000;
+            itemToPurchase.text = "Coins 10000 - $4.99";
+            popUp.SetActive(true);
+        }
     }
 
     public void On40000CoinPurchase()
     {
-        //Internal Pop-Up (Pre-Google-Play Integration)
-        activePurchase = Purchases.COINS40000;
-        itemToPurchase.text = "Coins 40000 - $9.99";
-        popUp.SetActive(true);
+        if (IAPs.Instance.m_StoreController != null)
+        {
+            IAPs.Instance.Coins40000();
+        }
+        else
+        {
+            //Internal Pop-Up (Pre-Google-Play Integration)
+            activePurchase = Purchases.COINS40000;
+            itemToPurchase.text = "Coins 40000 - $9.99";
+            popUp.SetActive(true);
+        }
     }
 
     public void OnAllCharactersPurchase()
     {
-        //Internal Pop-Up (Pre-Google-Play Integration)
-        activePurchase = Purchases.ALLCHARACTERS;
-        itemToPurchase.text = "All Characters - $9.99";
-        popUp.SetActive(true);
+        if (IAPs.Instance.m_StoreController != null)
+        {
+            IAPs.Instance.AllCharacters();
+        }
+        else
+        {
+            //Internal Pop-Up (Pre-Google-Play Integration)
+            activePurchase = Purchases.ALLCHARACTERS;
+            itemToPurchase.text = "All Characters - $9.99";
+            popUp.SetActive(true);
+        }
     }
 
     public void OnPremiumPurchase()
     {
-        //Internal Pop-Up (Pre-Google-Play Integration)
-        activePurchase = Purchases.PREMIUM;
-        itemToPurchase.text = "Premium - $4.99";
-        popUp.SetActive(true);
+        if (IAPs.Instance.m_StoreController != null)
+        {
+            IAPs.Instance.Premium();
+        }
+        else
+        {
+            //Internal Pop-Up (Pre-Google-Play Integration)
+            activePurchase = Purchases.PREMIUM;
+            itemToPurchase.text = "Premium - $4.99";
+            popUp.SetActive(true);
+        }
     }
 
     public void ConfirmPurchase()
@@ -176,11 +209,7 @@ public class Store : MonoBehaviour
                 EventManager.OnCoinPurchase();
                 break;
             case Purchases.ALLCHARACTERS:
-                foreach (var key in GlobalDataManager.Instance.boughtCharacters.Keys.ToList())
-                {
-                    GlobalDataManager.Instance.boughtCharacters[key] = true;
-                }
-                GlobalDataManager.Instance.SaveData();
+                GlobalDataManager.Instance.UnlockAllCharacters();
                 break;
             case Purchases.PREMIUM:
                 GlobalDataManager.Instance.SetPremiumStatus(true);

@@ -11,7 +11,15 @@ public class IAPs : MonoBehaviour, IStoreListener
     public static IAPs Instance;
 
     //Your products IDs. They should match the ids of your products in your store.
+    //Coin Purchases
     public string coins1000ID = "com.BaconGames.RealityRunner.coins1000";
+    public string coins5000ID = "com.BaconGames.RealityRunner.coins5000";
+    public string coins10000ID = "com.BaconGames.RealityRunner.coins10000";
+    public string coins40000ID = "com.BaconGames.RealityRunner.coins40000";
+
+    //Other Purchases
+    public string premiumID = "com.BaconGames.RealityRunner.premium";
+    public string allCharactersID = "com.BaconGames.RealityRunner.allCharacters";
 
     private void Awake()
     {
@@ -62,10 +70,39 @@ public class IAPs : MonoBehaviour, IStoreListener
         var product = args.purchasedProduct;
 
         //Add the purchased product to the players inventory
+        //Coins
         if (product.definition.id == coins1000ID)
         {
             GlobalDataManager.Instance.AlterCoins(1000);
             EventManager.OnCoinPurchase();
+        }
+
+        if (product.definition.id == coins5000ID)
+        {
+            GlobalDataManager.Instance.AlterCoins(5000);
+            EventManager.OnCoinPurchase();
+        }
+
+        if (product.definition.id == coins10000ID)
+        {
+            GlobalDataManager.Instance.AlterCoins(10000);
+            EventManager.OnCoinPurchase();
+        }
+
+        if (product.definition.id == coins40000ID)
+        {
+            GlobalDataManager.Instance.AlterCoins(40000);
+            EventManager.OnCoinPurchase();
+        }
+
+        if (product.definition.id == premiumID)
+        {
+            GlobalDataManager.Instance.SetPremiumStatus(true);
+        }
+
+        if (product.definition.id == allCharactersID)
+        {
+            GlobalDataManager.Instance.UnlockAllCharacters();
         }
 
         Debug.Log($"Purchase Complete - Product: {product.definition.id}");
@@ -79,9 +116,34 @@ public class IAPs : MonoBehaviour, IStoreListener
         Debug.Log($"Purchase failed - Product: '{product.definition.id}', PurchaseFailureReason: {failureReason}");
     }
 
-    //Purchases
+    //Purchase Functions
     public void Coins1000()
     {
         m_StoreController.InitiatePurchase(coins1000ID);
+    }
+
+    public void Coins5000()
+    {
+        m_StoreController.InitiatePurchase(coins5000ID);
+    }
+
+    public void Coins10000()
+    {
+        m_StoreController.InitiatePurchase(coins10000ID);
+    }
+
+    public void Coins40000()
+    {
+        m_StoreController.InitiatePurchase(coins40000ID);
+    }
+
+    public void Premium()
+    {
+        m_StoreController.InitiatePurchase(premiumID);
+    }
+
+    public void AllCharacters()
+    {
+        m_StoreController.InitiatePurchase(allCharactersID);
     }
 }
