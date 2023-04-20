@@ -7,6 +7,11 @@ public class forcefieldPickup : MonoBehaviour
     PlayerController player;
     public float screenLeft;
 
+    private void Start()
+    {
+        LeanTween.moveLocalY(gameObject, gameObject.transform.position.y + 1f, 1f).setLoopPingPong().setEase(LeanTweenType.easeInSine);
+    }
+
     private void Awake()
     {
         player = GameObject.Find("Player").GetComponent<PlayerController>();
