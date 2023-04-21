@@ -47,6 +47,11 @@ public class IAPs : MonoBehaviour, IStoreListener
 
         //Add products that will be purchasable and indicate its type.
         builder.AddProduct(coins1000ID, ProductType.Consumable);
+        builder.AddProduct(coins5000ID, ProductType.Consumable);
+        builder.AddProduct(coins10000ID, ProductType.Consumable);
+        builder.AddProduct(coins40000ID, ProductType.Consumable);
+        builder.AddProduct(premiumID, ProductType.NonConsumable);
+        builder.AddProduct(allCharactersID, ProductType.NonConsumable);
 
         Debug.Log("In App Product Added");
 
