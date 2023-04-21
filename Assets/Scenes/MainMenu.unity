@@ -9579,7 +9579,7 @@ GameObject:
   - component: {fileID: 765282562}
   - component: {fileID: 765282561}
   m_Layer: 0
-  m_Name: IAPs
+  m_Name: IAPs Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9598,6 +9598,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coins1000ID: com.BaconGames.RealityRunner.coins1000
+  coins5000ID: com.BaconGames.RealityRunner.coins5000
+  coins10000ID: com.BaconGames.RealityRunner.coins10000
+  coins40000ID: com.BaconGames.RealityRunner.coins40000
+  premiumID: com.BaconGames.RealityRunner.premium
+  allCharactersID: com.BaconGames.RealityRunner.allCharacters
 --- !u!4 &765282562
 Transform:
   m_ObjectHideFlags: 0
@@ -22430,7 +22435,7 @@ GameObject:
   - component: {fileID: 1830462007}
   - component: {fileID: 1830462006}
   m_Layer: 0
-  m_Name: Firebase
+  m_Name: Firebase Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

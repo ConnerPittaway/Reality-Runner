@@ -32,6 +32,9 @@ public class GlobalDataManager : MonoBehaviour
     public SerializableDictionary<Characters, bool> boughtCharacters;
     private bool hasPremium = false;
 
+    //Upgrades 
+    private int shieldLevel = 1;
+
     //Rewards Timer
     public ulong timeRewardOpened = 0;
 
