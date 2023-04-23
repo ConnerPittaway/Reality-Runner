@@ -16,7 +16,7 @@ public class Stats : MonoBehaviour
         Debug.Log(FirebaseManager.Instance.scoreLeaderboard.Count);
         foreach (User user in FirebaseManager.Instance.scoreLeaderboard)
         {
-            highScoreText.text += user.name + " : " + user.score;
+            highScoreText.text += user.name + " : " + user.score + "\n";
         }
         //Display High Scores
         leftArrow.SetActive(true);
