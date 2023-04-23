@@ -31,6 +31,9 @@ public class FirebaseManager : MonoBehaviour
     public FirebaseStorage storage;
     public StorageReference storageRef;
 
+    //Leaderboard
+    public List<User> scoreLeaderboard;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -58,7 +61,7 @@ public class FirebaseManager : MonoBehaviour
                 InitialiseAuthenticator();
                 Debug.Log("Firebase Auth Done");
 
-                //InitialiseDatabase();
+                InitialiseDatabase();
                 Debug.Log("Firebase DB Done");
 
                 InitialiseCloudStorage();
@@ -191,5 +194,41 @@ public class FirebaseManager : MonoBehaviour
                 }
             }
         });
+    }
+
+    public void UploadHighScore()
+    {
+        User user = new User(SystemInfo.deviceUniqueIdentifier, "test", GlobalDataManager.Instance.GetHighScore());
+        string json = JsonUtility.ToJson(user);
+        DBreference.Child("userScores").Child(SystemInfo.deviceUniqueIdentifier).SetRawJsonValueAsync(json);
+
+
+    }
+
+    public void GetHighScores()
+    {
+        scoreLeaderboard = new List<User>();
+        FirebaseDatabase.DefaultInstance
+      .GetReference("userScores").OrderByChild("score").LimitToLast(10)
+      .GetValueAsync().ContinueWithOnMainThread(task => {
+          if (task.IsFaulted)
+          {
+              // Handle the error...
+          }
+          else if (task.IsCompleted)
+          {
+              DataSnapshot snapshot = task.Result;
+              Debug.Log("Number of Users " + snapshot.ChildrenCount);
+              foreach (DataSnapshot childData in snapshot.Children)
+              {
+                  Debug.Log("Scores Loaded");
+                  Debug.Log(childData.Child("uid").Value.ToString());
+                  Debug.Log(childData.Child("name").Value.ToString());
+                  Debug.Log(int.Parse(childData.Child("score").Value.ToString()));
+                  User userScore = new User(childData.Child("uid").Value.ToString(), childData.Child("name").Value.ToString(), int.Parse(childData.Child("score").Value.ToString()));
+                  scoreLeaderboard.Add(userScore);
+              }
+          }
+      });
     }
 }

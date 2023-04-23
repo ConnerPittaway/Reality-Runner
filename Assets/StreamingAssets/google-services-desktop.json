@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "1034124840206",
+    "firebase_url": "https://reality-runner-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "reality-runner",
     "storage_bucket": "reality-runner.appspot.com"
   },
