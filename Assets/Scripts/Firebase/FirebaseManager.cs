@@ -209,6 +209,11 @@ public class FirebaseManager : MonoBehaviour
         }
     }
 
+    public void UpdateUserName()
+    {
+       
+    }
+
     public void GetHighScores()
     {
         scoreLeaderboard = new List<User>();

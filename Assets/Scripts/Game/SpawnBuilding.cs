@@ -36,7 +36,7 @@ public class SpawnBuilding : MonoBehaviour
     private float buildingYReduction = 0.6f;
 
     //Objects
-    public box boxTemplate;
+    public StaticObject boxTemplate;
     public Portal portalTemplate;
     public FallingObject fallingObjectTemplate;
     public FlyingObject flyingObjectTemplate;
