@@ -1,10 +1,309 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="FirebaseManager">
-    <Position X="3.75" Y="1.75" Width="3" />
+  <Class Name="FirebaseManager" Collapsed="true">
+    <Position X="20.75" Y="0.5" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAgAACAAAQQAABAECAAAAAAQAAIAAAAQSECTAAAAFA=</HashCode>
       <FileName>Assets\Scripts\Firebase\FirebaseManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StaticObject" Collapsed="true">
+    <Position X="22.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAACAEAAAAABAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Game\Obstacles\StaticObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FallingObject" Collapsed="true">
+    <Position X="20.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAiAAAAQAAAAAAAACAGAAAAABAQABAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Game\Obstacles\FallingObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlyingObject" Collapsed="true">
+    <Position X="20.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAiAAAAAAAAAAAAACAEAAAQABAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Game\Obstacles\FlyingObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="backgrounds" Collapsed="true">
+    <Position X="20.75" Y="2.75" Width="2" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEACAAACAAAEAAABAAAAAACAQBAAAAAAAAIAg=</HashCode>
+      <FileName>Assets\Scripts\Game\backgrounds.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="forcefieldPickup" Collapsed="true">
+    <Position X="20.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAiAAAAAAAAAAAAACAEAAAAABAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Game\forcefieldPickup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="framerateshow" Collapsed="true">
+    <Position X="20.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBAAAAACEAAAAAAAAIAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Game\framerateshow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FrameRateTarget" Collapsed="true">
+    <Position X="20.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Game\FrameRateTarget.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameGlitchManager" Collapsed="true">
+    <Position X="20.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASJAQAgACEQAAAAAAAAABAgEAAAABAAAAAAIAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Game\GameGlitchManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Parallax" Collapsed="true">
+    <Position X="20.75" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAACiAAAgQAAACAIOACAAAAAAABAAAAAAAAgAA=</HashCode>
+      <FileName>Assets\Scripts\Game\Parallax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PauseScreen" Collapsed="true">
+    <Position X="20.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAEAAAAAAACAEAADAAAAAAgAAAA=</HashCode>
+      <FileName>Assets\Scripts\Game\PauseScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerController" Collapsed="true">
+    <Position X="20.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAggwBEmAAAIQCABgIACEAAFEgIgQAgAQkgEQAIEg=</HashCode>
+      <FileName>Assets\Scripts\Game\PlayerController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Portal" Collapsed="true">
+    <Position X="22.25" Y="1.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAACAAAAAAAACAEAAAAABAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Game\Portal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RadialProgress" Collapsed="true">
+    <Position X="22.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQAABAAACIJAAAgABAAIQAAAAAAAQABBAAAAAAAgEA=</HashCode>
+      <FileName>Assets\Scripts\Game\RadialProgress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RadialTest2" Collapsed="true">
+    <Position X="22.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BQQAABAAACIJAABgAAAAIAAAAAAAAQABBAAgAAAAgEA=</HashCode>
+      <FileName>Assets\Scripts\Game\RadialTest2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpawnBuilding" Collapsed="true">
+    <Position X="22.25" Y="3.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ABCIgAQAAiACIIAAQQAAAAQCIiAAAGQBAASSEEEAAMA=</HashCode>
+      <FileName>Assets\Scripts\Game\SpawnBuilding.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UIManager" Collapsed="true">
+    <Position X="22.25" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EJQhAAAgASAAAAAAAAAACgAQAAAgAwABIgAAAEAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Game\UIManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UISpriteAnimate" Collapsed="true">
+    <Position X="22.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CIAAQAAAICAAQAAAAAAAAAgAkAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Game\UISpriteAnimate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="spriteListClass" Collapsed="true">
+    <Position X="16.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Main Menu\CharacterAnimator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CharacterAnimator" Collapsed="true">
+    <Position X="16.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAICAAAAAAAAAAAAgAkAAAAAAIAAAAAAEACAA=</HashCode>
+      <FileName>Assets\Scripts\Main Menu\CharacterAnimator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CharacterStore" Collapsed="true">
+    <Position X="16.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgACAQAAICAAQAAAAAAAAAgAkAAAAAIIAACAAAAAiAA=</HashCode>
+      <FileName>Assets\Scripts\Main Menu\CharacterStore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DeveloperCredits" Collapsed="true">
+    <Position X="16.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Assets\Scripts\Main Menu\DeveloperCredits.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GlitchManager" Collapsed="true">
+    <Position X="16.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQJAQAAACEAAAAAAAAAAAIAAAAAABAAAAAAIAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Main Menu\GlitchManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HeaderScreen" Collapsed="true">
+    <Position X="16.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBAAAAACAgAAAIAAAAAAAAAAABEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Main Menu\HeaderScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ItemUpgrades" Collapsed="true">
+    <Position X="16.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Assets\Scripts\Main Menu\ItemUpgrades.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LanguageSelector" Collapsed="true">
+    <Position X="16.75" Y="5.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ARQAAAAADCAAAAAAAQAAAEAAAAQAAAAAAAAAACAACAA=</HashCode>
+      <FileName>Assets\Scripts\Main Menu\LanguageSelector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainMenuUIManager" Collapsed="true">
+    <Position X="16.75" Y="6.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AATCgAAQACAAAAEICCgAEAAAoAKQAAABEAAAAIAACAA=</HashCode>
+      <FileName>Assets\Scripts\Main Menu\MainMenuUIManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicCredits" Collapsed="true">
+    <Position X="16.75" Y="7" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAADGAAAAAAAQAAAAAABAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Assets\Scripts\Main Menu\MusicCredits.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SettingsMenu" Collapsed="true">
+    <Position X="18.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQCAAAAAAAAAA=</HashCode>
+      <FileName>Assets\FacebookSDK\Examples\CloudAndroid\Scripts\SettingsMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Stats" Collapsed="true">
+    <Position X="18.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAEIAAAAAAAAAAIAAAACAIAAAEAAAACAA=</HashCode>
+      <FileName>Assets\Scripts\Main Menu\Stats.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Store" Collapsed="true">
+    <Position X="18.25" Y="2" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AMQgAAAAICAEAQAAAAAgACAAAAAAAAAIAQIQAAACiAA=</HashCode>
+      <FileName>Assets\Scripts\Main Menu\Store.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameData" Collapsed="true">
+    <Position X="13.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAACAAAAAAAAAAAAAAAAYAEAAAAQEAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Saving\GameData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SettingsData" Collapsed="true">
+    <Position X="13.75" Y="1" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAgAAAAAAAAAAAQAIAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Saving\SettingsData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdsManager" Collapsed="true">
+    <Position X="11.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAACAAAAAAAEAAAAAAABAAAAAAAAAIwEA=</HashCode>
+      <FileName>Assets\Scripts\Unity Services\AdsManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AnalyticsManager">
+    <Position X="11.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Unity Services\AnalyticsManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameAds" Collapsed="true">
+    <Position X="11.25" Y="3.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>EBQAAAgAAAQAACQAQgAACEAAAAAAQBAAAAAAgAgIwEA=</HashCode>
+      <FileName>Assets\Scripts\Unity Services\GameAds.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="IAPs" Collapsed="true">
+    <Position X="11.25" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AggAAAAIBCMAAAAAAAEhAAACAAAgAAABSAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Unity Services\IAPs.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AudioManager" Collapsed="true">
+    <Position X="7.25" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAgCFAAAAJEAQIAAAAAVQAAAQEAAAGA=</HashCode>
+      <FileName>Assets\Scripts\AudioManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EventManager" Collapsed="true">
+    <Position X="7.25" Y="1.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACIAAICAIAAASIQgAAAAAgAEAAA=</HashCode>
+      <FileName>Assets\Scripts\EventManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FacebookManager" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAIAAAEAgAAAAAAQAAAAAAABEA=</HashCode>
+      <FileName>Assets\Scripts\FacebookManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sound" Collapsed="true">
+    <Position X="7.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Sound.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SwapCharacter" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAABgABAAAACAAAAAAAAAAAACAAACAAA=</HashCode>
+      <FileName>Assets\Scripts\SwapCharacter.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
