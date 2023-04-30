@@ -292,7 +292,7 @@ public class SpawnBuilding : MonoBehaviour
                 int spawnFlyingObjectType = ((int)player.currentWorld);
                 obstacleToSpawn = Instantiate(flyingObjects[spawnFlyingObjectType].gameObject);
                 x = newSpawnBuildingData.buildingRightSide;
-                y = newSpawnBuildingData.buildingHeight;// + 2.5f;
+                y = newSpawnBuildingData.buildingHeight;
                 Vector2 flyingObjectPosition = new Vector2(x, y);
                 obstacleToSpawn.transform.position = flyingObjectPosition;
                 break;

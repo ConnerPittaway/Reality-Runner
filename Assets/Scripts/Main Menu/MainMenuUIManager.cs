@@ -21,12 +21,6 @@ public class MainMenuUIManager : MonoBehaviour
     public TMP_Text highScore;
     public TMP_Text characterText;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    
-    }
-
     public void startGame()
     {
         AudioManager.Instance.StartGameAudio();
