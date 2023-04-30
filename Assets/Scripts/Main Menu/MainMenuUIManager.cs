@@ -93,8 +93,8 @@ public class MainMenuUIManager : MonoBehaviour
             case GlobalDataManager.Characters.BOXY:
                 name = "Boxy";
                 break;
-            case GlobalDataManager.Characters.SHROUD3:
-                name = "Shroud 3";
+            case GlobalDataManager.Characters.FIONA:
+                name = "Fiona";
                 break;
         }
         characterText.text = name;

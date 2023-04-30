@@ -6,7 +6,7 @@ public class SwapCharacter : MonoBehaviour
 {
     public AnimatorOverrideController shroud;
     public AnimatorOverrideController boxy;
-    public AnimatorOverrideController shroud3;
+    public AnimatorOverrideController fiona;
 
     // Start is called before the first frame update
     void Start()
@@ -25,8 +25,8 @@ public class SwapCharacter : MonoBehaviour
                 case GlobalDataManager.Characters.BOXY:
                     LoadBoxy();
                     break;
-                case GlobalDataManager.Characters.SHROUD3:
-                    LoadShroud3();
+                case GlobalDataManager.Characters.FIONA:
+                    LoadFiona();
                     break;
                 default:
                     Debug.LogError("No Character Assigned");
@@ -51,8 +51,8 @@ public class SwapCharacter : MonoBehaviour
         GetComponent<Animator>().runtimeAnimatorController = boxy as RuntimeAnimatorController;
     }
 
-    public void LoadShroud3()
+    public void LoadFiona()
     {
-        GetComponent<Animator>().runtimeAnimatorController = shroud3 as RuntimeAnimatorController;
+        GetComponent<Animator>().runtimeAnimatorController = fiona as RuntimeAnimatorController;
     }
 }

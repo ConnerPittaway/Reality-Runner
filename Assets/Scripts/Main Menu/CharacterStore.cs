@@ -67,9 +67,9 @@ public class CharacterStore : MonoBehaviour
         StartCoroutine(AnimateUISprite());
     }
 
-    public void OnShroud3Selected()
+    public void OnFionaSelected()
     {
-        characterToSelect = GlobalDataManager.Characters.SHROUD3;
+        characterToSelect = GlobalDataManager.Characters.FIONA;
         CheckCharacter();
         StopUIAnimation();
         StartCoroutine(AnimateUISprite());

@@ -12102,7 +12102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shroud: {fileID: 0}
   boxy: {fileID: 0}
-  shroud3: {fileID: 0}
+  fiona: {fileID: 0}
 --- !u!95 &1758629730
 Animator:
   serializedVersion: 4
@@ -12992,7 +12992,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shroud: {fileID: 22100000, guid: 866aa99aeed666242ba7f8e20c83b964, type: 2}
   boxy: {fileID: 22100000, guid: 3c73bf200feda0e48a325d28614afecf, type: 2}
-  shroud3: {fileID: 22100000, guid: a2f513061f4668c438162f4e86720905, type: 2}
+  fiona: {fileID: 22100000, guid: 31a4ffee5f50af649b6616ae1f09343d, type: 2}
 --- !u!1 &1843853190
 GameObject:
   m_ObjectHideFlags: 0

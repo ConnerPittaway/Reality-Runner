@@ -18,7 +18,10 @@ public class GlobalDataManager : MonoBehaviour
     {
         SHROUD,
         BOXY,
-        SHROUD3
+        FIONA,
+        HAPPY,
+        SPARKLE,
+        SPUDERMAN
     }
     
     //Save and Load System
