@@ -14905,8 +14905,8 @@ MonoBehaviour:
   timeOfLastSave: 0
   currentlySelectedCharacter: 0
   boughtCharacters:
-    m_keys: 000000000100000002000000
-    m_values: 010000
+    m_keys: 000000000100000002000000030000000400000005000000
+    m_values: 010000000000
   timeRewardOpened: 0
   checkCloud: 0
 --- !u!1 &1144343097
