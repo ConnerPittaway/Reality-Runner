@@ -5,7 +5,7 @@ using UnityEngine;
 public class SwapCharacter : MonoBehaviour
 {
     public AnimatorOverrideController shroud;
-    public AnimatorOverrideController shroud2;
+    public AnimatorOverrideController boxy;
     public AnimatorOverrideController shroud3;
 
     // Start is called before the first frame update
@@ -22,8 +22,8 @@ public class SwapCharacter : MonoBehaviour
                 case GlobalDataManager.Characters.SHROUD:
                     LoadShroud();
                     break;
-                case GlobalDataManager.Characters.SHROUD2:
-                    LoadShroud2();
+                case GlobalDataManager.Characters.BOXY:
+                    LoadBoxy();
                     break;
                 case GlobalDataManager.Characters.SHROUD3:
                     LoadShroud3();
@@ -46,9 +46,9 @@ public class SwapCharacter : MonoBehaviour
         GetComponent<Animator>().runtimeAnimatorController = shroud as RuntimeAnimatorController;
     }
 
-    public void LoadShroud2()
+    public void LoadBoxy()
     {
-        GetComponent<Animator>().runtimeAnimatorController = shroud2 as RuntimeAnimatorController;
+        GetComponent<Animator>().runtimeAnimatorController = boxy as RuntimeAnimatorController;
     }
 
     public void LoadShroud3()

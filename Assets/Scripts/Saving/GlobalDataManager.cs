@@ -17,7 +17,7 @@ public class GlobalDataManager : MonoBehaviour
     public enum Characters
     {
         SHROUD,
-        SHROUD2,
+        BOXY,
         SHROUD3
     }
     

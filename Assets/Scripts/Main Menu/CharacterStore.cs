@@ -59,9 +59,9 @@ public class CharacterStore : MonoBehaviour
         StartCoroutine(AnimateUISprite());
     }
 
-    public void OnShroud2Selected()
+    public void OnBoxySelected()
     {
-        characterToSelect = GlobalDataManager.Characters.SHROUD2;
+        characterToSelect = GlobalDataManager.Characters.BOXY;
         CheckCharacter();
         StopUIAnimation();
         StartCoroutine(AnimateUISprite());

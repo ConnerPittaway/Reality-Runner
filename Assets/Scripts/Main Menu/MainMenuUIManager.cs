@@ -90,8 +90,8 @@ public class MainMenuUIManager : MonoBehaviour
             case GlobalDataManager.Characters.SHROUD:
                 name = "Shroud";
                 break;
-            case GlobalDataManager.Characters.SHROUD2:
-                name = "Shroud 2";
+            case GlobalDataManager.Characters.BOXY:
+                name = "Boxy";
                 break;
             case GlobalDataManager.Characters.SHROUD3:
                 name = "Shroud 3";

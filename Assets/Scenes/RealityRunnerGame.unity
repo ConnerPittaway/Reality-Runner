@@ -12101,7 +12101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shroud: {fileID: 0}
-  shroud2: {fileID: 0}
+  boxy: {fileID: 0}
   shroud3: {fileID: 0}
 --- !u!95 &1758629730
 Animator:
@@ -12113,7 +12113,7 @@ Animator:
   m_GameObject: {fileID: 1758629728}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: a2f513061f4668c438162f4e86720905, type: 2}
+  m_Controller: {fileID: 22100000, guid: 3c73bf200feda0e48a325d28614afecf, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -12991,7 +12991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shroud: {fileID: 22100000, guid: 866aa99aeed666242ba7f8e20c83b964, type: 2}
-  shroud2: {fileID: 22100000, guid: 4f8793217d0a42944babfc899740a3f0, type: 2}
+  boxy: {fileID: 22100000, guid: 3c73bf200feda0e48a325d28614afecf, type: 2}
   shroud3: {fileID: 22100000, guid: a2f513061f4668c438162f4e86720905, type: 2}
 --- !u!1 &1843853190
 GameObject:

@@ -4119,14 +4119,14 @@ MonoBehaviour:
     - {fileID: 1360132907, guid: 192f1c1e9af67da45b8d3a2c06c15692, type: 3}
     - {fileID: -17487433, guid: 192f1c1e9af67da45b8d3a2c06c15692, type: 3}
   - spriteSheet:
-    - {fileID: 1681209633, guid: 16497ca8db47e6b408e505f4b194466d, type: 3}
-    - {fileID: -2024255793, guid: 16497ca8db47e6b408e505f4b194466d, type: 3}
-    - {fileID: 663900634, guid: 16497ca8db47e6b408e505f4b194466d, type: 3}
-    - {fileID: 725811457, guid: 16497ca8db47e6b408e505f4b194466d, type: 3}
-    - {fileID: -1167194201, guid: 16497ca8db47e6b408e505f4b194466d, type: 3}
-    - {fileID: 658994475, guid: 16497ca8db47e6b408e505f4b194466d, type: 3}
-    - {fileID: 1359297976, guid: 16497ca8db47e6b408e505f4b194466d, type: 3}
-    - {fileID: 1502680653, guid: 16497ca8db47e6b408e505f4b194466d, type: 3}
+    - {fileID: -435717366, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
+    - {fileID: -195156735, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
+    - {fileID: 1661311035, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
+    - {fileID: 1398763092, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
+    - {fileID: -615082896, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
+    - {fileID: 765088032, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
+    - {fileID: -2036220553, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
+    - {fileID: -1754066662, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
   - spriteSheet:
     - {fileID: -467562187, guid: 1c58a2dca25547244953ac3330aeda2e, type: 3}
     - {fileID: 2036287784, guid: 1c58a2dca25547244953ac3330aeda2e, type: 3}
@@ -5100,14 +5100,14 @@ MonoBehaviour:
     - {fileID: 1360132907, guid: 192f1c1e9af67da45b8d3a2c06c15692, type: 3}
     - {fileID: -17487433, guid: 192f1c1e9af67da45b8d3a2c06c15692, type: 3}
   - spriteSheet:
-    - {fileID: 1681209633, guid: 16497ca8db47e6b408e505f4b194466d, type: 3}
-    - {fileID: -2024255793, guid: 16497ca8db47e6b408e505f4b194466d, type: 3}
-    - {fileID: 663900634, guid: 16497ca8db47e6b408e505f4b194466d, type: 3}
-    - {fileID: 725811457, guid: 16497ca8db47e6b408e505f4b194466d, type: 3}
-    - {fileID: -1167194201, guid: 16497ca8db47e6b408e505f4b194466d, type: 3}
-    - {fileID: 658994475, guid: 16497ca8db47e6b408e505f4b194466d, type: 3}
-    - {fileID: 1359297976, guid: 16497ca8db47e6b408e505f4b194466d, type: 3}
-    - {fileID: 1502680653, guid: 16497ca8db47e6b408e505f4b194466d, type: 3}
+    - {fileID: -435717366, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
+    - {fileID: -195156735, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
+    - {fileID: 1661311035, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
+    - {fileID: 1398763092, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
+    - {fileID: -615082896, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
+    - {fileID: 765088032, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
+    - {fileID: -2036220553, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
+    - {fileID: -1754066662, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
   - spriteSheet:
     - {fileID: -467562187, guid: 1c58a2dca25547244953ac3330aeda2e, type: 3}
     - {fileID: 2036287784, guid: 1c58a2dca25547244953ac3330aeda2e, type: 3}
@@ -13689,7 +13689,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Shroud 2
+  m_text: Boxy
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bdac85d6f4d230a44b5318f987241399, type: 2}
   m_sharedMaterial: {fileID: -4354188635747516789, guid: bdac85d6f4d230a44b5318f987241399, type: 2}
@@ -16049,7 +16049,7 @@ GameObject:
   - component: {fileID: 1267681434}
   - component: {fileID: 1267681433}
   m_Layer: 5
-  m_Name: Shroud 2
+  m_Name: Boxy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16137,7 +16137,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 284763078}
         m_TargetAssemblyTypeName: CharacterStore, Assembly-CSharp
-        m_MethodName: OnShroud2Selected
+        m_MethodName: OnBoxySelected
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
