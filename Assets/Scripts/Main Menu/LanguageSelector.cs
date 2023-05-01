@@ -14,12 +14,6 @@ public class LanguageSelector : MonoBehaviour
         currentLanguage = GlobalSettingsManager.Instance.currentlySelectedLanguage;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SelectUK()
     {
         currentLanguage = GlobalSettingsManager.Languages.ENGLISHUK;

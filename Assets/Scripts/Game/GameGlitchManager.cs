@@ -100,11 +100,4 @@ public class GameGlitchManager : MonoBehaviour
         EventManager.Death -= EventManager_OnDeath;
         EventManager.PortalOpened -= EventManager_OnPortal;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 }

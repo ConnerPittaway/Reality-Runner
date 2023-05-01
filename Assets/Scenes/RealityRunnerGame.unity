@@ -6245,17 +6245,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemButton: {fileID: 812880688}
-  canSpawnPortal: 0
   LoadingBar: {fileID: 956679791}
-  TextProgress: {fileID: 0}
-  portalImage: {fileID: 0}
+  itemImage: {fileID: 0}
   textProgress: {fileID: 0}
   LoadingBarImage: {fileID: 956679792}
   currentAmount: 0
   UIController: {fileID: 0}
   startedRoutines: 0
   player: {fileID: 1843588660}
-  speed: 30
   usedItem: 0
   forcefieldEffect: {fileID: 593774600}
 --- !u!1 &878959577
@@ -14012,17 +14009,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   portalButton: {fileID: 1744289321}
-  canSpawnPortal: 0
+  isSpawningPortal: 0
   LoadingBar: {fileID: 2010535644}
-  TextProgress: {fileID: 142337109}
   portalImage: {fileID: 750216606}
-  textProgress: {fileID: 0}
+  textProgress: {fileID: 142337110}
   LoadingBarImage: {fileID: 2010535642}
   currentAmount: 0
   UIController: {fileID: 750216608}
   startedRoutines: 0
   player: {fileID: 1843588660}
-  speed: 30
 --- !u!224 &1934363174
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14145,7 +14140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e9d1c188ea7c0e47b3e579416c73442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rp: {fileID: 1934363173}
+  portalRadial: {fileID: 1934363173}
   player: {fileID: 1843588660}
   buildingHeight: 0
   buildingRightSide: 0

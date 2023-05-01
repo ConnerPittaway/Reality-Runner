@@ -27,11 +27,6 @@ public class Parallax : MonoBehaviour
         right = transform.position.x + (parentBoundsFull);
         screenLeft = Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 0f, 0f)).x;
     }
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     private void FixedUpdate()
     {

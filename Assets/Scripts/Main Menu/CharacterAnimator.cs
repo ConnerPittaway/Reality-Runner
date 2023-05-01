@@ -9,7 +9,6 @@ public class spriteListClass
     public List<Sprite> spriteSheet;
 }
 
-
 public class CharacterAnimator : MonoBehaviour
 {
 
@@ -17,10 +16,6 @@ public class CharacterAnimator : MonoBehaviour
     public float animationSpeed = .02f;
     public List<spriteListClass> nestedSpriteList = new List<spriteListClass>();
     private int currentCharacter = 0;
-    private void Start()
-    {
-        
-    }
 
     public void StopUIAnimation()
     {

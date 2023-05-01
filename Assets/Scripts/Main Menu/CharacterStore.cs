@@ -17,12 +17,6 @@ public class CharacterStore : MonoBehaviour
     public float animationSpeed = .02f;
     public List<spriteListClass> nestedSpriteList = new List<spriteListClass>();
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     void OnEnable()
     {
         characterToSelect = GlobalDataManager.Instance.currentlySelectedCharacter;
