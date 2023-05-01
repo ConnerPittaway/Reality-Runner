@@ -49,14 +49,12 @@ public class ItemRadial : MonoBehaviour
 
     private void Awake()
     {
-        canSpawnPortal = false;
-       // textProgress = TextProgress.GetComponent<TMPro.TextMeshProUGUI>();
         LoadingBarImage = LoadingBar.GetComponent<Image>();
     }
+
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(currentAmount);
         if(player.heldItem != PlayerController.ItemTypes.NONE)
         {
             itemButton.interactable = true;

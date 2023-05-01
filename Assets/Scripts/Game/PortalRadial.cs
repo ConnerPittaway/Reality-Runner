@@ -48,6 +48,7 @@ public class PortalRadial : MonoBehaviour
         isSpawningPortal = false;
         LoadingBarImage = LoadingBar.GetComponent<Image>();
     }
+
     // Update is called once per frame
     void Update()
     {
