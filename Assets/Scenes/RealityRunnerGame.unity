@@ -12679,6 +12679,55 @@ MonoBehaviour:
   spriteRenderers: []
   background1: {fileID: 1591884919}
   background2: {fileID: 1294083564}
+--- !u!1 &1817281063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1817281065}
+  - component: {fileID: 1817281064}
+  m_Layer: 0
+  m_Name: Animators
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1817281064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817281063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 732a8a3a51867e34c804115055ff1790, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  staticAnimators: []
+  fallingAnimators: []
+  flyingAnimators:
+  - {fileID: 22100000, guid: 3c73bf200feda0e48a325d28614afecf, type: 2}
+  - {fileID: 22100000, guid: 866aa99aeed666242ba7f8e20c83b964, type: 2}
+--- !u!4 &1817281065
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817281063}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -26.286957, y: 1.361219, z: -0.27924183}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1818820671
 GameObject:
   m_ObjectHideFlags: 0

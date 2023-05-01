@@ -226,5 +226,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenLeft: 0
+  screenRight: 0
+  routineStarted: 0
   positionToMoveTo: {x: 0, y: 0}
+  animator: {fileID: 0}
   targetValue: 0

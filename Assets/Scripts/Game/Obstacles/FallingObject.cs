@@ -2,25 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FallingObject : MonoBehaviour
+public class FallingObject : Object
 {
     PlayerController player;
     public float screenLeft;
     public float screenRight;
     public bool routineStarted;
     public Vector2 positionToMoveTo;
+    public float targetValue;
+    public float screenTop;
+
+    public override void SetStartPosition(Transform newSpawnedBuildingTransform, SpawnBuilding newSpawnedBuildingData, BoxCollider2D newSpawnedBuildingCollider)
+    {
+        BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
+        targetValue = newSpawnedBuildingData.buildingHeight + (boxCollider.size.y / 2);
+        float rightSideChild = newSpawnedBuildingTransform.position.x + newSpawnedBuildingCollider.size.x / 2;
+        float x = Random.Range(newSpawnedBuildingTransform.position.x - (newSpawnedBuildingCollider.size.x / 4), rightSideChild);
+        float y = screenTop;
+        Vector2 fallingObjectPosition = new Vector2(x, y);
+        transform.position = fallingObjectPosition;
+    }
 
     private void Awake()
     {
         player = GameObject.Find("Player").GetComponent<PlayerController>();
         screenLeft = Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 0f, 0f)).x;
         screenRight = Camera.main.ViewportToWorldPoint(new Vector3(1.0f, 0.0f, 0.0f)).x;
-
+        screenTop = Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 1f, 0f)).y;
         //Sub to Portal Event
     }
 
     // Start is called before the first frame update
-    public float targetValue;
+
 
     void Start()
     {
