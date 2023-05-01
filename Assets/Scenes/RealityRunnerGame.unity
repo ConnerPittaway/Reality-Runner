@@ -12882,7 +12882,7 @@ MonoBehaviour:
   currentJumpTime: 0
   jumpThreshold: 0.5
   maximumAcceleration: 5
-  acceleration: 2.5
+  acceleration: 2
   maxSpeed: 70
   distance: 0
   distanceDampener: 0.6

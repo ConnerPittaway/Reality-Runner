@@ -166,10 +166,8 @@ public class SpawnBuilding : MonoBehaviour
 
         float maxX = totalTime * player.velocity.x;
         maxX *= buildingXReduction;
-        maxX += buildingRightSide;
-
-        float minX = buildingRightSide + 10.0f; 
-
+        float minX = buildingRightSide + 5.0f;
+        maxX += minX;
         float buildingX = Random.Range(minX, maxX);
 
         //Center of the building

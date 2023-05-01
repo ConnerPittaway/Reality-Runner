@@ -83,6 +83,11 @@ public class PlayerController : MonoBehaviour
         pos.x = screenLeft - (Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 0f, 0f)).x / 8.0f);
         transform.position = pos;
 
+        GameObject firstBuilding = GameObject.FindGameObjectWithTag("Building");
+        Vector2 buildingPos = firstBuilding.transform.position;
+        buildingPos.x = screenLeft;
+        firstBuilding.transform.position = buildingPos;
+
         Physics2D.gravity = new Vector2(0, gravity);
         isPaused = false;
 
