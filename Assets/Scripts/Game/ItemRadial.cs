@@ -6,17 +6,14 @@ using UnityEngine.UI;
 public class ItemRadial : MonoBehaviour
 {
     public Button itemButton;
-    public bool canSpawnPortal;
     public Transform LoadingBar;
-    public Transform TextProgress;
-    public Image portalImage;
+    public Image itemImage;
     public TMPro.TextMeshProUGUI textProgress;
     public Image LoadingBarImage;
     public float currentAmount;
     public UISpriteAnimate UIController;
     public bool startedRoutines;
     public PlayerController player;
-    [SerializeField] private float speed;
     public bool usedItem;
 
     //Item Effects

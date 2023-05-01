@@ -12,8 +12,8 @@ public class SpawnBuilding : MonoBehaviour
         FLYINGBOX
     };
 
-    //Radial Progress (check if portal can be spawned)
-    public RadialProgress rp;
+    //Portal Progress (check if portal can be spawned)
+    public PortalRadial portalRadial;
 
     //Player
     public PlayerController player;
@@ -191,7 +191,7 @@ public class SpawnBuilding : MonoBehaviour
         //To:Do Abstract Further
 
         //Check for Portal Spawn
-        if (rp.canSpawnPortal)
+        if (portalRadial.isSpawningPortal)
         {
             float y;
             GameObject portal = Instantiate(portalTemplate.gameObject);
@@ -208,7 +208,7 @@ public class SpawnBuilding : MonoBehaviour
             float x = leftSide - gap;
             Vector2 portalPosition = new Vector2(x, y);
             portal.transform.position = portalPosition;
-            rp.canSpawnPortal = false;
+            portalRadial.isSpawningPortal = false;
         }
 
         //Spawn Obstacles
