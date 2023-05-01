@@ -35,11 +35,18 @@ public class ItemRadial : MonoBehaviour
         player.heldItem = PlayerController.ItemTypes.NONE;
         currentAmount = 100.0f;
         itemButton.interactable = false;
-        Debug.Log("Button");
-        forcefieldEffect.SetActive(true);
+        startedRoutines = false;
+
+        switch(player.activeItem)
+        {
+            case PlayerController.ItemTypes.SHIELD:
+                forcefieldEffect.SetActive(true);
+                break;
+        }
+
         //portalImage.enabled = false;
         //UIController.Func_StopUIAnim();
-        startedRoutines = false;
+
     }
 
     private void Awake()
@@ -79,9 +86,16 @@ public class ItemRadial : MonoBehaviour
                         //startedRoutines = true;
                     }
                 usedItem = !usedItem;
-                player.activeItem = PlayerController.ItemTypes.NONE;
-                forcefieldEffect.SetActive(false);
                 currentAmount = 0;
+
+                switch (player.activeItem)
+                {
+                    case PlayerController.ItemTypes.SHIELD:
+                        forcefieldEffect.SetActive(false);
+                        break;
+                }
+                player.activeItem = PlayerController.ItemTypes.NONE;
+
             }
         }
         LoadingBarImage.fillAmount = currentAmount / 100;
