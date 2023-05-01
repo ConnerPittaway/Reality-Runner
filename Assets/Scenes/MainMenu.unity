@@ -2550,8 +2550,10 @@ MonoBehaviour:
   - soundName: Portal
     audioClip: {fileID: 8300000, guid: 2c844afbcb5e017439fc19ad71ebd733, type: 3}
   musicSources:
-  - {fileID: 289528812}
-  - {fileID: 83570958}
+    m_keys: 0000000001000000
+    m_values:
+    - {fileID: 289528812}
+    - {fileID: 83570958}
   sfxSource: {fileID: 603368990}
   mainMenuTrack: {fileID: 408628198}
   activeTrack: 0

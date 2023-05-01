@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnBuilding : MonoBehaviour
 {
     //Obstacle Types 
-    public enum Obstacles
+    public enum Objects
     {
         BOX,
         FALLINGGBOX,
@@ -36,7 +36,7 @@ public class SpawnBuilding : MonoBehaviour
     private float buildingYReduction = 0.6f;
 
     //Objects
-    public StaticObject boxTemplate;
+    public StaticObject staticObjectTemplate;
     public Portal portalTemplate;
     public FallingObject fallingObjectTemplate;
     public FlyingObject flyingObjectTemplate;
@@ -200,25 +200,25 @@ public class SpawnBuilding : MonoBehaviour
             portalRadial.isSpawningPortal = false;
         }
 
-        //Spawn Obstacles
+        //Spawn Objects
         int boxSpawnObject = Random.Range(0, 2);
         if (boxSpawnObject == 1)
         {
             int boxNumber = Random.Range(2, 3);
-            createObstacle(Obstacles.BOX, boxNumber);
+            createObject(Objects.BOX, boxNumber);
         }
 
         int spawnFallingObject = Random.Range(0, 4);
         if (spawnFallingObject == 1)
         {
-            createObstacle(Obstacles.FALLINGGBOX);
+            createObject(Objects.FALLINGGBOX);
         }
 
 
         int spawnFlyingObject = Random.Range(0, 5);
         if (spawnFlyingObject == 1)
         {
-            createObstacle(Obstacles.FLYINGBOX);
+            createObject(Objects.FLYINGBOX);
         }
 
         int spawnForcefield;
@@ -243,20 +243,20 @@ public class SpawnBuilding : MonoBehaviour
     }
 
     //Factory
-    private void createObstacle(Obstacles obstacle, int numberToSpawn = 1)
+    private void createObject(Objects objectType, int numberToSpawn = 1)
     {
         GameObject obstacleToSpawn = null;
         for (int i = 0; i < numberToSpawn; i++)
         {
-            switch (obstacle)
+            switch (objectType)
             {
-                case Obstacles.BOX:
-                    obstacleToSpawn = Instantiate(boxTemplate.gameObject);
+                case Objects.BOX:
+                    obstacleToSpawn = Instantiate(staticObjectTemplate.gameObject);
                     break;
-                case Obstacles.FALLINGGBOX:
+                case Objects.FALLINGGBOX:
                     obstacleToSpawn = Instantiate(fallingObjectTemplate.gameObject);
                     break;
-                case Obstacles.FLYINGBOX:
+                case Objects.FLYINGBOX:
                     obstacleToSpawn = Instantiate(flyingObjects[player.currentWorld].gameObject);
                     break;
             }

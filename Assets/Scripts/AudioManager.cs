@@ -10,7 +10,6 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
     public Sound[] musicSound, sfxSounds;
-    //public List<AudioSource> musicSources;
     public SerializableDictionary<backgrounds.Worlds, AudioSource> musicSources;
     public AudioSource sfxSource;
     public AudioSource mainMenuTrack;
