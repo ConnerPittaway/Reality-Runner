@@ -19,6 +19,11 @@ public static class EventManager
     public static event UnityAction PortalOpened;
     public static void OnPortalOpened() => PortalOpened?.Invoke();
 
+    public static event UnityAction GamePaused;
+    public static void OnGamePaused() => GamePaused.Invoke();
+
+    public static event UnityAction GameResumed;
+    public static void OnGameResumed() => GameResumed.Invoke();
 
     //Settings
     public static event UnityAction<float> AudioChanged;

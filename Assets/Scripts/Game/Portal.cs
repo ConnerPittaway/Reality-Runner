@@ -17,16 +17,19 @@ public class Portal : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector2 pos = transform.position;
-
-        pos.x -= player.velocity.x * Time.fixedDeltaTime;
-
-        if (pos.x < screenLeft)
+        if (!player.isPaused)
         {
-            Destroy(gameObject);
-        }
+            Vector2 pos = transform.position;
 
-        transform.position = pos;
+            pos.x -= player.velocity.x * Time.fixedDeltaTime;
+
+            if (pos.x < screenLeft)
+            {
+                Destroy(gameObject);
+            }
+
+            transform.position = pos;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

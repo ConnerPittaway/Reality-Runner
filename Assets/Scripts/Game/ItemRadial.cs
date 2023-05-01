@@ -44,9 +44,10 @@ public class ItemRadial : MonoBehaviour
                 break;
         }
 
-        //portalImage.enabled = false;
-        //UIController.Func_StopUIAnim();
-
+        LeanTween.value(gameObject, currentAmount, 0, 2.5f).setOnUpdate((float val)=>
+        {
+            currentAmount = val;
+        }).setOnComplete(itemFinished);
     }
 
     private void Awake()
@@ -58,6 +59,7 @@ public class ItemRadial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(currentAmount);
         if(player.heldItem != PlayerController.ItemTypes.NONE)
         {
             itemButton.interactable = true;
@@ -66,38 +68,19 @@ public class ItemRadial : MonoBehaviour
         {
             itemButton.interactable = false;
         }
-
-        if (!player.isPaused && usedItem)
-        {
-            if (currentAmount - (speed * Time.deltaTime) >= 0)
-            {
-                currentAmount -= speed * Time.deltaTime;
-                //textProgress.text = ((int)currentAmount).ToString() + "%";
-            }
-            else
-            {
-                Debug.Log("Running Enable");
-                // textProgress.text = "";
-                   // portalImage.enabled = true;
-                    //itemButton.interactable = true;
-                    if (!startedRoutines)
-                    {
-                        // UIController.StartUIAnimation();
-                        //startedRoutines = true;
-                    }
-                usedItem = !usedItem;
-                currentAmount = 0;
-
-                switch (player.activeItem)
-                {
-                    case PlayerController.ItemTypes.SHIELD:
-                        forcefieldEffect.SetActive(false);
-                        break;
-                }
-                player.activeItem = PlayerController.ItemTypes.NONE;
-
-            }
-        }
         LoadingBarImage.fillAmount = currentAmount / 100;
+    }
+
+    void itemFinished()
+    {
+        usedItem = !usedItem;
+        currentAmount = 0;
+        switch (player.activeItem)
+        {
+            case PlayerController.ItemTypes.SHIELD:
+                forcefieldEffect.SetActive(false);
+                break;
+        }
+        player.activeItem = PlayerController.ItemTypes.NONE;
     }
 }

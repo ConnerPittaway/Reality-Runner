@@ -40,7 +40,6 @@ public class forcefieldPickup : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             player.heldItem = PlayerController.ItemTypes.SHIELD;
-            //player.itemRadial.currentAmount = 100;
             player.shieldsCollected++;
             Destroy(gameObject);
         }

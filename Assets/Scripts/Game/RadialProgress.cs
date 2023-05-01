@@ -64,4 +64,9 @@ public class RadialProgress : MonoBehaviour
         }
         LoadingBarImage.fillAmount = currentAmount / 100;
     }
+
+    private void OnDisable()
+    {
+        startedRoutines = false;
+    }
 }
