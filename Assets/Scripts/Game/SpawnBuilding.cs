@@ -40,7 +40,7 @@ public class SpawnBuilding : MonoBehaviour
     public Portal portalTemplate;
     public FallingObject fallingObjectTemplate;
     public FlyingObject flyingObjectTemplate;
-    public List<FlyingObject> flyingObjects;
+    public SerializableDictionary<backgrounds.Worlds, FlyingObject> flyingObjects;
     public forcefieldPickup forceObjectTemplate;
 
     //Max and Min Heights
@@ -257,8 +257,7 @@ public class SpawnBuilding : MonoBehaviour
                     obstacleToSpawn = Instantiate(fallingObjectTemplate.gameObject);
                     break;
                 case Obstacles.FLYINGBOX:
-                    int spawnFlyingObjectType = ((int)player.currentWorld);
-                    obstacleToSpawn = Instantiate(flyingObjects[spawnFlyingObjectType].gameObject);
+                    obstacleToSpawn = Instantiate(flyingObjects[player.currentWorld].gameObject);
                     break;
             }
             obstacleToSpawn.GetComponent<Object>().SetStartPosition(newSpawnBuildingTransform, newSpawnBuildingData, newSpawnBuildingCollider);

@@ -10,7 +10,8 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
     public Sound[] musicSound, sfxSounds;
-    public List<AudioSource> musicSources;
+    //public List<AudioSource> musicSources;
+    public SerializableDictionary<backgrounds.Worlds, AudioSource> musicSources;
     public AudioSource sfxSource;
     public AudioSource mainMenuTrack;
     public backgrounds.Worlds activeTrack;
@@ -34,8 +35,8 @@ public class AudioManager : MonoBehaviour
     public void Start()
     {
         //Load Clips
-        musicSources[0].clip = Array.Find(musicSound, x => x.soundName == "Futuristic City").audioClip;
-        musicSources[1].clip = Array.Find(musicSound, x => x.soundName == "Industrial City").audioClip;
+        musicSources[backgrounds.Worlds.FUTURISTIC].clip = Array.Find(musicSound, x => x.soundName == "Futuristic City").audioClip;
+        musicSources[backgrounds.Worlds.INDUSTRIAL].clip = Array.Find(musicSound, x => x.soundName == "Industrial City").audioClip;
 
         //Set Saved Volume
         //EventManager_OnAudioChanged(GlobalSettingsManager.Instance.audioLevel);
@@ -59,9 +60,9 @@ public class AudioManager : MonoBehaviour
     {
         Debug.Log("Audio Volume: " + audioValue);
         bgmVolume = audioValue;
-        foreach (AudioSource audioSource in musicSources)
+        foreach (var audioSource in musicSources)
         {
-            audioSource.volume = bgmVolume;
+            audioSource.Value.volume = bgmVolume;
         }
         mainMenuTrack.volume = bgmVolume;
     }
@@ -80,15 +81,15 @@ public class AudioManager : MonoBehaviour
 
     public void StopSongs()
     {
-        foreach(AudioSource audioSource in musicSources)
+        foreach(var audioSource in musicSources)
         {
-            audioSource.Stop();
+            audioSource.Value.Stop();
         }
     }
 
     public void SwapSong(backgrounds.Worlds worldToSwapTo)
     {
-        StartCoroutine(FadeTrack(worldToSwapTo, musicSources[(int)worldToSwapTo], musicSources[(int)activeTrack]));
+        StartCoroutine(FadeTrack(worldToSwapTo, musicSources[worldToSwapTo], musicSources[activeTrack]));
     }
 
     private IEnumerator FadeTrack(backgrounds.Worlds world, AudioSource musicSourceToPlay, AudioSource musicSourceToPause)
@@ -115,15 +116,15 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(backgrounds.Worlds world)
     {
-        musicSources[(int)world].Play();
+        musicSources[world].Play();
         activeTrack = world;
     }
 
     public void RestartMusic()
     {
         StopSongs();
-        musicSources[0].volume = bgmVolume;
-        musicSources[0].Play();
+        musicSources[backgrounds.Worlds.FUTURISTIC].volume = bgmVolume;
+        musicSources[backgrounds.Worlds.FUTURISTIC].Play();
         activeTrack = backgrounds.Worlds.FUTURISTIC;
     }
 

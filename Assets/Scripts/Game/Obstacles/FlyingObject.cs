@@ -5,7 +5,6 @@ using UnityEngine;
 public class FlyingObject : Object
 {
     PlayerController player;
-    ObjectAnimators objectAnimators;
     public float screenLeft;
     public float screenRight;
     public float speed = 2.0f;
@@ -23,10 +22,6 @@ public class FlyingObject : Object
         player = GameObject.Find("Player").GetComponent<PlayerController>();
         screenLeft = Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 0f, 0f)).x;
         screenRight = Camera.main.ViewportToWorldPoint(new Vector3(1.0f, 0f, 0f)).x;
-
-        RuntimeAnimatorController animator = GetComponent<RuntimeAnimatorController>();
-        objectAnimators = GameObject.Find("Animators").GetComponent<ObjectAnimators>();
-        animator = objectAnimators.GetFlyingAnimator((int)player.currentWorld) as RuntimeAnimatorController;
 
         //Sub to Portal Event
     }
