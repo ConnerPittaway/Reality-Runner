@@ -52,8 +52,15 @@ public class PlayerController : MonoBehaviour
     public backgrounds.Worlds currentWorld;
 
     //Item Control
-    public bool hasPowerup;
-    public RadialTest2 itemRadial;
+    //public bool hasPowerup;
+    public ItemRadial itemRadial;
+    public enum ItemTypes
+    {
+        NONE,
+        SHIELD
+    }
+    public ItemTypes heldItem;
+    public ItemTypes activeItem;
 
     //UI Elements
     public GameObject mainUI;
@@ -80,6 +87,8 @@ public class PlayerController : MonoBehaviour
         isPaused = false;
 
         currentWorld = backgrounds.Worlds.FUTURISTIC;
+        heldItem = ItemTypes.NONE;
+        activeItem = ItemTypes.NONE;
     }
 
     public void Awake()

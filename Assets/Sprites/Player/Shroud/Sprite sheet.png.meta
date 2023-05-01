@@ -157,9 +157,9 @@ TextureImporter:
       name: Sprite sheet_0
       rect:
         serializedVersion: 2
-        x: 38
+        x: 0
         y: 0
-        width: 114
+        width: 200
         height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -178,10 +178,10 @@ TextureImporter:
       name: Sprite sheet_1
       rect:
         serializedVersion: 2
-        x: 250
+        x: 200
         y: 0
-        width: 106
-        height: 196
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,9 +199,9 @@ TextureImporter:
       name: Sprite sheet_2
       rect:
         serializedVersion: 2
-        x: 438
+        x: 400
         y: 0
-        width: 122
+        width: 200
         height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -220,9 +220,9 @@ TextureImporter:
       name: Sprite sheet_3
       rect:
         serializedVersion: 2
-        x: 627
+        x: 600
         y: 0
-        width: 137
+        width: 200
         height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -241,9 +241,9 @@ TextureImporter:
       name: Sprite sheet_4
       rect:
         serializedVersion: 2
-        x: 821
+        x: 800
         y: 0
-        width: 136
+        width: 200
         height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -262,9 +262,9 @@ TextureImporter:
       name: Sprite sheet_5
       rect:
         serializedVersion: 2
-        x: 1055
+        x: 1000
         y: 0
-        width: 100
+        width: 200
         height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -283,9 +283,9 @@ TextureImporter:
       name: Sprite sheet_6
       rect:
         serializedVersion: 2
-        x: 1217
+        x: 1200
         y: 0
-        width: 135
+        width: 200
         height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -304,9 +304,9 @@ TextureImporter:
       name: Sprite sheet_7
       rect:
         serializedVersion: 2
-        x: 1423
+        x: 1400
         y: 0
-        width: 148
+        width: 200
         height: 200
       alignment: 0
       pivot: {x: 0, y: 0}

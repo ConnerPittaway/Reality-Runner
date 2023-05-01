@@ -235,7 +235,7 @@ public class SpawnBuilding : MonoBehaviour
         }
 
         int spawnForcefield;
-        if (player.hasPowerup)
+        if (player.activeItem != PlayerController.ItemTypes.NONE || player.heldItem != PlayerController.ItemTypes.NONE)
         {
             spawnForcefield = 0;
         }

@@ -47,7 +47,10 @@ public class FlyingObject : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            player.velocity.x *= 0.8f;
+            if (player.activeItem != PlayerController.ItemTypes.SHIELD)
+            {
+                player.velocity.x *= 0.8f;
+            }
             player.obstaclesHit++;
             Destroy(gameObject);
         }

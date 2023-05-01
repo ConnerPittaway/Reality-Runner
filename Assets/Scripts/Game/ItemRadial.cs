@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RadialTest2 : MonoBehaviour
+public class ItemRadial : MonoBehaviour
 {
     public Button itemButton;
     public bool canSpawnPortal;
@@ -18,6 +18,10 @@ public class RadialTest2 : MonoBehaviour
     public PlayerController player;
     [SerializeField] private float speed;
     public bool usedItem;
+
+    //Item Effects
+    public GameObject forcefieldEffect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,10 +31,12 @@ public class RadialTest2 : MonoBehaviour
     public void useItem()
     {
         usedItem = true;
-        player.hasPowerup = true;
+        player.activeItem = player.heldItem;
+        player.heldItem = PlayerController.ItemTypes.NONE;
         currentAmount = 100.0f;
         itemButton.interactable = false;
         Debug.Log("Button");
+        forcefieldEffect.SetActive(true);
         //portalImage.enabled = false;
         //UIController.Func_StopUIAnim();
         startedRoutines = false;
@@ -45,7 +51,7 @@ public class RadialTest2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player.hasPowerup)
+        if(player.heldItem != PlayerController.ItemTypes.NONE)
         {
             itemButton.interactable = true;
         }
@@ -73,7 +79,8 @@ public class RadialTest2 : MonoBehaviour
                         //startedRoutines = true;
                     }
                 usedItem = !usedItem;
-                player.hasPowerup = !player.hasPowerup;
+                player.activeItem = PlayerController.ItemTypes.NONE;
+                forcefieldEffect.SetActive(false);
                 currentAmount = 0;
             }
         }

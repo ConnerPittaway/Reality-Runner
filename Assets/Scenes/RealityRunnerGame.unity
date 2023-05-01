@@ -3708,7 +3708,7 @@ GameObject:
   - component: {fileID: 593774603}
   - component: {fileID: 593774602}
   m_Layer: 0
-  m_Name: Powerup
+  m_Name: ForceField Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6257,6 +6257,7 @@ MonoBehaviour:
   player: {fileID: 1843588660}
   speed: 30
   usedItem: 0
+  forcefieldEffect: {fileID: 593774600}
 --- !u!1 &878959577
 GameObject:
   m_ObjectHideFlags: 0
@@ -12205,9 +12206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac556dd058737304694a8145da9afbf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shroud: {fileID: 0}
-  boxy: {fileID: 0}
-  fiona: {fileID: 0}
   characters:
     m_keys: 
     m_values: []
@@ -12326,7 +12324,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.14, y: 2}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -12368,8 +12366,9 @@ MonoBehaviour:
   playerCollider: {fileID: 1758629732}
   Backgrounds: {fileID: 1797302407}
   currentWorld: 0
-  hasPowerup: 0
   itemRadial: {fileID: 871970891}
+  heldItem: 0
+  activeItem: 0
   mainUI: {fileID: 1092579093}
   numberOfRealities: 0
   coinsEarned: 0
@@ -12851,14 +12850,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.14, y: 2}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1, y: 2}
+  m_Size: {x: 1.5, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &1843588660
 MonoBehaviour:
@@ -12893,8 +12892,9 @@ MonoBehaviour:
   playerCollider: {fileID: 1843588659}
   Backgrounds: {fileID: 1797302407}
   currentWorld: 0
-  hasPowerup: 0
   itemRadial: {fileID: 871970891}
+  heldItem: 0
+  activeItem: 0
   mainUI: {fileID: 1092579093}
   numberOfRealities: 0
   coinsEarned: 0
@@ -13099,9 +13099,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac556dd058737304694a8145da9afbf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shroud: {fileID: 22100000, guid: 866aa99aeed666242ba7f8e20c83b964, type: 2}
-  boxy: {fileID: 22100000, guid: 3c73bf200feda0e48a325d28614afecf, type: 2}
-  fiona: {fileID: 22100000, guid: 31a4ffee5f50af649b6616ae1f09343d, type: 2}
   characters:
     m_keys: 000000000100000002000000030000000400000005000000
     m_values:

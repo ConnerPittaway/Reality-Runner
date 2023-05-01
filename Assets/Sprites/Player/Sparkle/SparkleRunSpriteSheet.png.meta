@@ -145,9 +145,9 @@ TextureImporter:
       name: SparkleRunSpriteSheet_0
       rect:
         serializedVersion: 2
-        x: 10
+        x: 0
         y: 0
-        width: 142
+        width: 200
         height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -166,10 +166,10 @@ TextureImporter:
       name: SparkleRunSpriteSheet_1
       rect:
         serializedVersion: 2
-        x: 221
+        x: 200
         y: 0
-        width: 135
-        height: 196
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,10 +187,10 @@ TextureImporter:
       name: SparkleRunSpriteSheet_2
       rect:
         serializedVersion: 2
-        x: 426
-        y: 6
-        width: 134
-        height: 194
+        x: 400
+        y: 0
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,10 +208,10 @@ TextureImporter:
       name: SparkleRunSpriteSheet_3
       rect:
         serializedVersion: 2
-        x: 627
-        y: 6
-        width: 137
-        height: 194
+        x: 600
+        y: 0
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,9 +229,9 @@ TextureImporter:
       name: SparkleRunSpriteSheet_4
       rect:
         serializedVersion: 2
-        x: 821
+        x: 800
         y: 0
-        width: 136
+        width: 200
         height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -250,9 +250,9 @@ TextureImporter:
       name: SparkleRunSpriteSheet_5
       rect:
         serializedVersion: 2
-        x: 1030
+        x: 1000
         y: 0
-        width: 125
+        width: 200
         height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -271,9 +271,9 @@ TextureImporter:
       name: SparkleRunSpriteSheet_6
       rect:
         serializedVersion: 2
-        x: 1217
+        x: 1200
         y: 0
-        width: 135
+        width: 200
         height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -292,10 +292,10 @@ TextureImporter:
       name: SparkleRunSpriteSheet_7
       rect:
         serializedVersion: 2
-        x: 1406
-        y: 12
-        width: 165
-        height: 188
+        x: 1400
+        y: 0
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
