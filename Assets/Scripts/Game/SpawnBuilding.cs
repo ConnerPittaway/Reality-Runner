@@ -177,8 +177,6 @@ public class SpawnBuilding : MonoBehaviour
 
     private void generateObjects()
     {
-        //To:Do Abstract Further
-
         //Check for Portal Spawn
         if (portalRadial.isSpawningPortal)
         {

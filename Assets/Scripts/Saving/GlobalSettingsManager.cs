@@ -12,8 +12,10 @@ public class GlobalSettingsManager : MonoBehaviour
 
     //Settings Data
     //Audio
-    public float audioLevel = 1;
-    public float preMuteLevel = 1;
+    public float audioLevelMusic = 1;
+    public float preMuteLevelMusic = 1;
+    public float audioLevelSFX = 1;
+    public float preMuteLevelSFX = 1;
     private bool isMuted = false;
 
     //Frame Counter
@@ -47,14 +49,17 @@ public class GlobalSettingsManager : MonoBehaviour
                 settingsData = new SettingsData();
             }
 
-            audioLevel = settingsData.audioLevel;
-            preMuteLevel = settingsData.preMuteLevel;
+            audioLevelMusic = settingsData.audioLevelMusic;
+            preMuteLevelMusic = settingsData.preMuteLevelMusic;
+            audioLevelSFX = settingsData.audioLevelSFX;
+            preMuteLevelSFX = settingsData.preMuteLevelSFX;
             isMuted = settingsData.isMuted;
             currentlySelectedLanguage = settingsData.currentlySelectedLanguage;
             frameCountOn = settingsData.frameCounterOn;
 
 
-            EventManager.AudioChanged += EventManager_OnAudioChanged;
+            EventManager.MusicAudioChanged += EventManager_OnMusicAudioChanged;
+            EventManager.SFXAudioChanged += EventManager_OnSFXAudioChanged;
 
             DontDestroyOnLoad(gameObject);
         }
@@ -69,17 +74,29 @@ public class GlobalSettingsManager : MonoBehaviour
         settingsDataHandler.SaveData<SettingsData>();
     }
 
-    private void EventManager_OnAudioChanged(float audioValue)
+    private void EventManager_OnMusicAudioChanged(float audioValue)
     {
         Debug.Log("Settings Volume: " + audioValue);
-        audioLevel = audioValue;
+        audioLevelMusic = audioValue;
+        SaveSettingsData();
+    }
+
+    private void EventManager_OnSFXAudioChanged(float audioValue)
+    {
+        Debug.Log("SFX Settings Volume: " + audioValue);
+        audioLevelSFX = audioValue;
         SaveSettingsData();
     }
 
     //Audio Volume
-    public float GetAudio()
+    public float GetMusicAudio()
     {
-        return audioLevel;
+        return audioLevelMusic;
+    }
+
+    public float GetSFXAudio()
+    {
+        return audioLevelSFX;
     }
 
     //Audio Muted

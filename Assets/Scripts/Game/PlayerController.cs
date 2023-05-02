@@ -261,6 +261,7 @@ public class PlayerController : MonoBehaviour
                 {
                     velocity.x = 0;
                     velocity.y = 0;
+                    onRoof = false;
                 }
                 else
                 {
@@ -274,6 +275,7 @@ public class PlayerController : MonoBehaviour
                 {
                     velocity.x = 0;
                     velocity.y = 0;
+                    onRoof = false;
                 }
             }
         }

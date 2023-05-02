@@ -38,10 +38,12 @@ public class AudioManager : MonoBehaviour
         musicSources[backgrounds.Worlds.INDUSTRIAL].clip = Array.Find(musicSound, x => x.soundName == "Industrial City").audioClip;
 
         //Set Saved Volume
-        //EventManager_OnAudioChanged(GlobalSettingsManager.Instance.audioLevel);
+        EventManager_OnMusicAudioChanged(GlobalSettingsManager.Instance.audioLevelMusic);
+        EventManager_OnSFXAudioChanged(GlobalSettingsManager.Instance.audioLevelSFX);
 
         //Subscribe to Slider Changes
-        EventManager.AudioChanged += EventManager_OnAudioChanged;
+        EventManager.MusicAudioChanged += EventManager_OnMusicAudioChanged;
+        EventManager.SFXAudioChanged += EventManager_OnSFXAudioChanged;
 
         //Main Menu Music
         if(SceneManager.GetSceneByName("MainMenu") == SceneManager.GetActiveScene())
@@ -55,15 +57,21 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    private void EventManager_OnAudioChanged(float audioValue)
+    private void EventManager_OnMusicAudioChanged(float audioValue)
     {
-        Debug.Log("Audio Volume: " + audioValue);
+        //Debug.Log("Audio Volume: " + audioValue);
         bgmVolume = audioValue;
         foreach (var audioSource in musicSources)
         {
             audioSource.Value.volume = bgmVolume;
         }
         mainMenuTrack.volume = bgmVolume;
+    }
+
+    private void EventManager_OnSFXAudioChanged(float audioValue)
+    {
+        //Debug.Log("SFX Audio Volume: " + audioValue);
+        sfxSource.volume = audioValue;
     }
 
     public void StartGameAudio()

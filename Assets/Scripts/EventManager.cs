@@ -26,8 +26,11 @@ public static class EventManager
     public static void OnGameResumed() => GameResumed.Invoke();
 
     //Settings
-    public static event UnityAction<float> AudioChanged;
-    public static void OnAudioChanged(float audioValue) => AudioChanged?.Invoke(audioValue);
+    public static event UnityAction<float> MusicAudioChanged;
+    public static void OnMusicAudioChanged(float audioValue) => MusicAudioChanged?.Invoke(audioValue);
+
+    public static event UnityAction<float> SFXAudioChanged;
+    public static void OnSFXAudioChanged(float audioValue) => SFXAudioChanged?.Invoke(audioValue);
 
     public static event UnityAction<bool> FrameShowChanged;
     public static void OnFrameShowChanged(bool frameShow) => FrameShowChanged?.Invoke(frameShow);

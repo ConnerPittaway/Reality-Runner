@@ -5,17 +5,16 @@ using UnityEngine.UI;
 
 public class SettingsMenuUI : MonoBehaviour
 {
-    public Slider audioSilder;
+    public Slider musicAudioSilder, sfxAudioSlider;
     public GameObject muteButton, unmuteButton, frameButtonOn, frameButtonOff, languageScreen, audioScreen;
     public bool bootedGameFlag = true;
-    //Main Menu Reference
-    public MainMenuUIManager mainMenu;
 
     // Start is called before the first frame update
     void Start()
     {
-        audioSilder.value = GlobalSettingsManager.Instance.audioLevel;
-        if(GlobalSettingsManager.Instance.GetMuted())
+        musicAudioSilder.value = GlobalSettingsManager.Instance.audioLevelMusic;
+        sfxAudioSlider.value = GlobalSettingsManager.Instance.audioLevelSFX;
+        if (GlobalSettingsManager.Instance.GetMuted())
         {
             muteButton.SetActive(false);
             unmuteButton.SetActive(true);
@@ -59,15 +58,26 @@ public class SettingsMenuUI : MonoBehaviour
         Application.OpenURL("http://unity3d.com/");
     }
 
-    //Audio Slider
-    public void SliderVolumeChanged()
+    //Audio Sliders
+    public void MusicSliderVolumeChanged()
     {
         if(!bootedGameFlag)
         {
             muteButton.SetActive(true);
             unmuteButton.SetActive(false);
             GlobalSettingsManager.Instance.SetMuted(false);
-            EventManager.OnAudioChanged(audioSilder.value);
+            EventManager.OnMusicAudioChanged(musicAudioSilder.value);
+        }
+    }
+
+    public void SFXSliderVolumeChanged()
+    {
+        if (!bootedGameFlag)
+        {
+            muteButton.SetActive(true);
+            unmuteButton.SetActive(false);
+            GlobalSettingsManager.Instance.SetMuted(false);
+            EventManager.OnSFXAudioChanged(sfxAudioSlider.value);
         }
     }
 
@@ -98,22 +108,28 @@ public class SettingsMenuUI : MonoBehaviour
     //Mute and UnMute Buttons
     public void MuteAll()
     {
-        GlobalSettingsManager.Instance.preMuteLevel = audioSilder.value;
-        audioSilder.value = 0;
+        GlobalSettingsManager.Instance.preMuteLevelMusic = musicAudioSilder.value;
+        GlobalSettingsManager.Instance.preMuteLevelSFX = sfxAudioSlider.value;
+        musicAudioSilder.value = 0;
+        sfxAudioSlider.value = 0;
         muteButton.SetActive(false);
         unmuteButton.SetActive(true);
         GlobalSettingsManager.Instance.SetMuted(true);
-        EventManager.OnAudioChanged(0);
+        EventManager.OnMusicAudioChanged(0);
+        EventManager.OnSFXAudioChanged(0);
     }
 
     public void UnMuteAll()
     {
-        GlobalSettingsManager.Instance.audioLevel = GlobalSettingsManager.Instance.preMuteLevel;
-        audioSilder.value = GlobalSettingsManager.Instance.preMuteLevel;
+        GlobalSettingsManager.Instance.audioLevelMusic = GlobalSettingsManager.Instance.preMuteLevelMusic;
+        GlobalSettingsManager.Instance.audioLevelSFX = GlobalSettingsManager.Instance.preMuteLevelSFX;
+        musicAudioSilder.value = GlobalSettingsManager.Instance.preMuteLevelMusic;
+        sfxAudioSlider.value = GlobalSettingsManager.Instance.preMuteLevelSFX;
         muteButton.SetActive(true);
         unmuteButton.SetActive(false);
         GlobalSettingsManager.Instance.SetMuted(false);
-        EventManager.OnAudioChanged(GlobalSettingsManager.Instance.preMuteLevel);
+        EventManager.OnMusicAudioChanged(GlobalSettingsManager.Instance.preMuteLevelMusic);
+        EventManager.OnSFXAudioChanged(GlobalSettingsManager.Instance.preMuteLevelSFX);
     }
 
     public void LoadCloudData()
