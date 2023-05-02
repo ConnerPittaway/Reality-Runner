@@ -91,7 +91,7 @@ public class JsonDataHandler
         }
         else
         {
-            Debug.Log("Is Null");
+            Debug.Log("Firebase Is Null");
         }
     }
 }

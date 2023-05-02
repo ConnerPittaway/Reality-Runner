@@ -291,10 +291,15 @@ public class PlayerController : MonoBehaviour
 
         //Update High Score
         if ((int)distance > GlobalDataManager.Instance.GetHighScore())
+        {
             GlobalDataManager.Instance.UpdateHighScore((int)distance);
+        }
 
         //Update High Score
-        FirebaseManager.Instance.UploadHighScore();
+        if(FirebaseManager.Instance != null)
+        {
+            FirebaseManager.Instance.UploadHighScore();
+        }
 
         //Calculate Coins
         coinsEarned = (int)distance / 100;

@@ -14,9 +14,12 @@ public class Stats : MonoBehaviour
         highScoreText.text = "<u>High Scores</u>\n";
         //Update Scores
         Debug.Log(FirebaseManager.Instance.scoreLeaderboard.Count);
-        foreach (User user in FirebaseManager.Instance.scoreLeaderboard)
+        if(FirebaseManager.Instance != null)
         {
-            highScoreText.text += user.name + " : " + user.score + "\n";
+            foreach (User user in FirebaseManager.Instance.scoreLeaderboard)
+            {
+                highScoreText.text += user.name + " : " + user.score + "\n";
+            }
         }
         //Display High Scores
         leftArrow.SetActive(true);
@@ -46,7 +49,10 @@ public class Stats : MonoBehaviour
                        "\nTotal Coins Earned: " + GlobalStatsData.Instance.totalCoinsEarned.ToString();
 
         //Update Leaderboard
-        FirebaseManager.Instance.GetHighScores();
+        if(FirebaseManager.Instance != null)
+        {
+            FirebaseManager.Instance.GetHighScores();
+        }
 
         EventManager.OnUIElementOpened();
     }

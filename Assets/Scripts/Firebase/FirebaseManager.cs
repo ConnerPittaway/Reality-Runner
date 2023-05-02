@@ -53,8 +53,6 @@ public class FirebaseManager : MonoBehaviour
             var dependencyStatus = task.Result;
             if (dependencyStatus == Firebase.DependencyStatus.Available)
             {
-                // Create and hold a reference to your FirebaseApp,
-                // where app is a Firebase.FirebaseApp property of your application class.
                 app = Firebase.FirebaseApp.DefaultInstance;
 
                 //Intialise Firebase Modules
@@ -67,17 +65,16 @@ public class FirebaseManager : MonoBehaviour
                 InitialiseCloudStorage();
                 Debug.Log("Firebase Cloud Done");
 
-                // Set a flag here to indicate whether Firebase is ready to use by your app.
+                //Firebase Flag
                 fireBaseReady = true;
 
-                //Push Event To Compare Data To Load
             }
             else
             {
                 UnityEngine.Debug.LogError(System.String.Format(
                   "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
 
-                // Firebase Unity SDK is not safe to use here.
+                //Failed -> set instance to null for checks
                 Instance = null;
             }
         });
