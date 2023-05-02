@@ -7,10 +7,15 @@ public static class EventManager
     public static event UnityAction UIElementOpened;
     public static void OnUIElementOpened() => UIElementOpened?.Invoke();
 
-    //Purchase Coins
+    //Purchases
     public static event UnityAction CoinPurchase;
     public static void OnCoinPurchase() => CoinPurchase?.Invoke();
 
+    public static event UnityAction PremiumPurchase;
+    public static void OnPremiumPurchase() => PremiumPurchase?.Invoke();
+
+    public static event UnityAction AllCharactersPurchase;
+    public static void OnAllCharactersPurchase() => AllCharactersPurchase?.Invoke();
 
     //In-Game
     public static event UnityAction Death;

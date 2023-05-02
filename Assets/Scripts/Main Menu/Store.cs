@@ -17,7 +17,13 @@ public class Store : MonoBehaviour
     //Store Pop-Up
     public TMP_Text itemToPurchase;
     public GameObject popUp;
-    
+
+    //Premium and Character Buttons
+    public Button premiumButton;
+    public Button characterButton;
+    public TMP_Text premiumText;
+    public TMP_Text characterText;
+
     //Purchaseables
     public enum Purchases
     {
@@ -38,6 +44,9 @@ public class Store : MonoBehaviour
         {
             freeReward.interactable = false;
         }
+
+        EventManager.PremiumPurchase += UpdatePremiumButton;
+        EventManager.AllCharactersPurchase += UpdateCharacterButton;
     }
 
     private void Update()
@@ -210,9 +219,11 @@ public class Store : MonoBehaviour
                 break;
             case Purchases.ALLCHARACTERS:
                 GlobalDataManager.Instance.UnlockAllCharacters();
+                UpdateCharacterButton();
                 break;
             case Purchases.PREMIUM:
                 GlobalDataManager.Instance.SetPremiumStatus(true);
+                UpdatePremiumButton();
                 break;
         }
         popUp.SetActive(false);
@@ -225,11 +236,38 @@ public class Store : MonoBehaviour
 
     void OnEnable()
     {
+        //Check For Premium and All Characters
+        UpdatePremiumButton();
+        UpdateCharacterButton();
         EventManager.OnUIElementOpened();
+    }
+
+    void UpdatePremiumButton()
+    {
+        if(GlobalDataManager.Instance.GetPremiumStatus())
+        {
+            premiumText.text = "Premium Owned";
+            premiumButton.enabled = false;
+        }
+    }
+
+    void UpdateCharacterButton()
+    {
+        if (!GlobalDataManager.Instance.boughtCharacters.Values.Contains(false))
+        {
+            characterText.text = "All Characters Owned";
+            characterButton.enabled = false;
+        }
     }
 
     void OnDisable()
     {
         popUp.SetActive(false);
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.PremiumPurchase -= UpdatePremiumButton;
+        EventManager.AllCharactersPurchase -= UpdateCharacterButton;
     }
 }

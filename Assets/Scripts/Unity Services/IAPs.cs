@@ -103,11 +103,13 @@ public class IAPs : MonoBehaviour, IStoreListener
         if (product.definition.id == premiumID)
         {
             GlobalDataManager.Instance.SetPremiumStatus(true);
+            EventManager.OnPremiumPurchase();
         }
 
         if (product.definition.id == allCharactersID)
         {
             GlobalDataManager.Instance.UnlockAllCharacters();
+            EventManager.OnAllCharactersPurchase();
         }
 
         Debug.Log($"Purchase Complete - Product: {product.definition.id}");

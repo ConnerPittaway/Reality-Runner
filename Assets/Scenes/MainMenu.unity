@@ -15535,7 +15535,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1149313678
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25437,7 +25437,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1992234718
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25494,6 +25494,10 @@ MonoBehaviour:
   rewardText: {fileID: 1349595421}
   itemToPurchase: {fileID: 1175503051}
   popUp: {fileID: 1970376716}
+  premiumButton: {fileID: 1914200678}
+  characterButton: {fileID: 1731471238}
+  premiumText: {fileID: 1499527839}
+  characterText: {fileID: 1505277165}
 --- !u!1 &2004562628
 GameObject:
   m_ObjectHideFlags: 0
