@@ -223,6 +223,7 @@ public class FirebaseManager : MonoBehaviour
           }
           else if (task.IsCompleted)
           {
+
               DataSnapshot snapshot = task.Result;
               Debug.Log("Number of Users " + snapshot.ChildrenCount);
               foreach (DataSnapshot childData in snapshot.Children)
