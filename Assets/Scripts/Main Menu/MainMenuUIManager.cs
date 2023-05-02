@@ -78,8 +78,6 @@ public class MainMenuUIManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Updating UI");
-
         coins.text = "Coins:\n" + GlobalDataManager.Instance.GetCoins().ToString();
         highScore.text = "High Score:\n" + GlobalDataManager.Instance.GetHighScore().ToString() + "M";
 
@@ -95,6 +93,15 @@ public class MainMenuUIManager : MonoBehaviour
                 break;
             case GlobalDataManager.Characters.FIONA:
                 name = "Fiona";
+                break;
+            case GlobalDataManager.Characters.HAPPY:
+                name = "Happy";
+                break;
+            case GlobalDataManager.Characters.SPARKLE:
+                name = "Sparkle";
+                break;
+            case GlobalDataManager.Characters.SPUDERMAN:
+                name = "Spuderman";
                 break;
         }
         characterText.text = name;

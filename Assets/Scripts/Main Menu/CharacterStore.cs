@@ -69,6 +69,30 @@ public class CharacterStore : MonoBehaviour
         StartCoroutine(AnimateUISprite());
     }
 
+    public void OnHappySelected()
+    {
+        characterToSelect = GlobalDataManager.Characters.HAPPY;
+        CheckCharacter();
+        StopUIAnimation();
+        StartCoroutine(AnimateUISprite());
+    }
+
+    public void OnSparkleSelected()
+    {
+        characterToSelect = GlobalDataManager.Characters.SPARKLE;
+        CheckCharacter();
+        StopUIAnimation();
+        StartCoroutine(AnimateUISprite());
+    }
+
+    public void OnSpuderSelected()
+    {
+        characterToSelect = GlobalDataManager.Characters.SPUDERMAN;
+        CheckCharacter();
+        StopUIAnimation();
+        StartCoroutine(AnimateUISprite());
+    }
+
     public void CheckCharacter()
     {
         if (characterToSelect == GlobalDataManager.Instance.currentlySelectedCharacter)
