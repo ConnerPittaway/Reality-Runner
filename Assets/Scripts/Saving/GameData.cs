@@ -19,6 +19,8 @@ public class GameData
     public ulong timeRewardOpened = 0;
     public bool hasPremium = false;
 
+    //Item Upgrade Data
+    public GlobalDataManager.ShieldLevel currentShieldLevel = GlobalDataManager.ShieldLevel.LEVEL1;
 
     //Retrieve Data
     public GameData()
@@ -30,5 +32,6 @@ public class GameData
         currentlySelectedCharacter = GlobalDataManager.Instance.currentlySelectedCharacter;
         timeRewardOpened = GlobalDataManager.Instance.timeRewardOpened;
         hasPremium = GlobalDataManager.Instance.GetPremiumStatus();
+        currentShieldLevel = GlobalDataManager.Instance.currentShieldLevel;
     }
 }

@@ -36,7 +36,15 @@ public class GlobalDataManager : MonoBehaviour
     private bool hasPremium = false;
 
     //Upgrades 
-    private int shieldLevel = 1;
+    public enum ShieldLevel
+    {
+        LEVEL1,
+        LEVEL2,
+        LEVEL3,
+        LEVEL4,
+        LEVEL5
+    }
+    public ShieldLevel currentShieldLevel = ShieldLevel.LEVEL1;
 
     //Rewards Timer
     public ulong timeRewardOpened = 0;
@@ -115,6 +123,9 @@ public class GlobalDataManager : MonoBehaviour
 
         //Premium
         hasPremium = data.hasPremium;
+
+        //Item Upgrades
+        currentShieldLevel = data.currentShieldLevel;
 
         yield return null;
     }
@@ -207,6 +218,12 @@ public class GlobalDataManager : MonoBehaviour
 
         //Rewards
         timeRewardOpened = data.timeRewardOpened;
+
+        //Premium
+        hasPremium = data.hasPremium;
+
+        //Item Upgrades
+        currentShieldLevel = data.currentShieldLevel;
     }
 
     public void LoadCloudData()

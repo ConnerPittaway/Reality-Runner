@@ -1558,7 +1558,7 @@ GameObject:
   - component: {fileID: 108423428}
   - component: {fileID: 108423427}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Shield Effect Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15412,6 +15412,7 @@ MonoBehaviour:
   boughtCharacters:
     m_keys: 000000000100000002000000030000000400000005000000
     m_values: 010000000000
+  currentShieldLevel: 0
   timeRewardOpened: 0
   checkCloud: 0
 --- !u!1 &1144343097
@@ -15534,7 +15535,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1149313678
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17980,7 +17981,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1412115375}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2031974424}
+        m_TargetAssemblyTypeName: ItemUpgrades, Assembly-CSharp
+        m_MethodName: UpgradeShield
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1412115375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19197,7 +19210,7 @@ GameObject:
   - component: {fileID: 1530356244}
   - component: {fileID: 1530356243}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Shield Level Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19243,9 +19256,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Cost to Upgrade:
+  m_text: 'Current Level 1
 
-    20C'
+    Cost to Upgrade:
+
+    50C'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bdac85d6f4d230a44b5318f987241399, type: 2}
   m_sharedMaterial: {fileID: -4354188635747516789, guid: bdac85d6f4d230a44b5318f987241399, type: 2}
@@ -25003,7 +25018,7 @@ GameObject:
   - component: {fileID: 1957795436}
   - component: {fileID: 1957795434}
   m_Layer: 5
-  m_Name: Shield Level
+  m_Name: Shield Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26405,7 +26420,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2031974421
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26459,13 +26474,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2a99b89e98825438c85de7d42fe5f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldLevelUpgradeCost:
-    m_keys:
-    - Level2
-    - Level3
-    - Level4
-    - Level5
+  shieldLevelUpgradeCosts:
+    m_keys: 00000000010000000200000003000000
     m_values: 3200000064000000c8000000f4010000
+  shieldLevelText: {fileID: 1530356243}
+  shieldEffectText: {fileID: 108423427}
+  shieldUpgradeButton: {fileID: 1412115374}
 --- !u!1 &2036081040
 GameObject:
   m_ObjectHideFlags: 0
