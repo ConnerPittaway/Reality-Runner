@@ -48,6 +48,13 @@ public class backgrounds : MonoBehaviour
                 LoadThirdLayer("Heart/br_3");
                 LoadFourthLayer("Heart/br_4");
                 break;
+            case Worlds.HELL:
+                Debug.Log("Loading Hell");
+                LoadFirstLayer("Hell/br_1");
+                LoadSecondLayer("Hell/br_2");
+                LoadThirdLayer("Hell/br_3");
+                LoadFourthLayer("Hell/br_4");
+                break;
             default:
                 Debug.Log("Error in background");
                 break;

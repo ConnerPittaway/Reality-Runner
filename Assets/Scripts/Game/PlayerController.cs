@@ -108,7 +108,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerAnimator.SetFloat("VelocityY", RB.velocity.y);
         Vector2 currentPos = transform.position;
         float distanceToRoof = Mathf.Abs(currentPos.y - buildingHeight);
 #if UNITY_EDITOR
@@ -238,6 +237,8 @@ public class PlayerController : MonoBehaviour
                 velocity.x = maxSpeed;
             }
         }
+
+        playerAnimator.SetFloat("VelocityY", RB.velocity.y);
     }
 
     private bool IsPointerOverUIObject()
