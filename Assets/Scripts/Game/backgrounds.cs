@@ -14,7 +14,8 @@ public class backgrounds : MonoBehaviour
     {
         FUTURISTIC,
         SPACE,
-        HEART
+        HEART,
+        HELL
     };
 
     // Start is called before the first frame update
@@ -56,8 +57,8 @@ public class backgrounds : MonoBehaviour
     void LoadFourthLayer(string path)
     {
         backgroundImage.sprite = Resources.Load<Sprite>("Sprites/" + path);
-        spriteRenderers[0].sprite = Resources.Load<Sprite>("Sprites/" + path);
-        spriteRenderers[1].sprite = Resources.Load<Sprite>("Sprites/" + path);
+        //spriteRenderers[0].sprite = Resources.Load<Sprite>("Sprites/" + path);
+        //spriteRenderers[1].sprite = Resources.Load<Sprite>("Sprites/" + path);
     }
     void LoadThirdLayer(string path)
     {

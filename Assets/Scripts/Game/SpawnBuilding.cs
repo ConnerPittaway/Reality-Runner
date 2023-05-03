@@ -32,8 +32,8 @@ public class SpawnBuilding : MonoBehaviour
     private float screenTop;
 
     //Building Calculation Limiters
-    private float buildingXReduction = 0.6f;
-    private float buildingYReduction = 0.6f;
+    private float buildingXReduction = 0.55f;
+    private float buildingYReduction = 0.55f;
 
     //Objects
     public StaticObject staticObjectTemplate;
