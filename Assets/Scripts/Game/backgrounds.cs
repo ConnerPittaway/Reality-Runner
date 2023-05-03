@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class backgrounds : MonoBehaviour
 {
@@ -8,11 +9,12 @@ public class backgrounds : MonoBehaviour
     public List<SpriteRenderer> spriteRenderers;
     public GameObject background1;
     public GameObject background2;
-
+    public Image backgroundImage;
     public enum Worlds
     {
         FUTURISTIC,
-        SPACE
+        SPACE,
+        HEART
     };
 
     // Start is called before the first frame update
@@ -39,6 +41,12 @@ public class backgrounds : MonoBehaviour
                 LoadThirdLayer("Space/br_3");
                 LoadFourthLayer("Space/br_4");
                 break;
+            case Worlds.HEART:
+                LoadFirstLayer("Heart/br_1");
+                LoadSecondLayer("Heart/br_2");
+                LoadThirdLayer("Heart/br_3");
+                LoadFourthLayer("Heart/br_4");
+                break;
             default:
                 Debug.Log("Error in background");
                 break;
@@ -47,6 +55,7 @@ public class backgrounds : MonoBehaviour
 
     void LoadFourthLayer(string path)
     {
+        backgroundImage.sprite = Resources.Load<Sprite>("Sprites/" + path);
         spriteRenderers[0].sprite = Resources.Load<Sprite>("Sprites/" + path);
         spriteRenderers[1].sprite = Resources.Load<Sprite>("Sprites/" + path);
     }
