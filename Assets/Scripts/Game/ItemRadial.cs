@@ -7,18 +7,17 @@ public class ItemRadial : MonoBehaviour
 {
     public Button itemButton;
     public Transform LoadingBar;
-    public Image itemImage;
     public TMPro.TextMeshProUGUI textProgress;
     public Image LoadingBarImage;
     public float currentAmount;
-    public UISpriteAnimate UIController;
     public bool startedRoutines;
     public PlayerController player;
-    public bool usedItem;
 
     //Item Effects
     public GameObject forcefieldEffect;
     public float forcefieldTime;
+    public Image forcefieldImage;
+    public UISpriteAnimate forcefieldUIController;
 
     // Start is called before the first frame update
     void Start()
@@ -48,18 +47,26 @@ public class ItemRadial : MonoBehaviour
 
     public void useItem()
     {
-        usedItem = true;
+        if(player.activeItem != PlayerController.ItemTypes.NONE)
+        {
+            LeanTween.cancel(gameObject);
+            itemFinished();
+        }
+
         player.activeItem = player.heldItem;
         player.heldItem = PlayerController.ItemTypes.NONE;
         currentAmount = 100.0f;
         itemButton.interactable = false;
         startedRoutines = false;
+        textProgress.enabled = true;
         float speed = 0.0f;
 
         switch(player.activeItem)
         {
             case PlayerController.ItemTypes.SHIELD:
                 forcefieldEffect.SetActive(true);
+                forcefieldImage.enabled = false;
+                forcefieldUIController.StopUIAnimation();
                 speed = forcefieldTime;
                 break;
         }
@@ -67,6 +74,7 @@ public class ItemRadial : MonoBehaviour
         LeanTween.value(gameObject, currentAmount, 0, speed).setOnUpdate((float val)=>
         {
             currentAmount = val;
+            textProgress.text = ((int)currentAmount).ToString() + "%";
         }).setOnComplete(itemFinished);
     }
 
@@ -81,17 +89,25 @@ public class ItemRadial : MonoBehaviour
         if(player.heldItem != PlayerController.ItemTypes.NONE)
         {
             itemButton.interactable = true;
-        }
-        else
-        {
-            itemButton.interactable = false;
+            if (!startedRoutines)
+            {
+                textProgress.enabled = false;
+                switch (player.heldItem)
+                {
+                    case PlayerController.ItemTypes.SHIELD:
+                        forcefieldImage.enabled = true;
+                        forcefieldUIController.StartUIAnimation();
+                        startedRoutines = true;
+                        break;
+                }
+            }
         }
         LoadingBarImage.fillAmount = currentAmount / 100;
     }
 
     void itemFinished()
     {
-        usedItem = !usedItem;
+        textProgress.text = "";
         currentAmount = 0;
         switch (player.activeItem)
         {
@@ -100,5 +116,10 @@ public class ItemRadial : MonoBehaviour
                 break;
         }
         player.activeItem = PlayerController.ItemTypes.NONE;
+    }
+
+    private void OnDisable()
+    {
+        startedRoutines = false;
     }
 }

@@ -8,7 +8,7 @@ public class UISpriteAnimate : MonoBehaviour
 
     public Image image;
 
-    public Sprite[] spriteArray;
+    public List<Sprite> spriteSheet;
     public float animationSpeed = .02f;
     public float fadeSpeed = .02f;
 
@@ -31,10 +31,10 @@ public class UISpriteAnimate : MonoBehaviour
     }
     IEnumerator AnimateUISprite()
     {
-        for(int i = 0; i < spriteArray.Length; i++)
+        for(int i = 0; i < spriteSheet.Count; i++)
         {
             yield return new WaitForSeconds(animationSpeed);
-            image.sprite = spriteArray[i];
+            image.sprite = spriteSheet[i];
         }
         StartCoroutine(AnimateUISprite());
     }
