@@ -12,7 +12,7 @@ public class backgrounds : MonoBehaviour
     public enum Worlds
     {
         FUTURISTIC,
-        INDUSTRIAL
+        SPACE
     };
 
     // Start is called before the first frame update
@@ -33,11 +33,11 @@ public class backgrounds : MonoBehaviour
                 LoadThirdLayer("Buildings/or_b_3");
                 LoadFourthLayer("Buildings/or_b_4");
                 break;
-            case Worlds.INDUSTRIAL:
-                LoadFirstLayer("Industrial/skill-foreground");
-                LoadSecondLayer("Industrial/buildings");
-                LoadThirdLayer("Industrial/far-buildings");
-                LoadFourthLayer("Industrial/bg");
+            case Worlds.SPACE:
+                LoadFirstLayer("Space/br_1");
+                LoadSecondLayer("Space/br_2");
+                LoadThirdLayer("Space/br_3");
+                LoadFourthLayer("Space/br_4");
                 break;
             default:
                 Debug.Log("Error in background");

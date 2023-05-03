@@ -35,7 +35,7 @@ public class AudioManager : MonoBehaviour
     {
         //Load Clips
         musicSources[backgrounds.Worlds.FUTURISTIC].clip = Array.Find(musicSound, x => x.soundName == "Futuristic City").audioClip;
-        musicSources[backgrounds.Worlds.INDUSTRIAL].clip = Array.Find(musicSound, x => x.soundName == "Industrial City").audioClip;
+        musicSources[backgrounds.Worlds.SPACE].clip = Array.Find(musicSound, x => x.soundName == "Space").audioClip;
 
         //Set Saved Volume
         EventManager_OnMusicAudioChanged(GlobalSettingsManager.Instance.audioLevelMusic);

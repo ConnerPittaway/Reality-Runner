@@ -28,17 +28,7 @@ public class Parallax : MonoBehaviour
         screenLeft = Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 0f, 0f)).x;
     }
 
-    private void FixedUpdate()
-    {
-        if (!player.isPaused)
-        {
-            Vector2 pos = transform.position;
-            pos.x -= (player.velocity.x * Time.deltaTime) * parallaxAmount;
-            transform.position = pos;
-        }
-    }
-
-    private void LateUpdate()
+    private void Update()
     {
         if (!player.isPaused)
         {
@@ -59,5 +49,20 @@ public class Parallax : MonoBehaviour
             }
             transform.position = pos;
         }
+    }
+
+        private void FixedUpdate()
+    {
+        if (!player.isPaused)
+        {
+            Vector2 pos = transform.position;
+            pos.x -= (player.velocity.x * parallaxAmount) * Time.deltaTime;
+            transform.position = pos;
+        }
+    }
+
+    private void LateUpdate()
+    {
+
     }
 }
