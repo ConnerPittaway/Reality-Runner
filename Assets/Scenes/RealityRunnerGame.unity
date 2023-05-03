@@ -1169,7 +1169,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 60.000004, y: 35.00977}
+  m_Size: {x: 60.000004, y: 35}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1490,7 +1490,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 60.000004, y: 35.00977}
+  m_Size: {x: 60.000004, y: 35}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1807,7 +1807,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 60.000004, y: 35.00977}
+  m_Size: {x: 60.000004, y: 35}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -6829,7 +6829,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 60.000004, y: 35.00977}
+  m_Size: {x: 60.000004, y: 35}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -8060,7 +8060,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 60.000004, y: 35.00977}
+  m_Size: {x: 60.000004, y: 35}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -10902,7 +10902,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 60.000004, y: 35.00977}
+  m_Size: {x: 60.000004, y: 35}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -11129,7 +11129,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 60.000004, y: 35.00977}
+  m_Size: {x: 60.000004, y: 35}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -12620,9 +12620,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSound:
   - soundName: Futuristic City
-    audioClip: {fileID: 8300000, guid: 5854fcd1b44355748b56c54f6065704c, type: 3}
-  - soundName: Industrial City
     audioClip: {fileID: 8300000, guid: f5b156ea413a7f8459a8f6ef8ecb5736, type: 3}
+  - soundName: Space
+    audioClip: {fileID: 8300000, guid: d861d973689268b42b80ed52aa957140, type: 3}
   sfxSounds:
   - soundName: Jump
     audioClip: {fileID: 8300000, guid: d330792658d1c8b4ea801274ec4961ed, type: 3}
@@ -16982,7 +16982,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 60.000004, y: 35.00977}
+  m_Size: {x: 60.000004, y: 35}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

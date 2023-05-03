@@ -23,9 +23,10 @@ public class Parallax : MonoBehaviour
     void Start()
     {
         parentBoundsFull = parentSpriteRenderer.bounds.size.x;
-        parentBoundsHalf = parentSpriteRenderer.bounds.size.x /2 ;
+        parentBoundsHalf = parentSpriteRenderer.bounds.size.x / 2;
+        Debug.Log("Full " + parentBoundsFull + " Half " + parentBoundsHalf);
         right = transform.position.x + (parentBoundsFull);
-        screenLeft = Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 0f, 0f)).x;
+        screenLeft = Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 0.0f, 0.0f)).x;
     }
 
     private void Update()
@@ -38,15 +39,18 @@ public class Parallax : MonoBehaviour
             {
                 if (child)
                 {
-                    right = parentObj.transform.position.x + parentBoundsFull;
+                    right = parentObj.transform.position.x + parentBoundsFull - ((player.velocity.x * parallaxAmount) * Time.deltaTime);
                     pos.x = right;
                 }
                 else
                 {
-                    right = childObj.transform.position.x + parentBoundsFull;
+                    right = childObj.transform.position.x + parentBoundsFull - ((player.velocity.x * parallaxAmount) * Time.deltaTime);
                     pos.x = right;
                 }
             }
+            //transform.position = pos;
+
+            pos.x -= (player.velocity.x * parallaxAmount) * Time.deltaTime;
             transform.position = pos;
         }
     }
@@ -56,8 +60,6 @@ public class Parallax : MonoBehaviour
         if (!player.isPaused)
         {
             Vector2 pos = transform.position;
-            pos.x -= (player.velocity.x * parallaxAmount) * Time.deltaTime;
-            transform.position = pos;
         }
     }
 
