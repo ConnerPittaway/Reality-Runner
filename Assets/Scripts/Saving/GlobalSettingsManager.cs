@@ -76,14 +76,14 @@ public class GlobalSettingsManager : MonoBehaviour
 
     private void EventManager_OnMusicAudioChanged(float audioValue)
     {
-        Debug.Log("Settings Volume: " + audioValue);
+        //Debug.Log("Settings Volume: " + audioValue);
         audioLevelMusic = audioValue;
         SaveSettingsData();
     }
 
     private void EventManager_OnSFXAudioChanged(float audioValue)
     {
-        Debug.Log("SFX Settings Volume: " + audioValue);
+        //Debug.Log("SFX Settings Volume: " + audioValue);
         audioLevelSFX = audioValue;
         SaveSettingsData();
     }

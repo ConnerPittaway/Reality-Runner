@@ -17,7 +17,6 @@ public class PauseScreen : MonoBehaviour
         player.isPaused = !player.isPaused;
         mainMenu.SetActive(true);
         gameObject.SetActive(false);
-        //EventManager.OnGameResumed();
         LeanTween.resumeAll();
     }
 

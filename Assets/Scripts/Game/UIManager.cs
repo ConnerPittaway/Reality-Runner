@@ -59,11 +59,9 @@ public class UIManager : MonoBehaviour
     {
         player.playerAnimator.enabled = !player.playerAnimator.enabled;
         player.isPaused = !player.isPaused;
-        //EventManager.OnGamePaused();
         pauseScreen.SetActive(true);
         gameObject.SetActive(false);
         LeanTween.pauseAll();
-
     }
 
     public void ShareToFacebook()

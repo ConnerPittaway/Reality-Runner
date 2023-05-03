@@ -225,17 +225,11 @@ public class FirebaseManager : MonoBehaviour
           {
 
               DataSnapshot snapshot = task.Result;
-              Debug.Log("Number of Users " + snapshot.ChildrenCount);
               foreach (DataSnapshot childData in snapshot.Children)
               {
-                  Debug.Log("Scores Loaded");
-                  Debug.Log(childData.Child("uid").Value.ToString());
-                  Debug.Log(childData.Child("name").Value.ToString());
-                  Debug.Log(int.Parse(childData.Child("score").Value.ToString()));
                   User userScore = new User(childData.Child("uid").Value.ToString(), childData.Child("name").Value.ToString(), int.Parse(childData.Child("score").Value.ToString()));
                   scoreLeaderboard.Add(userScore);
               }
-
               //Reverse order
               scoreLeaderboard.Reverse();
           }

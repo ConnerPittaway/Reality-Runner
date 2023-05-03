@@ -288,7 +288,6 @@ public class PlayerController : MonoBehaviour
         isDead = true;
         velocity.x = 0;
         velocity.y = 0;
-        //mainUI.SetActive(false);
 
         //Update High Score
         if ((int)distance > GlobalDataManager.Instance.GetHighScore())

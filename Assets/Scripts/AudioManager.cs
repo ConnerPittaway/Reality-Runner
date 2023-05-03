@@ -61,7 +61,7 @@ public class AudioManager : MonoBehaviour
 
     private void EventManager_OnMusicAudioChanged(float audioValue)
     {
-        //Debug.Log("Audio Volume: " + audioValue);
+        Debug.Log("Audio Volume: " + audioValue);
         bgmVolume = audioValue;
         foreach (var audioSource in musicSources)
         {
@@ -72,7 +72,7 @@ public class AudioManager : MonoBehaviour
 
     private void EventManager_OnSFXAudioChanged(float audioValue)
     {
-        //Debug.Log("SFX Audio Volume: " + audioValue);
+        Debug.Log("SFX Audio Volume: " + audioValue);
         sfxSource.volume = audioValue;
     }
 
