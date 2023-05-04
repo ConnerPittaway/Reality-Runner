@@ -88,14 +88,14 @@ public class MainMenuUIManager : MonoBehaviour
             case GlobalDataManager.Characters.SHROUD:
                 name = "Shroud";
                 break;
-            case GlobalDataManager.Characters.BOXY:
-                name = "Boxy";
+            case GlobalDataManager.Characters.BILLY:
+                name = "Billy";
                 break;
             case GlobalDataManager.Characters.FIONA:
                 name = "Fiona";
                 break;
-            case GlobalDataManager.Characters.HAPPY:
-                name = "Happy";
+            case GlobalDataManager.Characters.PHILLY:
+                name = "Philly";
                 break;
             case GlobalDataManager.Characters.SPARKLE:
                 name = "Sparkle";

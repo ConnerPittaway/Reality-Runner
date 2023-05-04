@@ -53,9 +53,9 @@ public class CharacterStore : MonoBehaviour
         StartCoroutine(AnimateUISprite());
     }
 
-    public void OnBoxySelected()
+    public void OnBillySelected()
     {
-        characterToSelect = GlobalDataManager.Characters.BOXY;
+        characterToSelect = GlobalDataManager.Characters.BILLY;
         CheckCharacter();
         StopUIAnimation();
         StartCoroutine(AnimateUISprite());
@@ -69,9 +69,9 @@ public class CharacterStore : MonoBehaviour
         StartCoroutine(AnimateUISprite());
     }
 
-    public void OnHappySelected()
+    public void OnPhillySelected()
     {
-        characterToSelect = GlobalDataManager.Characters.HAPPY;
+        characterToSelect = GlobalDataManager.Characters.PHILLY;
         CheckCharacter();
         StopUIAnimation();
         StartCoroutine(AnimateUISprite());

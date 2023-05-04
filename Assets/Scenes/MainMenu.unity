@@ -1469,7 +1469,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Happy
+  m_text: Philly
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bdac85d6f4d230a44b5318f987241399, type: 2}
   m_sharedMaterial: {fileID: -4354188635747516789, guid: bdac85d6f4d230a44b5318f987241399, type: 2}
@@ -4143,14 +4143,14 @@ MonoBehaviour:
     - {fileID: 1360132907, guid: 192f1c1e9af67da45b8d3a2c06c15692, type: 3}
     - {fileID: -17487433, guid: 192f1c1e9af67da45b8d3a2c06c15692, type: 3}
   - spriteSheet:
-    - {fileID: -435717366, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
-    - {fileID: -195156735, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
-    - {fileID: 1661311035, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
-    - {fileID: 1398763092, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
-    - {fileID: -615082896, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
-    - {fileID: 765088032, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
-    - {fileID: -2036220553, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
-    - {fileID: -1754066662, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
+    - {fileID: -799114925, guid: f63b16e5d8efb8140b7097e90dc14349, type: 3}
+    - {fileID: -795288871, guid: f63b16e5d8efb8140b7097e90dc14349, type: 3}
+    - {fileID: 1044382860, guid: f63b16e5d8efb8140b7097e90dc14349, type: 3}
+    - {fileID: 1764163322, guid: f63b16e5d8efb8140b7097e90dc14349, type: 3}
+    - {fileID: 1945072044, guid: f63b16e5d8efb8140b7097e90dc14349, type: 3}
+    - {fileID: 570648728, guid: f63b16e5d8efb8140b7097e90dc14349, type: 3}
+    - {fileID: -331749395, guid: f63b16e5d8efb8140b7097e90dc14349, type: 3}
+    - {fileID: 2089658666, guid: f63b16e5d8efb8140b7097e90dc14349, type: 3}
   - spriteSheet:
     - {fileID: 1574292051, guid: 5dd5703142899274195080126bdc9e8b, type: 3}
     - {fileID: 208066630, guid: 5dd5703142899274195080126bdc9e8b, type: 3}
@@ -4161,14 +4161,14 @@ MonoBehaviour:
     - {fileID: -1998682824, guid: 5dd5703142899274195080126bdc9e8b, type: 3}
     - {fileID: -969025846, guid: 5dd5703142899274195080126bdc9e8b, type: 3}
   - spriteSheet:
-    - {fileID: 1614646773, guid: 8065e96c467af8c4eb0517ac76fddf40, type: 3}
-    - {fileID: 209732793, guid: 8065e96c467af8c4eb0517ac76fddf40, type: 3}
-    - {fileID: 1737479377, guid: 8065e96c467af8c4eb0517ac76fddf40, type: 3}
-    - {fileID: -1113251296, guid: 8065e96c467af8c4eb0517ac76fddf40, type: 3}
-    - {fileID: -2120392919, guid: 8065e96c467af8c4eb0517ac76fddf40, type: 3}
-    - {fileID: -362063007, guid: 8065e96c467af8c4eb0517ac76fddf40, type: 3}
-    - {fileID: 1878632263, guid: 8065e96c467af8c4eb0517ac76fddf40, type: 3}
-    - {fileID: -2024754832, guid: 8065e96c467af8c4eb0517ac76fddf40, type: 3}
+    - {fileID: -270358778, guid: 7f20a32e986cd5e43a59e829bbba01e9, type: 3}
+    - {fileID: 35880976, guid: 7f20a32e986cd5e43a59e829bbba01e9, type: 3}
+    - {fileID: 844770267, guid: 7f20a32e986cd5e43a59e829bbba01e9, type: 3}
+    - {fileID: -1684923111, guid: 7f20a32e986cd5e43a59e829bbba01e9, type: 3}
+    - {fileID: -402219056, guid: 7f20a32e986cd5e43a59e829bbba01e9, type: 3}
+    - {fileID: 1951907614, guid: 7f20a32e986cd5e43a59e829bbba01e9, type: 3}
+    - {fileID: -201317452, guid: 7f20a32e986cd5e43a59e829bbba01e9, type: 3}
+    - {fileID: 128819846, guid: 7f20a32e986cd5e43a59e829bbba01e9, type: 3}
   - spriteSheet:
     - {fileID: -1817936260, guid: b6e27d162a9542c4fa848300bfc49db5, type: 3}
     - {fileID: 874752791, guid: b6e27d162a9542c4fa848300bfc49db5, type: 3}
@@ -5151,14 +5151,14 @@ MonoBehaviour:
     - {fileID: 1360132907, guid: 192f1c1e9af67da45b8d3a2c06c15692, type: 3}
     - {fileID: -17487433, guid: 192f1c1e9af67da45b8d3a2c06c15692, type: 3}
   - spriteSheet:
-    - {fileID: -435717366, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
-    - {fileID: -195156735, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
-    - {fileID: 1661311035, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
-    - {fileID: 1398763092, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
-    - {fileID: -615082896, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
-    - {fileID: 765088032, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
-    - {fileID: -2036220553, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
-    - {fileID: -1754066662, guid: c94d58dcce45d994eba16667d994aed3, type: 3}
+    - {fileID: -799114925, guid: f63b16e5d8efb8140b7097e90dc14349, type: 3}
+    - {fileID: -795288871, guid: f63b16e5d8efb8140b7097e90dc14349, type: 3}
+    - {fileID: 1044382860, guid: f63b16e5d8efb8140b7097e90dc14349, type: 3}
+    - {fileID: 1764163322, guid: f63b16e5d8efb8140b7097e90dc14349, type: 3}
+    - {fileID: 1945072044, guid: f63b16e5d8efb8140b7097e90dc14349, type: 3}
+    - {fileID: 570648728, guid: f63b16e5d8efb8140b7097e90dc14349, type: 3}
+    - {fileID: -331749395, guid: f63b16e5d8efb8140b7097e90dc14349, type: 3}
+    - {fileID: 2089658666, guid: f63b16e5d8efb8140b7097e90dc14349, type: 3}
   - spriteSheet:
     - {fileID: 1574292051, guid: 5dd5703142899274195080126bdc9e8b, type: 3}
     - {fileID: 208066630, guid: 5dd5703142899274195080126bdc9e8b, type: 3}
@@ -5169,14 +5169,14 @@ MonoBehaviour:
     - {fileID: -1998682824, guid: 5dd5703142899274195080126bdc9e8b, type: 3}
     - {fileID: -969025846, guid: 5dd5703142899274195080126bdc9e8b, type: 3}
   - spriteSheet:
-    - {fileID: 1614646773, guid: 8065e96c467af8c4eb0517ac76fddf40, type: 3}
-    - {fileID: 209732793, guid: 8065e96c467af8c4eb0517ac76fddf40, type: 3}
-    - {fileID: 1737479377, guid: 8065e96c467af8c4eb0517ac76fddf40, type: 3}
-    - {fileID: -1113251296, guid: 8065e96c467af8c4eb0517ac76fddf40, type: 3}
-    - {fileID: -2120392919, guid: 8065e96c467af8c4eb0517ac76fddf40, type: 3}
-    - {fileID: -362063007, guid: 8065e96c467af8c4eb0517ac76fddf40, type: 3}
-    - {fileID: 1878632263, guid: 8065e96c467af8c4eb0517ac76fddf40, type: 3}
-    - {fileID: -2024754832, guid: 8065e96c467af8c4eb0517ac76fddf40, type: 3}
+    - {fileID: -270358778, guid: 7f20a32e986cd5e43a59e829bbba01e9, type: 3}
+    - {fileID: 35880976, guid: 7f20a32e986cd5e43a59e829bbba01e9, type: 3}
+    - {fileID: 844770267, guid: 7f20a32e986cd5e43a59e829bbba01e9, type: 3}
+    - {fileID: -1684923111, guid: 7f20a32e986cd5e43a59e829bbba01e9, type: 3}
+    - {fileID: -402219056, guid: 7f20a32e986cd5e43a59e829bbba01e9, type: 3}
+    - {fileID: 1951907614, guid: 7f20a32e986cd5e43a59e829bbba01e9, type: 3}
+    - {fileID: -201317452, guid: 7f20a32e986cd5e43a59e829bbba01e9, type: 3}
+    - {fileID: 128819846, guid: 7f20a32e986cd5e43a59e829bbba01e9, type: 3}
   - spriteSheet:
     - {fileID: -1817936260, guid: b6e27d162a9542c4fa848300bfc49db5, type: 3}
     - {fileID: 874752791, guid: b6e27d162a9542c4fa848300bfc49db5, type: 3}
@@ -14292,7 +14292,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Boxy
+  m_text: Billy
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bdac85d6f4d230a44b5318f987241399, type: 2}
   m_sharedMaterial: {fileID: -4354188635747516789, guid: bdac85d6f4d230a44b5318f987241399, type: 2}
@@ -16745,7 +16745,7 @@ GameObject:
   - component: {fileID: 1267681434}
   - component: {fileID: 1267681433}
   m_Layer: 5
-  m_Name: Boxy
+  m_Name: Billy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16833,7 +16833,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 284763078}
         m_TargetAssemblyTypeName: CharacterStore, Assembly-CSharp
-        m_MethodName: OnBoxySelected
+        m_MethodName: OnBillySelected
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19487,7 +19487,7 @@ GameObject:
   - component: {fileID: 1540734466}
   - component: {fileID: 1540734465}
   m_Layer: 5
-  m_Name: Happy
+  m_Name: Philly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19575,7 +19575,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 284763078}
         m_TargetAssemblyTypeName: CharacterStore, Assembly-CSharp
-        m_MethodName: OnHappySelected
+        m_MethodName: OnPhillySelected
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

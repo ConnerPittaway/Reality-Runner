@@ -17,9 +17,9 @@ public class GlobalDataManager : MonoBehaviour
     public enum Characters
     {
         SHROUD,
-        BOXY,
+        BILLY,
         FIONA,
-        HAPPY,
+        PHILLY,
         SPARKLE,
         SPUDERMAN
     }
