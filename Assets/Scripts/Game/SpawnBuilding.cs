@@ -265,7 +265,6 @@ public class SpawnBuilding : MonoBehaviour
 
     private void EventManager_OnWorldChanged()
     {
-        //Debug.Log("Platforms / " + player.currentWorld.ToString());
         GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>("Platforms/" + player.currentWorld.ToString());
     }
 
