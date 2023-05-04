@@ -24,6 +24,9 @@ public static class EventManager
     public static event UnityAction PortalOpened;
     public static void OnPortalOpened() => PortalOpened?.Invoke();
 
+    public static event UnityAction WorldChanged;
+    public static void OnWorldChanged() => WorldChanged?.Invoke();
+
     public static event UnityAction GamePaused;
     public static void OnGamePaused() => GamePaused.Invoke();
 

@@ -46,6 +46,7 @@ public class Portal : MonoBehaviour
             AudioManager.Instance.SwapSong(randomWorld);
             player.Backgrounds.SwitchBackgrounds(randomWorld);
             player.currentWorld = randomWorld;
+            EventManager.OnWorldChanged();
         }
     }
 

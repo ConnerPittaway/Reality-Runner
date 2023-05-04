@@ -77,6 +77,7 @@ public class SpawnBuilding : MonoBehaviour
         //Set Sprite
 
         //Sub To Portal Event
+        EventManager.WorldChanged += EventManager_OnWorldChanged;
     }
 
     private void FixedUpdate()
@@ -260,5 +261,16 @@ public class SpawnBuilding : MonoBehaviour
             }
             obstacleToSpawn.GetComponent<Object>().SetStartPosition(newSpawnBuildingTransform, newSpawnBuildingData, newSpawnBuildingCollider);
         }
+    }
+
+    private void EventManager_OnWorldChanged()
+    {
+        //Debug.Log("Platforms / " + player.currentWorld.ToString());
+        GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>("Platforms/" + player.currentWorld.ToString());
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.WorldChanged -= EventManager_OnWorldChanged;
     }
 }
