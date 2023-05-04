@@ -38,10 +38,14 @@ public class CharacterStore : MonoBehaviour
         else
         {
             //Buy Character
-            GlobalDataManager.Instance.boughtCharacters[characterToSelect] = true;
-            GlobalDataManager.Instance.currentlySelectedCharacter = characterToSelect;
-            GlobalDataManager.Instance.SaveData();
-            CheckCharacter();
+            if (GlobalDataManager.Instance.GetCoins() >= 5000)
+            {
+                GlobalDataManager.Instance.AlterCoins(-5000);
+                GlobalDataManager.Instance.boughtCharacters[characterToSelect] = true;
+                GlobalDataManager.Instance.currentlySelectedCharacter = characterToSelect;
+                GlobalDataManager.Instance.SaveData();
+                CheckCharacter();
+            }
         }
     }
 
@@ -109,7 +113,7 @@ public class CharacterStore : MonoBehaviour
             }
             else
             {
-                selectButtonText.text = "Buy";
+                selectButtonText.text = "Buy for 5000 Coins";
                 characterSelectButton.interactable = true;
             }
         }
