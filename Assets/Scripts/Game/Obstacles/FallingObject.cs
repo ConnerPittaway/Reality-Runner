@@ -29,7 +29,9 @@ public class FallingObject : Object
         screenLeft = Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 0f, 0f)).x;
         screenRight = Camera.main.ViewportToWorldPoint(new Vector3(1.0f, 0.0f, 0.0f)).x;
         screenTop = Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 1f, 0f)).y;
+
         //Sub to Portal Event
+        EventManager.PortalOpened += EventManager_OnPortal;
     }
 
     // Start is called before the first frame update
@@ -95,5 +97,15 @@ public class FallingObject : Object
             player.obstaclesHit++;
             Destroy(gameObject);
         }
+    }
+
+    private void EventManager_OnPortal()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.PortalOpened -= EventManager_OnPortal;
     }
 }

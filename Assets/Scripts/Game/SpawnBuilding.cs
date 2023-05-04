@@ -73,8 +73,6 @@ public class SpawnBuilding : MonoBehaviour
         maximumHeight = maximumBuildingHeight.position.y;
         minimumHeight = minimumBuildingHeight.position.y;
 
-        //Set Sprite
-
         //Sub To Portal Event
         EventManager.WorldChanged += EventManager_OnWorldChanged;
     }

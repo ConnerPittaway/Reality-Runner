@@ -25,6 +25,7 @@ public class StaticObject : Object
         screenLeft = Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 0f, 0f)).x;
 
         //Sub to Portal Event
+        EventManager.PortalOpened += EventManager_OnPortal;
     }
 
     private void FixedUpdate()
@@ -55,5 +56,15 @@ public class StaticObject : Object
             player.obstaclesHit++;
             Destroy(gameObject);
         }
+    }
+
+    private void EventManager_OnPortal()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.PortalOpened -= EventManager_OnPortal;
     }
 }

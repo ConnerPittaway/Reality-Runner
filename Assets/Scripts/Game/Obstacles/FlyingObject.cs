@@ -24,6 +24,7 @@ public class FlyingObject : Object
         screenRight = Camera.main.ViewportToWorldPoint(new Vector3(1.0f, 0f, 0f)).x;
 
         //Sub to Portal Event
+        EventManager.PortalOpened += EventManager_OnPortal;
     }
     // Start is called before the first frame update
     void Start()
@@ -61,5 +62,15 @@ public class FlyingObject : Object
             player.obstaclesHit++;
             Destroy(gameObject);
         }
+    }
+
+    private void EventManager_OnPortal()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.PortalOpened -= EventManager_OnPortal;
     }
 }
