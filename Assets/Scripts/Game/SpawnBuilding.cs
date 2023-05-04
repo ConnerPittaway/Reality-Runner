@@ -36,10 +36,9 @@ public class SpawnBuilding : MonoBehaviour
     private float buildingYReduction = 0.5f;
 
     //Objects
-    public StaticObject staticObjectTemplate;
     public Portal portalTemplate;
-    public FallingObject fallingObjectTemplate;
-    public FlyingObject flyingObjectTemplate;
+    public SerializableDictionary<backgrounds.Worlds, StaticObject> staticObjects;
+    public SerializableDictionary<backgrounds.Worlds, FallingObject> fallingObjects;
     public SerializableDictionary<backgrounds.Worlds, FlyingObject> flyingObjects;
     public forcefieldPickup forceObjectTemplate;
 
@@ -250,10 +249,10 @@ public class SpawnBuilding : MonoBehaviour
             switch (objectType)
             {
                 case Objects.BOX:
-                    obstacleToSpawn = Instantiate(staticObjectTemplate.gameObject);
+                    obstacleToSpawn = Instantiate(staticObjects[player.currentWorld].gameObject);
                     break;
                 case Objects.FALLINGGBOX:
-                    obstacleToSpawn = Instantiate(fallingObjectTemplate.gameObject);
+                    obstacleToSpawn = Instantiate(fallingObjects[player.currentWorld].gameObject);
                     break;
                 case Objects.FLYINGBOX:
                     obstacleToSpawn = Instantiate(flyingObjects[player.currentWorld].gameObject);
