@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SettingsMenuUI : MonoBehaviour
 {
     public Slider musicAudioSilder, sfxAudioSlider;
-    public GameObject muteButton, unmuteButton, frameButtonOn, frameButtonOff, languageScreen, audioScreen;
+    public GameObject muteButton, unmuteButton, frameButtonOn, frameButtonOff, languageScreen, audioScreen, usernameScreen;
     public bool bootedGameFlag = true;
 
     // Start is called before the first frame update
@@ -81,6 +81,7 @@ public class SettingsMenuUI : MonoBehaviour
         }
     }
 
+    //Framerate Counter
     public void TurnFrameCounterOn()
     {
         //Save Frame Setting
@@ -132,10 +133,17 @@ public class SettingsMenuUI : MonoBehaviour
         EventManager.OnSFXAudioChanged(GlobalSettingsManager.Instance.preMuteLevelSFX);
     }
 
+    //Cloud Data
     public void LoadCloudData()
     {
         GlobalDataManager.Instance.LoadCloudData();
         GlobalStatsData.Instance.LoadCloudData();
+    }
+
+    //Leaderboard Name
+    public void OpenUsername()
+    {
+        usernameScreen.SetActive(true);
     }
 
     void OnEnable()
@@ -145,6 +153,7 @@ public class SettingsMenuUI : MonoBehaviour
 
     void OnDisable()
     {
+        usernameScreen.SetActive(false);
         languageScreen.SetActive(false);
         audioScreen.SetActive(false);
     }
