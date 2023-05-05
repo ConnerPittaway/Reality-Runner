@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: BaconGames
-  productName: RealityRunner
+  productName: Reality Runner
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -404,7 +404,8 @@ PlayerSettings:
       m_Height: 81
       m_Kind: 2
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: ff2678c5792950744a783b5f79d5f646, type: 3}
       m_Width: 192
       m_Height: 192
       m_Kind: 1
@@ -434,7 +435,8 @@ PlayerSettings:
       m_Height: 36
       m_Kind: 1
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: ff2678c5792950744a783b5f79d5f646, type: 3}
       m_Width: 192
       m_Height: 192
       m_Kind: 0

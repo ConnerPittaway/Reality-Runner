@@ -195,15 +195,17 @@ public class FirebaseManager : MonoBehaviour
 
     public void UploadHighScore()
     {
-        //User user = new User(SystemInfo.deviceUniqueIdentifier, "test", GlobalDataManager.Instance.GetHighScore());
-        //string json = JsonUtility.ToJson(user);
-        //DBreference.Child("userScores").Child(SystemInfo.deviceUniqueIdentifier).SetRawJsonValueAsync(json);
-        for(int i = 0; i < 10; i++)
+        User user = new User(SystemInfo.deviceUniqueIdentifier, "test", GlobalDataManager.Instance.GetHighScore());
+        string json = JsonUtility.ToJson(user);
+        DBreference.Child("userScores").Child(SystemInfo.deviceUniqueIdentifier).SetRawJsonValueAsync(json);
+
+        //Upload Test Users
+        /*for(int i = 0; i < 10; i++)
         {
             User user = new User(string.Format("User{0}", i*10), string.Format("User{0} Name", i*10), i*10000);
             string json = JsonUtility.ToJson(user);
             DBreference.Child("userScores").Child(user.uid).SetRawJsonValueAsync(json);
-        }
+        }*/
     }
 
     public void UpdateUserName()
