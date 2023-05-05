@@ -195,7 +195,7 @@ public class FirebaseManager : MonoBehaviour
 
     public void UploadHighScore()
     {
-        User user = new User(SystemInfo.deviceUniqueIdentifier, "test", GlobalDataManager.Instance.GetHighScore());
+        User user = new User(SystemInfo.deviceUniqueIdentifier, GlobalStatsData.Instance.usernameLeaderboard, GlobalDataManager.Instance.GetHighScore());
         string json = JsonUtility.ToJson(user);
         DBreference.Child("userScores").Child(SystemInfo.deviceUniqueIdentifier).SetRawJsonValueAsync(json);
 
@@ -210,7 +210,9 @@ public class FirebaseManager : MonoBehaviour
 
     public void UpdateUserName()
     {
-       
+        User user = new User(SystemInfo.deviceUniqueIdentifier, GlobalStatsData.Instance.usernameLeaderboard, GlobalDataManager.Instance.GetHighScore());
+        string json = JsonUtility.ToJson(user);
+        DBreference.Child("userScores").Child(SystemInfo.deviceUniqueIdentifier).SetRawJsonValueAsync(json);
     }
 
     public void GetHighScores()
@@ -232,6 +234,7 @@ public class FirebaseManager : MonoBehaviour
                   User userScore = new User(childData.Child("uid").Value.ToString(), childData.Child("name").Value.ToString(), int.Parse(childData.Child("score").Value.ToString()));
                   scoreLeaderboard.Add(userScore);
               }
+              Debug.Log(scoreLeaderboard.Count);
               //Reverse order
               scoreLeaderboard.Reverse();
           }

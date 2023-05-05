@@ -23,6 +23,9 @@ public class GlobalStatsData : MonoBehaviour
     public int highestCoinsEarned = 0;
     public int totalCoinsEarned = 0;
 
+    //Username Leaderboard
+    public string usernameLeaderboard = "Anonymous";
+
     private void Awake()
     {
         //Create Singleton
@@ -81,6 +84,10 @@ public class GlobalStatsData : MonoBehaviour
         totalDistance = statsData.totalDistance;
         highestCoinsEarned = statsData.highestCoinsEarned;
         totalCoinsEarned = statsData.totalCoinsEarned;
+
+        //Username
+        usernameLeaderboard = statsData.usernameLeaderboard;
+
         yield return null;
     }
 
@@ -90,6 +97,7 @@ public class GlobalStatsData : MonoBehaviour
 
         //Time of Save
         timeOfLastSave = statsData.timeOfLastSave;
+
         totalRuns = statsData.totalRuns;
         totalShieldsCollected = statsData.totalShieldsCollected;
         totalObstaclesHit = statsData.totalObstaclesHit;
@@ -97,6 +105,9 @@ public class GlobalStatsData : MonoBehaviour
         totalDistance = statsData.totalDistance;
         highestCoinsEarned = statsData.highestCoinsEarned;
         totalCoinsEarned = statsData.totalCoinsEarned;
+
+        //Username
+        usernameLeaderboard = statsData.usernameLeaderboard;
     }
 
     public void LoadCloudData()

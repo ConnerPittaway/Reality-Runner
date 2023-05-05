@@ -7569,7 +7569,7 @@ MonoBehaviour:
   m_CharacterValidation: 0
   m_RegexValue: 
   m_GlobalPointSize: 14
-  m_CharacterLimit: 0
+  m_CharacterLimit: 20
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []
@@ -8062,8 +8062,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1953803108}
-        m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
-        m_MethodName: ContactSupport
+        m_TargetAssemblyTypeName: SettingsMenuUI, Assembly-CSharp
+        m_MethodName: OpenUsername
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10588,8 +10588,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1588805089}
-        m_TargetAssemblyTypeName: LanguageSelector, Assembly-CSharp
+      - m_Target: {fileID: 1953803109}
+        m_TargetAssemblyTypeName: UpdateLeaderboardName, Assembly-CSharp
         m_MethodName: Back
         m_Mode: 1
         m_Arguments:
@@ -12012,9 +12012,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1588805089}
-        m_TargetAssemblyTypeName: LanguageSelector, Assembly-CSharp
-        m_MethodName: Back
+      - m_Target: {fileID: 1953803109}
+        m_TargetAssemblyTypeName: UpdateLeaderboardName, Assembly-CSharp
+        m_MethodName: UpdateUsername
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21270,14 +21270,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1588805088}
   - component: {fileID: 1588805090}
-  - component: {fileID: 1588805089}
   m_Layer: 5
   m_Name: ChangeUsername
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1588805088
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21304,20 +21303,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1588805089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1588805087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0738312cd2e38ea4cb98f0dc93628470, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentLanguageText: {fileID: 0}
-  currentLanguage: 0
 --- !u!222 &1588805090
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -26910,13 +26895,14 @@ GameObject:
   - component: {fileID: 1953803106}
   - component: {fileID: 1953803107}
   - component: {fileID: 1953803108}
+  - component: {fileID: 1953803109}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1953803106
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26980,8 +26966,22 @@ MonoBehaviour:
   frameButtonOff: {fileID: 2031503419}
   languageScreen: {fileID: 1057982255}
   audioScreen: {fileID: 1421122420}
-  usernameScreen: {fileID: 0}
+  usernameScreen: {fileID: 1588805087}
   bootedGameFlag: 1
+--- !u!114 &1953803109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953803105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace4bc4edeb4cf04991eb9364b0d61ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enteredUsername: {fileID: 551775672}
+  currentUsername: {fileID: 1096818545}
 --- !u!1 &1956989707
 GameObject:
   m_ObjectHideFlags: 0
@@ -28362,6 +28362,7 @@ MonoBehaviour:
   totalDistance: 0
   highestCoinsEarned: 0
   totalCoinsEarned: 0
+  usernameLeaderboard: Anonymous
 --- !u!1 &2031503419
 GameObject:
   m_ObjectHideFlags: 0

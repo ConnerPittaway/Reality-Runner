@@ -1,18 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class UpdateLeaderboardName : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public TMP_InputField enteredUsername;
+    public TMP_Text currentUsername;
+
+    private void Awake()
     {
-        
+        currentUsername.text = "Current Username: " + GlobalStatsData.Instance.usernameLeaderboard;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateUsername()
     {
-        
+        GlobalStatsData.Instance.usernameLeaderboard = enteredUsername.text;
+        currentUsername.text = "Current Username: " + GlobalStatsData.Instance.usernameLeaderboard;
+        GlobalStatsData.Instance.SaveData();
+        FirebaseManager.Instance.UpdateUserName();
+    }
+
+    public void Back()
+    {
+        gameObject.SetActive(false);
     }
 }

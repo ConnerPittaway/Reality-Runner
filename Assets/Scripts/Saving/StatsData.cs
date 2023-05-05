@@ -18,6 +18,9 @@ public class StatsData
     public int highestCoinsEarned = 0;
     public int totalCoinsEarned = 0;
 
+    //Username Leaderboard
+    public string usernameLeaderboard = "Anonymous";
+
     //Retrieve Data
     public StatsData()
     {
@@ -29,5 +32,6 @@ public class StatsData
         totalDistance = GlobalStatsData.Instance.totalDistance;
         highestCoinsEarned = GlobalStatsData.Instance.highestCoinsEarned;
         totalCoinsEarned = GlobalStatsData.Instance.totalCoinsEarned;
+        usernameLeaderboard = GlobalStatsData.Instance.usernameLeaderboard;
     }
 }
