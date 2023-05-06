@@ -132,9 +132,9 @@ public class AudioManager : MonoBehaviour
     public void RestartMusic()
     {
         StopSongs();
-        musicSources[backgrounds.Worlds.FUTURISTIC].volume = bgmVolume;
-        musicSources[backgrounds.Worlds.FUTURISTIC].Play();
-        activeTrack = backgrounds.Worlds.FUTURISTIC;
+        musicSources[GlobalDataManager.Instance.startReality].volume = bgmVolume;
+        musicSources[GlobalDataManager.Instance.startReality].Play();
+        activeTrack = GlobalDataManager.Instance.startReality;
     }
 
     public void PlaySFX(string name)

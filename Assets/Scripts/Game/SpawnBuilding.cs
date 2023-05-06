@@ -59,8 +59,6 @@ public class SpawnBuilding : MonoBehaviour
     //Set Variables on Instance
     private void Awake()
     {
-        Debug.Log("Spawned");
-
         //Set Height
         buildingHeight = transform.position.y + (collider.size.y / 2); //Top of the building
 
@@ -260,7 +258,7 @@ public class SpawnBuilding : MonoBehaviour
         }
     }
 
-    private void EventManager_OnWorldChanged()
+    public void EventManager_OnWorldChanged()
     {
         GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>("Platforms/" + player.currentWorld.ToString());
     }

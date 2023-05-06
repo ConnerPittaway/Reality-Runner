@@ -25,6 +25,8 @@ public class backgrounds : MonoBehaviour
         {
             spriteRenderers.Add(obj.GetComponent<SpriteRenderer>());
         }
+
+        SwitchBackgrounds(GlobalDataManager.Instance.startReality);
     }
     public void SwitchBackgrounds(Worlds world)
     {

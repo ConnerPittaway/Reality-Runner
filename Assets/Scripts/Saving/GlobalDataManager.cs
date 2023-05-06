@@ -52,6 +52,9 @@ public class GlobalDataManager : MonoBehaviour
     //Cloud Data
     public bool checkCloud = false;
 
+    //Start Reality
+    public backgrounds.Worlds startReality = backgrounds.Worlds.FUTURISTIC;
+
     private void Awake()
     {
         //Create Singleton

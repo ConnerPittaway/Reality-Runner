@@ -92,9 +92,12 @@ public class PlayerController : MonoBehaviour
         Physics2D.gravity = new Vector2(0, gravity);
         isPaused = false;
 
-        currentWorld = backgrounds.Worlds.FUTURISTIC;
+        currentWorld = GlobalDataManager.Instance.startReality;
         heldItem = ItemTypes.NONE;
         activeItem = ItemTypes.NONE;
+
+        //Swap Buildings To Current Reality
+        EventManager.OnWorldChanged();
     }
 
     public void Awake()
