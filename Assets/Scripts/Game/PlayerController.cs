@@ -113,8 +113,7 @@ public class PlayerController : MonoBehaviour
     {
         //Check if on roof
         ContactPoint2D[] contacts = new ContactPoint2D[1];
-        int count = RB.GetContacts(contacts);
-        if(count == 0)
+        if(RB.GetContacts(contacts) == 0)
         {
             onRoof = false;
         }
@@ -198,9 +197,6 @@ public class PlayerController : MonoBehaviour
         }
         }
 #endif
-
-
-
     }
     //Frame Rate Locked Update
     private void FixedUpdate()
