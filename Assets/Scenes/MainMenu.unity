@@ -11308,9 +11308,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1953803109}
-        m_TargetAssemblyTypeName: UpdateLeaderboardName, Assembly-CSharp
-        m_MethodName: Back
+      - m_Target: {fileID: 1953803108}
+        m_TargetAssemblyTypeName: SettingsMenuUI, Assembly-CSharp
+        m_MethodName: CloseUsername
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

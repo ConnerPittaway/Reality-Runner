@@ -21,9 +21,4 @@ public class UpdateLeaderboardName : MonoBehaviour
         GlobalStatsData.Instance.SaveData();
         FirebaseManager.Instance.UpdateUserName();
     }
-
-    public void Back()
-    {
-        gameObject.SetActive(false);
-    }
 }

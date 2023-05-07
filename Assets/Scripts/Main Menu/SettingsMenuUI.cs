@@ -146,6 +146,11 @@ public class SettingsMenuUI : MonoBehaviour
         usernameScreen.SetActive(true);
     }
 
+    public void CloseUsername()
+    {
+        usernameScreen.SetActive(false);
+    }
+
     void OnEnable()
     {
         EventManager.OnUIElementOpened();
