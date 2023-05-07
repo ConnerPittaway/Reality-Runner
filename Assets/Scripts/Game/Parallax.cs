@@ -35,36 +35,23 @@ public class Parallax : MonoBehaviour
         {
             Vector2 pos = transform.position;
             float rightCopy = transform.position.x + (parentBoundsHalf);
+            float speed = (player.velocity.x * parallaxAmount) * Time.deltaTime;
             if (rightCopy <= (screenLeft))
             {
                 if (child)
                 {
-                    right = parentObj.transform.position.x + parentBoundsFull - ((player.velocity.x * parallaxAmount) * Time.deltaTime);
+                    right = parentObj.transform.position.x + parentBoundsFull - speed;
                     pos.x = right;
                 }
                 else
                 {
-                    right = childObj.transform.position.x + parentBoundsFull - ((player.velocity.x * parallaxAmount) * Time.deltaTime);
+                    right = childObj.transform.position.x + parentBoundsFull - speed;
                     pos.x = right;
                 }
             }
-            //transform.position = pos;
 
-            pos.x -= (player.velocity.x * parallaxAmount) * Time.deltaTime;
+            pos.x -= speed;
             transform.position = pos;
         }
-    }
-
-        private void FixedUpdate()
-    {
-        if (!player.isPaused)
-        {
-            Vector2 pos = transform.position;
-        }
-    }
-
-    private void LateUpdate()
-    {
-
     }
 }
