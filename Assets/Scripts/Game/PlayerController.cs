@@ -111,6 +111,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Check if on roof
+        ContactPoint2D[] contacts = new ContactPoint2D[1];
+        int count = RB.GetContacts(contacts);
+        if(count == 0)
+        {
+            onRoof = false;
+        }
+
         Vector2 currentPos = transform.position;
         float distanceToRoof = Mathf.Abs(currentPos.y - buildingHeight);
 #if UNITY_EDITOR
