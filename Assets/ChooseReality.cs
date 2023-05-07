@@ -34,4 +34,9 @@ public class ChooseReality : MonoBehaviour
         AudioManager.Instance.StartGameAudio();
         SceneManager.LoadScene("RealityRunnerGame");
     }
+
+    void OnEnable()
+    {
+        EventManager.OnUIElementOpened();
+    }
 }

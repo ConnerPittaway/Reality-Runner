@@ -8,7 +8,7 @@ using TMPro;
 public class MainMenuUIManager : MonoBehaviour
 {
     //Screens
-    public GameObject stats, devCredits, characterStore, itemUpgrades, store, musicCredits, settings;
+    public GameObject stats, devCredits, characterStore, itemUpgrades, store, musicCredits, settings, chooseReality;
 
     //Active Screen
     public GameObject activeScreen;
@@ -23,8 +23,7 @@ public class MainMenuUIManager : MonoBehaviour
 
     public void startGame()
     {
-        AudioManager.Instance.StartGameAudio();
-        SceneManager.LoadScene("RealityRunnerGame");
+        openScreen(chooseReality);
     }
 
     public void openStats()

@@ -5772,9 +5772,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1149313681}
-        m_TargetAssemblyTypeName: MainMenuUIManager, Assembly-CSharp
-        m_MethodName: startGame
+      - m_Target: {fileID: 1368566376}
+        m_TargetAssemblyTypeName: ChooseReality, Assembly-CSharp
+        m_MethodName: Hell
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8317,9 +8317,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1149313681}
-        m_TargetAssemblyTypeName: MainMenuUIManager, Assembly-CSharp
-        m_MethodName: startGame
+      - m_Target: {fileID: 1368566376}
+        m_TargetAssemblyTypeName: ChooseReality, Assembly-CSharp
+        m_MethodName: Love
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17817,7 +17817,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1149313678
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17876,6 +17876,7 @@ MonoBehaviour:
   store: {fileID: 1992234717}
   musicCredits: {fileID: 12317074}
   settings: {fileID: 1953803105}
+  chooseReality: {fileID: 1368566373}
   activeScreen: {fileID: 2031974420}
   mainScreenHeaders: {fileID: 1968452713}
   gameScreenHeaders: {fileID: 1785741694}
@@ -20485,7 +20486,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1368566374
 RectTransform:
   m_ObjectHideFlags: 0
