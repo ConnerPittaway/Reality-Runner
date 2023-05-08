@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
 
     public void Awake()
     {
-        
+
         RB = GetComponent<Rigidbody2D>();
         originalConstraints = RB.constraints;
         screenBottom = Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 0.0f, 0f)).y;
@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour
     {
         //Check if on roof
         ContactPoint2D[] contacts = new ContactPoint2D[1];
-        if(RB.GetContacts(contacts) == 0)
+        if (RB.GetContacts(contacts) == 0)
         {
             onRoof = false;
         }
@@ -121,7 +121,7 @@ public class PlayerController : MonoBehaviour
         Vector2 currentPos = transform.position;
         float distanceToRoof = Mathf.Abs(currentPos.y - buildingHeight);
 #if UNITY_EDITOR
-        if(isPaused)
+        if (isPaused)
         {
             RB.constraints = RigidbodyConstraints2D.FreezePositionY;
         }
@@ -145,56 +145,39 @@ public class PlayerController : MonoBehaviour
                 isJumping = false;
             }
         }
-
-#else
-        if(isPaused)
+//#else
+        if (isPaused)
         {
             RB.constraints = RigidbodyConstraints2D.FreezePositionY;
         }
 
-      if (!isPaused)
+        if (!isPaused)
         {
-        RB.constraints = originalConstraints;
-      if (Input.touchCount > 0)
-        {
-            //if (IsPointerOverUIObject())
-              //  return;
-            //foreach (Touch touch in Input.touches)
-            //{
-            if (Input.GetTouch(0).phase == TouchPhase.Began && onRoof)
+            RB.constraints = originalConstraints;
+            if (Input.touchCount > 0)
             {
-                if (!IsPointerOverUIObject())
+                if (Input.GetTouch(0).phase == TouchPhase.Began && onRoof)
                 {
-                    AudioManager.Instance.PlaySFX("Jump");
-                    onRoof = false;
-                    velocity.y = jumpVelocity;
-                    isJumping = true;
-                    currentJumpTime = 0.0f;
+                    if (!IsPointerOverUIObject())
+                    {
+                        AudioManager.Instance.PlaySFX("Jump");
+                        onRoof = false;
+                        velocity.y = jumpVelocity;
+                        isJumping = true;
+                        currentJumpTime = 0.0f;
+                    }
                 }
             }
-            //}
-            /*Touch touchData = Input.GetTouch(0);
-            if (touchData.phase == TouchPhase.Began)
-            {
-               AudioManager.Instance.PlaySFX("Jump");
-               onRoof = false;
-               velocity.y = jumpVelocity;
-               jumpHolding = true;
-               currentJumpTime = 0.0f;
-             }*/
-        }
 
-        if (Input.touchCount <= 0)
-        {
-            isJumping = false;
-        }
-        else
-        {
+            if (Input.touchCount <= 0)
+            {
+                isJumping = false;
+            }
+            else
+            {
                 if (Input.GetTouch(0).phase == TouchPhase.Ended)
                     isJumping = false;
-            //if (Input.GetTouch(0).phase == TouchPhase.Ended)
-            //  jumpHolding = false;
-        }
+            }
         }
 #endif
     }
@@ -208,17 +191,17 @@ public class PlayerController : MonoBehaviour
 
         //Check for death
         Vector2 currentPos = transform.position;
-        if(currentPos.y < screenBottom)
+        if (currentPos.y < screenBottom)
         {
             GameOver();
         }
 
-        if(!onRoof)
+        if (!onRoof)
         {
-            if(isJumping)
+            if (isJumping)
             {
                 currentJumpTime += Time.fixedDeltaTime;
-                if(currentJumpTime >= currentMaximumJumpTime)
+                if (currentJumpTime >= currentMaximumJumpTime)
                 {
                     isJumping = false;
                 }
@@ -260,7 +243,7 @@ public class PlayerController : MonoBehaviour
     //Handle Collisions With Buildings
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Building"))
+        if (collision.gameObject.CompareTag("Building"))
         {
             SpawnBuilding building = collision.gameObject.GetComponent<SpawnBuilding>();
             Vector2 currentPos = transform.position;
@@ -280,7 +263,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                if(currentPos.y < building.buildingHeight && currentPos.x < building.buildingRightSide)
+                if (currentPos.y < building.buildingHeight && currentPos.x < building.buildingRightSide)
                 {
                     velocity.x = 0;
                     velocity.y = 0;
@@ -303,7 +286,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Update High Score
-        if(FirebaseManager.Instance != null)
+        if (FirebaseManager.Instance != null)
         {
             FirebaseManager.Instance.UploadHighScore();
         }
@@ -341,7 +324,7 @@ public class PlayerController : MonoBehaviour
 
     public void UpdateStats()
     {
-        if(GlobalStatsData.Instance != null)
+        if (GlobalStatsData.Instance != null)
         {
             GlobalStatsData.Instance.totalRuns++;
             GlobalStatsData.Instance.totalShieldsCollected += shieldsCollected;
