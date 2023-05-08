@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour
                 isJumping = false;
             }
         }
-//#else
+#else
         if (isPaused)
         {
             RB.constraints = RigidbodyConstraints2D.FreezePositionY;
