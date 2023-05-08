@@ -66,8 +66,6 @@ public class backgrounds : MonoBehaviour
     void LoadFourthLayer(string path)
     {
         backgroundImage.sprite = Resources.Load<Sprite>("Sprites/" + path);
-        //spriteRenderers[0].sprite = Resources.Load<Sprite>("Sprites/" + path);
-        //spriteRenderers[1].sprite = Resources.Load<Sprite>("Sprites/" + path);
     }
     void LoadThirdLayer(string path)
     {
