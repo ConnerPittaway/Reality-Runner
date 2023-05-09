@@ -8,6 +8,7 @@ using Firebase.Database;
 using Firebase.Storage;
 using System.Threading.Tasks;
 using System.Threading;
+using System;
 
 public class FirebaseManager : MonoBehaviour
 {
@@ -119,8 +120,10 @@ public class FirebaseManager : MonoBehaviour
 
         StorageReference playerDataRef = dataRef.Child(SystemInfo.deviceUniqueIdentifier);
 
+        string localfileuri = string.Format("{0}://{1}", Uri.UriSchemeFile, localFileLocation);
+
         // Upload the file to the path "images/rivers.jpg"
-        playerDataRef.PutFileAsync(localFileLocation)
+        playerDataRef.PutFileAsync(localfileuri)
             .ContinueWith((Task<StorageMetadata> task) => {
                 if (task.IsFaulted || task.IsCanceled)
                 {
@@ -164,8 +167,10 @@ public class FirebaseManager : MonoBehaviour
 
         StorageReference playerDataRef = dataRef.Child(SystemInfo.deviceUniqueIdentifier);
 
+        string localfileuri = string.Format("{0}://{1}", Uri.UriSchemeFile, localFileLocation);
+
         // Start downloading a file
-        Task task = playerDataRef.GetFileAsync(localFileLocation,
+        Task task = playerDataRef.GetFileAsync(localfileuri,
             new StorageProgress<DownloadState>(state =>
             {
                 // called periodically during the download
