@@ -33,6 +33,9 @@ public class GlobalSettingsManager : MonoBehaviour
     }
     public Languages currentlySelectedLanguage;
 
+    //Terms
+    public bool acceptedTerms = false;
+
     private void Awake()
     {
         //Create Singleton
@@ -56,7 +59,7 @@ public class GlobalSettingsManager : MonoBehaviour
             isMuted = settingsData.isMuted;
             currentlySelectedLanguage = settingsData.currentlySelectedLanguage;
             frameCountOn = settingsData.frameCounterOn;
-
+            acceptedTerms = settingsData.acceptedTerms;
 
             EventManager.MusicAudioChanged += EventManager_OnMusicAudioChanged;
             EventManager.SFXAudioChanged += EventManager_OnSFXAudioChanged;

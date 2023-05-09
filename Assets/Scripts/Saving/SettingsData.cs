@@ -13,6 +13,7 @@ public class SettingsData
     public bool isMuted = false;
     public GlobalSettingsManager.Languages currentlySelectedLanguage;
     public bool frameCounterOn = true;
+    public bool acceptedTerms = false;
 
     //Retrieve Data
     public SettingsData()
@@ -24,5 +25,6 @@ public class SettingsData
         isMuted = GlobalSettingsManager.Instance.GetMuted();
         currentlySelectedLanguage = GlobalSettingsManager.Instance.currentlySelectedLanguage;
         frameCounterOn = GlobalSettingsManager.Instance.GetFrameCounter();
+        acceptedTerms = GlobalSettingsManager.Instance.acceptedTerms;
     }
 }
