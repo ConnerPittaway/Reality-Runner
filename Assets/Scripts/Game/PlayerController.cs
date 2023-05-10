@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
         //Start Position
         float screenLeft = Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 0f, 0f)).x;
         Vector2 pos = transform.position;
-        pos.x = screenLeft - (Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 0f, 0f)).x / 8.0f);
+        pos.x = screenLeft - (Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 0f, 0f)).x / 7.0f);
         transform.position = pos;
 
         //Set First Building Position
