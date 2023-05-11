@@ -104,6 +104,7 @@ public class Store : MonoBehaviour
     public void FreeReward()
     {
         GlobalDataManager.Instance.timeRewardOpened = (ulong)DateTime.Now.Ticks;
+        GlobalDataManager.Instance.AlterCoins(+100);
         freeReward.interactable = false;
         GlobalDataManager.Instance.SaveData();
     }
