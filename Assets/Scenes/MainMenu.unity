@@ -7199,7 +7199,7 @@ GameObject:
   - component: {fileID: 472037833}
   - component: {fileID: 472037832}
   m_Layer: 5
-  m_Name: Website
+  m_Name: Soundcloud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7222,7 +7222,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 74.95996, y: 0}
+  m_AnchoredPosition: {x: 32.27997, y: 0}
   m_SizeDelta: {x: -769.28, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &472037832
@@ -7245,7 +7245,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Website
+  m_text: Soundcloud
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bdac85d6f4d230a44b5318f987241399, type: 2}
   m_sharedMaterial: {fileID: -4354188635747516789, guid: bdac85d6f4d230a44b5318f987241399, type: 2}
@@ -11038,7 +11038,7 @@ GameObject:
   - component: {fileID: 741647318}
   - component: {fileID: 741647320}
   m_Layer: 5
-  m_Name: Website Icon
+  m_Name: Soundcloud Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11061,7 +11061,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -77.900024, y: 0}
+  m_AnchoredPosition: {x: -120.580025, y: 0}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &741647318
@@ -11084,7 +11084,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d0cae638037af374da307a0634b86858, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8b01ea54adf7abf44b69b6185ed27289, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -19882,7 +19882,7 @@ GameObject:
   - component: {fileID: 1290650283}
   - component: {fileID: 1290650285}
   m_Layer: 5
-  m_Name: Website Icon
+  m_Name: Soundcloud Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19905,7 +19905,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -77.900024, y: 0}
+  m_AnchoredPosition: {x: -120.580025, y: 0}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1290650283
@@ -19928,7 +19928,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d0cae638037af374da307a0634b86858, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8b01ea54adf7abf44b69b6185ed27289, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -31046,7 +31046,7 @@ GameObject:
   - component: {fileID: 2036081043}
   - component: {fileID: 2036081042}
   m_Layer: 5
-  m_Name: Website
+  m_Name: Soundcloud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31069,7 +31069,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 74.95996, y: 0}
+  m_AnchoredPosition: {x: 32.27997, y: 0}
   m_SizeDelta: {x: -769.28, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2036081042
@@ -31092,7 +31092,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Website
+  m_text: Soundcloud
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bdac85d6f4d230a44b5318f987241399, type: 2}
   m_sharedMaterial: {fileID: -4354188635747516789, guid: bdac85d6f4d230a44b5318f987241399, type: 2}

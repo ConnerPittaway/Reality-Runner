@@ -70,6 +70,8 @@ public class FacebookManager : MonoBehaviour
             {
                 Debug.Log(perm);
             }
+
+            ShareRun();
         }
         else
         {
@@ -81,14 +83,8 @@ public class FacebookManager : MonoBehaviour
     {
         if (FB.IsLoggedIn)
         {
-            /*FB.ShareLink(
-               //contentURL: new Uri("https://play.google.com/store/apps/details?id=com.halfbrick.jetpackjoyride&hl=en_GB"),
-               contentTitle: "test",
-               contentDescription: "test"
-           );*/
-
             FB.FeedShare(
-                link: new Uri("https://play.google.com/store/apps/details?id=com.halfbrick.jetpackjoyride&hl=en_GB"),
+                link: new Uri("https://connerpittaway.github.io/"),
                 linkCaption: "test",
                 linkDescription: "test"
             );
