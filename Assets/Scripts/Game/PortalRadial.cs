@@ -20,7 +20,7 @@ public class PortalRadial : MonoBehaviour
     void Start()
     {
         startedRoutines = false;
-        LeanTween.value(gameObject, currentAmount, 100, 2.5f).setOnUpdate((float val) =>
+        LeanTween.value(gameObject, currentAmount, 100, 20f).setOnUpdate((float val) =>
         {
             currentAmount = val;
             textProgress.text = ((int)currentAmount).ToString() + "%";
@@ -36,7 +36,7 @@ public class PortalRadial : MonoBehaviour
         UIController.StopUIAnimation();
         startedRoutines = false;
 
-        LeanTween.value(gameObject, currentAmount, 100, 2.5f).setOnUpdate((float val) =>
+        LeanTween.value(gameObject, currentAmount, 100, 20f).setOnUpdate((float val) =>
         {
             currentAmount = val;
             textProgress.text = ((int)currentAmount).ToString() + "%";

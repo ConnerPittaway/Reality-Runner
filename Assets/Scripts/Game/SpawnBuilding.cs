@@ -198,7 +198,7 @@ public class SpawnBuilding : MonoBehaviour
         int boxSpawnObject = Random.Range(0, 2);
         if (boxSpawnObject == 1)
         {
-            int boxNumber = Random.Range(2, 3);
+            int boxNumber = Random.Range(1, 3);
             createObject(Objects.BOX, boxNumber);
         }
 
@@ -218,12 +218,13 @@ public class SpawnBuilding : MonoBehaviour
         int spawnForcefield;
         if (player.activeItem != PlayerController.ItemTypes.NONE || player.heldItem != PlayerController.ItemTypes.NONE)
         {
-            spawnForcefield = 0;
+            spawnForcefield = 0; // Prevent Spawning
         }
         else
         {
-            spawnForcefield = 1;
+            spawnForcefield = Random.Range(1, 11); //-> 1-10 since 11 is excluded so 10% chance
         }
+
         if (spawnForcefield == 1)
         {
             GameObject forceField = Instantiate(forceObjectTemplate.gameObject);
